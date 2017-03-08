@@ -39,6 +39,18 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'authClientCollection' => [
+            'class'   => \yii\authclient\Collection::className(),
+            'clients' => [
+                // here is the list of clients you want to use
+                // you can read more in the "Available clients" section
+                'google' => [
+                    'class'        => 'dektrium\user\clients\Google',
+                    'clientId'     => '406464913992-8fbjq15jmh6aqj154uue1sqaf1t3asg2.apps.googleusercontent.com',
+                    'clientSecret' => '0MkeEk1U3TyD9o_D6tIx6GkP',
+                ],
+            ],
+        ],
         /*
         'user' => [
             'class' => 'app\components\User',
