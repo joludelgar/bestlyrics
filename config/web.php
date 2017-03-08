@@ -6,6 +6,31 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'enableUnconfirmedLogin' => false,
+            'confirmWithin' => 172800,
+            'cost' => 13,
+            'admins' => ['admin'],
+            'mailer' => [
+                'sender'                => ['infobestlyrics@gmail.com' => 'Bestlyrics'], // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Bienvenido a Bestlyrics',
+                'confirmationSubject'   => 'Mensaje de confirmación en Bestlyrics',
+                'reconfirmationSubject' => 'Petición de cambio de Email',
+                'recoverySubject'       => 'Recuperación de contraseña',
+            ],
+            'controllerMap' => [
+                'registration' => [
+                    'class' => \dektrium\user\controllers\RegistrationController::className(),
+                    'on ' . \dektrium\user\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
+                        Yii::$app->response->redirect(array('/user/security/login'))->send();
+                        Yii::$app->end();
+                    }
+                ],
+            ],
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -14,10 +39,13 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        /*
         'user' => [
-            'identityClass' => 'app\models\User',
+            'class' => 'app\components\User',
+            'identityClass' => 'dektrium\user\models\User',
             'enableAutoLogin' => true,
         ],
+        */
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -26,7 +54,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => $params['smtpUsername'],
+                'password' => getenv('SMTP_PASS'),
+                'port' => '587',
+                'encryption' => 'tls',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -45,6 +81,7 @@ $config = [
             ],
         ],
     ],
+    'language' => 'es_ES',
     'params' => $params,
 ];
 

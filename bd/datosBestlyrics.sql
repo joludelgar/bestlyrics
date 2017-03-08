@@ -11,7 +11,7 @@ create table artistas (
 );
 
 create index idx_artistas_nombre on artistas (nombre);
-create index idx_artistas_create_at on artistas (create_at);
+create index idx_artistas_created_at on artistas (created_at);
 
 create table albumes (
     id            bigserial     constraint pk_albumes primary key,
@@ -27,7 +27,7 @@ create table albumes (
 );
 
 create index idx_albumes_nombre on albumes (nombre);
-create index idx_albumes_create_at on albumes (create_at);
+create index idx_albumes_created_at on albumes (created_at);
 
 drop table if exists generos cascade;
 
@@ -66,7 +66,7 @@ create table canciones (
 );
 
 create index idx_canciones_nombre on canciones (nombre);
-create index idx_canciones_create_at on canciones (create_at);
+create index idx_canciones_created_at on canciones (created_at);
 
 drop table if exists letras cascade;
 
@@ -80,7 +80,7 @@ create table letras (
     created_at    timestamptz   default current_timestamp
 );
 
-create index idx_letras_create_at on letras (create_at);
+create index idx_letras_created_at on letras (created_at);
 
 drop table if exists letras_usuarios cascade;
 
@@ -95,7 +95,7 @@ create table letras_usuarios (
     created_at    timestamptz   default current_timestamp
 );
 
-create index idx_letras_usuarios_create_at on letras_usuarios (create_at);
+create index idx_letras_usuarios_created_at on letras_usuarios (created_at);
 
 drop table if exists idiomas cascade;
 
@@ -121,7 +121,7 @@ create table traducciones (
     created_at    timestamptz   default current_timestamp
 );
 
-create index idx_traducciones_create_at on traducciones (create_at);
+create index idx_traducciones_created_at on traducciones (created_at);
 
 drop table if exists traducciones_usuarios cascade;
 
@@ -136,7 +136,7 @@ create table traducciones_usuarios (
     created_at      timestamptz   default current_timestamp
 );
 
-create index idx_traducciones_usuarios_create_at on traducciones_usuarios (create_at);
+create index idx_traducciones_usuarios_created_at on traducciones_usuarios (created_at);
 
 drop table if exists favoritos cascade;
 
@@ -151,7 +151,7 @@ create table favoritos (
     created_at      timestamptz   default current_timestamp
 );
 
-create index idx_favoritos_create_at on favoritos (create_at);
+create index idx_favoritos_created_at on favoritos (created_at);
 
 drop table if exists votos cascade;
 
