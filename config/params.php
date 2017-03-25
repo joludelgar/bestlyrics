@@ -2,5 +2,5 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'smtpUsername' => 'infobestlyrics@gmail.com',
+    'smtpUsername' => 'bestlyricsteam@gmail.com',
 ];

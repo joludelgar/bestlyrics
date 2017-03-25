@@ -10,12 +10,12 @@ $config = [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
-            'enableUnconfirmedLogin' => false,
+            'enableUnconfirmedLogin' => true,
             'confirmWithin' => 172800,
             'cost' => 13,
             'admins' => ['admin'],
             'mailer' => [
-                'sender'                => ['infobestlyrics@gmail.com' => 'Bestlyrics'], // or ['no-reply@myhost.com' => 'Sender name']
+                'sender'                => ['bestlyricsteam@gmail.com' => 'Bestlyrics'], // or ['no-reply@myhost.com' => 'Sender name']
                 'welcomeSubject'        => 'Bienvenido a Bestlyrics',
                 'confirmationSubject'   => 'Mensaje de confirmación en Bestlyrics',
                 'reconfirmationSubject' => 'Petición de cambio de Email',
