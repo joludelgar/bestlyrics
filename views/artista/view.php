@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 /* @var $this yii\web\View */
 /* @var $model app\models\Artista */
 
-$this->title = $model->id;
+$this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

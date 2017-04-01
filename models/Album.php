@@ -65,7 +65,7 @@ class Album extends \yii\db\ActiveRecord
      */
     public function getIdArtista()
     {
-        return $this->hasOne(Artista::className(), ['id' => 'id_artista'])->inverseOf('albums');
+        return $this->hasOne(Artista::className(), ['id' => 'id_artista'])->inverseOf('albumes');
     }
 
     /**
