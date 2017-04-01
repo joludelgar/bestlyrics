@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Album */
@@ -24,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Añadir canción', ['canciones/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -34,6 +36,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_artista',
             'nombre',
             'anio',
+            'created_at',
+        ],
+    ]) ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            [
+             'label'=>'Canción',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['nombre']), ['/canciones/view', 'id' => $data['id']]);
+                      },
+             ],
             'created_at',
         ],
     ]) ?>

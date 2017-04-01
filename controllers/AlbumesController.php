@@ -8,6 +8,7 @@ use app\models\AlbumSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * AlbumesController implements the CRUD actions for Album model.
@@ -51,8 +52,15 @@ class AlbumesController extends Controller
      */
     public function actionView($id)
     {
+        $dataProvider = new ActiveDataProvider([
+           'query' => Album::findOne($id)->getCanciones(),
+           'pagination' => false,
+           'sort' => false,
+       ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 

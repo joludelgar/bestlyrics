@@ -66,7 +66,7 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getIdAlbum()
     {
-        return $this->hasOne(Album::className(), ['id' => 'id_album'])->inverseOf('cancions');
+        return $this->hasOne(Album::className(), ['id' => 'id_album'])->inverseOf('canciones');
     }
 
     /**
@@ -74,7 +74,7 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getIdUsuario()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('cancions');
+        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('canciones');
     }
 
     /**

@@ -6,8 +6,10 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Cancions', 'url' => ['index']];
+$this->title = $model->nombre;
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artista/index']];
+$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artista/view', 'id' => $model->idAlbum->idArtista->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idAlbum->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cancion-view">
