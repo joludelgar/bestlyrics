@@ -25,7 +25,7 @@ $config = [
                 'registration' => [
                     'class' => \dektrium\user\controllers\RegistrationController::className(),
                     'on ' . \dektrium\user\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
-                        Yii::$app->response->redirect(array('/user/security/login'))->send();
+                        Yii::$app->response->redirect(['/user/security/login'])->send();
                         Yii::$app->end();
                     }
                 ],
