@@ -22,11 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'id_usuario',
-            'nombre',
+            //'id',
+            //'id_usuario',
+            //'nombre',
+            [
+             'label'=>'Nombre',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['nombre']), ['/artista/view', 'id' => $data['id']]);
+                      },
+             ],
             'biografia',
             'created_at',
 
