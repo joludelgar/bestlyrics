@@ -47,8 +47,8 @@ $config = [
                 // you can read more in the "Available clients" section
                 'google' => [
                     'class'        => 'dektrium\user\clients\Google',
-                    'clientId'     => '906827172711-hhbbmqeinm315g583olf709hvobru7nd.apps.googleusercontent.com',
-                    'clientSecret' => 'DL31qvN-bG3iiSSkWve-KvAG',
+                    'clientId'     => getenv('GOOGLE_ID'),
+                    'clientSecret' => getenv('GOOGLE_SECRET'),
                 ],
             ],
         ],
