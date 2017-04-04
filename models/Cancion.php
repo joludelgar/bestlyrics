@@ -90,7 +90,7 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getLetras()
     {
-        return $this->hasMany(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+        return $this->hasOne(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
     }
 
     /**
