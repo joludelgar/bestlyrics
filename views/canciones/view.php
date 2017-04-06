@@ -22,14 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel panel-default">
                   <div class="panel-body" style='text-align:center;'>
                   <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-success']) :
-                  Html::tag('div', Html::tag('iframe', '', ['class' => 'embed-responsive-item', 'src' => str_replace("watch?v=", "embed/", $model->video)]), ['class' => 'embed-responsive embed-responsive-16by9'])?>
+                  Html::tag('div', Html::tag('iframe', '', ['class' => 'embed-responsive-item', 'src' => str_replace("watch?v=", "embed/", $model->video)]), ['class' => 'embed-responsive embed-responsive-16by9']) .
+                  '<br/>' . Html::a('Modificar video', ['video', 'id' => $model->id], ['class' => 'btn-xs btn-warning'])?>
                  <!-- <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="<?=$model->video?>"></iframe>
                 </div>-->
                   </div>
                 </div>
               </a>
-              <p>
+              <p style='text-align:center;'>
                   <!--<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                   <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                       'class' => 'btn btn-danger',
