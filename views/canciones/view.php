@@ -45,7 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-xs-6 col-md-8">
                 <div class="page-header">
-                    <h1><?= Html::encode($this->title) ?></h1>
+                    <h1><?= Html::encode($this->title) ?> -
+                        <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artista/view', 'id' => $model->idAlbum->id_artista]) ?></small>
+                    </h1>
                 </div>
                 <?= $model->letras == null ? '' : nl2br($model->letras->letra) ?>
             </div>

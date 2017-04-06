@@ -68,7 +68,7 @@ class LetrasController extends Controller
         $model->id_cancion = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -87,7 +87,7 @@ class LetrasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
         } else {
             return $this->render('update', [
                 'model' => $model,
