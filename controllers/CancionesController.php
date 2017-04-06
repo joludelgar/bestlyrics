@@ -96,6 +96,19 @@ class CancionesController extends Controller
         }
     }
 
+    public function actionVideo($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('updateVideo', [
+                'model' => $model,
+            ]);
+        }
+    }
+
     /**
      * Deletes an existing Cancion model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

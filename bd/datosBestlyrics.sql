@@ -13,6 +13,8 @@ create table artistas (
 create index idx_artistas_nombre on artistas (nombre);
 create index idx_artistas_created_at on artistas (created_at);
 
+drop table if exists albumes cascade;
+
 create table albumes (
     id            bigserial     constraint pk_albumes primary key,
     id_usuario    bigint        constraint fk_albumes_usuarios
@@ -61,7 +63,7 @@ create table canciones (
                                 references albumes (id)
                                 on delete no action on update cascade,
     nombre        varchar(50)   not null,
-    video         varchar(11),
+    video         varchar(50),
     created_at    timestamptz   default current_timestamp
 );
 
@@ -153,7 +155,7 @@ create table favoritos (
 
 create index idx_favoritos_created_at on favoritos (created_at);
 
-drop table if exists votos cascade;
+drop table if exists votos_letras cascade;
 
 create table votos_letras (
     id  bigserial   constraint pk_votos_letras primary key,

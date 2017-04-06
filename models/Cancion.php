@@ -40,7 +40,7 @@ class Cancion extends \yii\db\ActiveRecord
             [['nombre'], 'required'],
             [['created_at'], 'safe'],
             [['nombre'], 'string', 'max' => 50],
-            [['video'], 'string', 'max' => 11],
+            [['video'], 'string', /*'max' => 11*/],
             [['id_album'], 'exist', 'skipOnError' => true, 'targetClass' => Album::className(), 'targetAttribute' => ['id_album' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
@@ -56,7 +56,7 @@ class Cancion extends \yii\db\ActiveRecord
             'id_usuario' => 'Id Usuario',
             'id_album' => 'Id Album',
             'nombre' => 'Nombre',
-            'video' => 'Video',
+            'video' => 'URL del video',
             'created_at' => 'Created At',
         ];
     }

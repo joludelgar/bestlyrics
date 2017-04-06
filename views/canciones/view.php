@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
@@ -18,18 +19,25 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="panel-body">
           <div class="row">
             <div class="col-xs-6 col-md-4">
-              <a href="#" class="thumbnail">
-                <img src="/imagenes/example.jpg" alt="...">
+                <div class="panel panel-default">
+                  <div class="panel-body" style='text-align:center;'>
+                  <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-success']) :
+                  Html::tag('div', Html::tag('iframe', '', ['class' => 'embed-responsive-item', 'src' => str_replace("watch?v=", "embed/", $model->video)]), ['class' => 'embed-responsive embed-responsive-16by9'])?>
+                 <!-- <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="<?=$model->video?>"></iframe>
+                </div>-->
+                  </div>
+                </div>
               </a>
               <p>
-                  <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                  <!--<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                   <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                       'class' => 'btn btn-danger',
                       'data' => [
                           'confirm' => 'Are you sure you want to delete this item?',
                           'method' => 'post',
                       ],
-                  ]) ?>
+                  ]) ?> -->
                   <?= $model->letras == null ? Html::a('Añadir letra', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success']) :
                         Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success'])?>
               </p>
