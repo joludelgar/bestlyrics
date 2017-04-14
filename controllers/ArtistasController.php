@@ -3,16 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Traduccion;
-use app\models\TraduccionSearch;
+use app\models\Artista;
+use app\models\ArtistaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
- * TraduccionesController implements the CRUD actions for Traduccion model.
+ * ArtistasController implements the CRUD actions for Artista model.
  */
-class TraduccionesController extends Controller
+class ArtistasController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class TraduccionesController extends Controller
     }
 
     /**
-     * Lists all Traduccion models.
+     * Lists all Artista models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TraduccionSearch();
+        $searchModel = new ArtistaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,25 +46,33 @@ class TraduccionesController extends Controller
     }
 
     /**
-     * Displays a single Traduccion model.
+     * Displays a single Artista model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
+        $dataProvider = new ActiveDataProvider([
+           'query' => Artista::findOne($id)->getAlbumes(),
+           'pagination' => false,
+           'sort' => false,
+       ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Traduccion model.
+     * Creates a new Artista model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Traduccion();
+        $model = new Artista();
+        $model->id_usuario = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +84,7 @@ class TraduccionesController extends Controller
     }
 
     /**
-     * Updates an existing Traduccion model.
+     * Updates an existing Artista model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +103,7 @@ class TraduccionesController extends Controller
     }
 
     /**
-     * Deletes an existing Traduccion model.
+     * Deletes an existing Artista model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +116,15 @@ class TraduccionesController extends Controller
     }
 
     /**
-     * Finds the Traduccion model based on its primary key value.
+     * Finds the Artista model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Traduccion the loaded model
+     * @return Artista the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Traduccion::findOne($id)) !== null) {
+        if (($model = Artista::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

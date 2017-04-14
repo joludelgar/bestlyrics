@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Artista;
-use app\models\ArtistaSearch;
+use app\models\VotoLetra;
+use app\models\VotoLetraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\data\ActiveDataProvider;
 
 /**
- * ArtistaController implements the CRUD actions for Artista model.
+ * VotosLetrasController implements the CRUD actions for VotoLetra model.
  */
-class ArtistaController extends Controller
+class VotosLetrasController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class ArtistaController extends Controller
     }
 
     /**
-     * Lists all Artista models.
+     * Lists all VotoLetra models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ArtistaSearch();
+        $searchModel = new VotoLetraSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,34 +45,25 @@ class ArtistaController extends Controller
     }
 
     /**
-     * Displays a single Artista model.
+     * Displays a single VotoLetra model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-
-        $dataProvider = new ActiveDataProvider([
-           'query' => Artista::findOne($id)->getAlbumes(),
-           'pagination' => false,
-           'sort' => false,
-       ]);
-
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Creates a new Artista model.
+     * Creates a new VotoLetra model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Artista();
-        $model->id_usuario = Yii::$app->user->identity->id;
+        $model = new VotoLetra();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -85,7 +75,7 @@ class ArtistaController extends Controller
     }
 
     /**
-     * Updates an existing Artista model.
+     * Updates an existing VotoLetra model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,7 +94,7 @@ class ArtistaController extends Controller
     }
 
     /**
-     * Deletes an existing Artista model.
+     * Deletes an existing VotoLetra model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -117,15 +107,15 @@ class ArtistaController extends Controller
     }
 
     /**
-     * Finds the Artista model based on its primary key value.
+     * Finds the VotoLetra model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Artista the loaded model
+     * @return VotoLetra the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Artista::findOne($id)) !== null) {
+        if (($model = VotoLetra::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

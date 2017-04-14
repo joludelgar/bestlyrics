@@ -37,7 +37,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'Artistas', 'url' => ['/artista/index']],
+            ['label' => 'Artistas', 'url' => ['/artistas/index']],
             Yii::$app->user->isGuest ?
             ['label' => 'Iniciar sesión', 'url' => ['/user/security/login']] :
             ['label' => Yii::$app->user->identity->username, 'url' => ['usuarios/index'], 'items' =>

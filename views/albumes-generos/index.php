@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\LetraSearch */
+/* @var $searchModel app\models\AlbumGeneroSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Letras';
+$this->title = 'Album Generos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="letra-index">
+<div class="album-genero-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Letra', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Album Genero', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_cancion',
-            'id_idioma',
-            'letra:ntext',
-            'bloqueada:boolean',
-            //'created_at',
+            'id_album',
+            'id_genero',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

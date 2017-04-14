@@ -5,22 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "idiomas".
+ * This is the model class for table "generos".
  *
  * @property integer $id
  * @property string $nombre
  *
- * @property Letras[] $letras
- * @property Canciones[] $idCancions
+ * @property AlbumesGeneros[] $albumesGeneros
  */
-class Idioma extends \yii\db\ActiveRecord
+class Genero extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'idiomas';
+        return 'generos';
     }
 
     /**
@@ -48,15 +47,8 @@ class Idioma extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLetras()
+    public function getAlbumesGeneros()
     {
-        return $this->hasMany(Letra::className(), ['id_idioma' => 'id'])->inverseOf('idIdioma');
+        return $this->hasMany(AlbumGenero::className(), ['id_genero' => 'id'])->inverseOf('idGenero');
     }
-   /**
-    * @return \yii\db\ActiveQuery
-    */
-   public function getIdCancion()
-   {
-       return $this->hasMany(Cancion::className(), ['id' => 'id_cancion'])->viaTable('letras', ['id_idioma' => 'id']);
-   }
 }

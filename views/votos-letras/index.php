@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\LetraSearch */
+/* @var $searchModel app\models\VotoLetraSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Letras';
+$this->title = 'Voto Letras';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="letra-index">
+<div class="voto-letra-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Letra', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Voto Letra', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_cancion',
-            'id_idioma',
-            'letra:ntext',
-            'bloqueada:boolean',
-            //'created_at',
+            'id_usuario',
+            'id_letra',
+            'voto',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

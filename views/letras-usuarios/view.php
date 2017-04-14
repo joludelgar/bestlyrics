@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Letra */
+/* @var $model app\models\LetraUsuario */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Letras', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Letra Usuarios', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="letra-view">
+<div class="letra-usuario-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,10 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_cancion',
-            'id_idioma',
-            'letra:ntext',
-            'bloqueada:boolean',
+            'id_letra',
+            'id_usuario',
             'created_at',
         ],
     ]) ?>

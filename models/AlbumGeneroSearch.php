@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Letra;
+use app\models\AlbumGenero;
 
 /**
- * LetraSearch represents the model behind the search form about `app\models\Letra`.
+ * AlbumGeneroSearch represents the model behind the search form about `app\models\AlbumGenero`.
  */
-class LetraSearch extends Letra
+class AlbumGeneroSearch extends AlbumGenero
 {
     /**
      * @inheritdoc
@@ -18,9 +18,7 @@ class LetraSearch extends Letra
     public function rules()
     {
         return [
-            [['id', 'id_cancion', 'id_idioma'], 'integer'],
-            [['letra', 'created_at'], 'safe'],
-            [['bloqueada'], 'boolean'],
+            [['id', 'id_album', 'id_genero'], 'integer'],
         ];
     }
 
@@ -42,7 +40,7 @@ class LetraSearch extends Letra
      */
     public function search($params)
     {
-        $query = Letra::find();
+        $query = AlbumGenero::find();
 
         // add conditions that should always apply here
 
@@ -61,13 +59,9 @@ class LetraSearch extends Letra
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_cancion' => $this->id_cancion,
-            'id_idioma' => $this->id_idioma,
-            'bloqueada' => $this->bloqueada,
-            'created_at' => $this->created_at,
+            'id_album' => $this->id_album,
+            'id_genero' => $this->id_genero,
         ]);
-
-        $query->andFilterWhere(['like', 'letra', $this->letra]);
 
         return $dataProvider;
     }

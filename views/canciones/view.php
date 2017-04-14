@@ -8,8 +8,8 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Cancion */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artista/index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artista/view', 'id' => $model->idAlbum->idArtista->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/index']];
+$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idAlbum->idArtista->id]];
 $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idAlbum->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-xs-6 col-md-8">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?> -
-                        <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artista/view', 'id' => $model->idAlbum->id_artista]) ?></small>
+                        <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
                     </h1>
                 </div>
                 <?= $model->letras == null ? '' : nl2br($model->letras->letra) ?>

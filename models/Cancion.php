@@ -18,7 +18,7 @@ use Yii;
  * @property User $idUsuario
  * @property Favoritos[] $favoritos
  * @property Letras[] $letras
- * @property Traducciones[] $traducciones
+ * @property Idiomas[] $idIdiomas
  */
 class Cancion extends \yii\db\ActiveRecord
 {
@@ -39,8 +39,7 @@ class Cancion extends \yii\db\ActiveRecord
             [['id_usuario', 'id_album'], 'integer'],
             [['nombre'], 'required'],
             [['created_at'], 'safe'],
-            [['nombre'], 'string', 'max' => 50],
-            [['video'], 'string', /*'max' => 11*/],
+            [['nombre', 'video'], 'string', 'max' => 255],
             [['id_album'], 'exist', 'skipOnError' => true, 'targetClass' => Album::className(), 'targetAttribute' => ['id_album' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
@@ -82,7 +81,7 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getFavoritos()
     {
-        return $this->hasMany(Favoritos::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+        return $this->hasMany(Favorito::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
     }
 
     /**
@@ -90,14 +89,14 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getLetras()
     {
-        return $this->hasOne(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+        return $this->hasMany(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTraducciones()
+    public function getIdIdiomas()
     {
-        return $this->hasMany(Traduccion::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+        return $this->hasMany(Idioma::className(), ['id' => 'id_idioma'])->viaTable('letras', ['id_cancion' => 'id']);
     }
 }

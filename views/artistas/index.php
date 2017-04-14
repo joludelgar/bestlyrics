@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Nombre',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['nombre']), ['/artista/view', 'id' => $data['id']]);
+                        return Html::a(Html::encode($data['nombre']), ['/artistas/view', 'id' => $data['id']]);
                       },
              ],
             'biografia',

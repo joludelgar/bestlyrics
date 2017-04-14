@@ -5,25 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "artistas".
+ * This is the model class for table "votos_letras".
  *
  * @property integer $id
  * @property integer $id_usuario
- * @property string $nombre
- * @property string $biografia
- * @property string $created_at
+ * @property integer $id_letra
+ * @property integer $voto
  *
- * @property Albumes[] $albumes
+ * @property Letras $idLetra
  * @property User $idUsuario
  */
-class Artista extends \yii\db\ActiveRecord
+class VotoLetra extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'artistas';
+        return 'votos_letras';
     }
 
     /**
@@ -32,11 +31,9 @@ class Artista extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario'], 'integer'],
-            [['nombre'], 'required'],
-            [['biografia'], 'string'],
-            [['created_at'], 'safe'],
-            [['nombre'], 'string', 'max' => 255],
+            [['id_usuario', 'id_letra', 'voto'], 'integer'],
+            [['voto'], 'required'],
+            [['id_letra'], 'exist', 'skipOnError' => true, 'targetClass' => Letra::className(), 'targetAttribute' => ['id_letra' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
     }
@@ -49,18 +46,17 @@ class Artista extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
-            'nombre' => 'Nombre',
-            'biografia' => 'Biografia',
-            'created_at' => 'Created At',
+            'id_letra' => 'Id Letra',
+            'voto' => 'Voto',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAlbumes()
+    public function getIdLetra()
     {
-        return $this->hasMany(Album::className(), ['id_artista' => 'id'])->inverseOf('idArtista');
+        return $this->hasOne(Letra::className(), ['id' => 'id_letra'])->inverseOf('votoLetras');
     }
 
     /**
@@ -68,6 +64,6 @@ class Artista extends \yii\db\ActiveRecord
      */
     public function getIdUsuario()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('artistas');
+        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('votoLetras');
     }
 }

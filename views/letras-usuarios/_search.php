@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\TraduccionSearch */
+/* @var $model app\models\LetraUsuarioSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="traduccion-search">
+<div class="letra-usuario-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,15 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'id_cancion') ?>
+    <?= $form->field($model, 'id_letra') ?>
 
-    <?= $form->field($model, 'id_idioma') ?>
+    <?= $form->field($model, 'id_usuario') ?>
 
-    <?= $form->field($model, 'bloqueada')->checkbox() ?>
-
-    <?= $form->field($model, 'letra') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
+    <?= $form->field($model, 'created_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Traduccion;
+use app\models\Favorito;
 
 /**
- * TraduccionSearch represents the model behind the search form about `app\models\Traduccion`.
+ * FavoritoSearch represents the model behind the search form about `app\models\Favorito`.
  */
-class TraduccionSearch extends Traduccion
+class FavoritoSearch extends Favorito
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class TraduccionSearch extends Traduccion
     public function rules()
     {
         return [
-            [['id', 'id_cancion', 'id_idioma'], 'integer'],
-            [['bloqueada'], 'boolean'],
-            [['letra', 'created_at'], 'safe'],
+            [['id', 'id_usuario', 'id_cancion'], 'integer'],
+            [['created_at'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class TraduccionSearch extends Traduccion
      */
     public function search($params)
     {
-        $query = Traduccion::find();
+        $query = Favorito::find();
 
         // add conditions that should always apply here
 
@@ -61,13 +60,10 @@ class TraduccionSearch extends Traduccion
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'id_usuario' => $this->id_usuario,
             'id_cancion' => $this->id_cancion,
-            'id_idioma' => $this->id_idioma,
-            'bloqueada' => $this->bloqueada,
             'created_at' => $this->created_at,
         ]);
-
-        $query->andFilterWhere(['like', 'letra', $this->letra]);
 
         return $dataProvider;
     }

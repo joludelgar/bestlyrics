@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Letra;
 use app\models\Idioma;
-use app\models\LetraSearch;
+use app\models\IdiomaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LetrasController implements the CRUD actions for Letra model.
+ * IdiomasController implements the CRUD actions for Idioma model.
  */
-class LetrasController extends Controller
+class IdiomasController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class LetrasController extends Controller
     }
 
     /**
-     * Lists all Letra models.
+     * Lists all Idioma models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new LetraSearch();
+        $searchModel = new IdiomaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class LetrasController extends Controller
     }
 
     /**
-     * Displays a single Letra model.
+     * Displays a single Idioma model.
      * @param integer $id
      * @return mixed
      */
@@ -58,29 +57,25 @@ class LetrasController extends Controller
     }
 
     /**
-     * Creates a new Letra model.
+     * Creates a new Idioma model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($id)
+    public function actionCreate()
     {
-        $model = new Letra();
-
-        $model->id_cancion = $id;
+        $model = new Idioma();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            $idiomas = Idioma::find()->select('nombre, id')->indexBy('id')->column();
             return $this->render('create', [
                 'model' => $model,
-                'idiomas' => $idiomas,
             ]);
         }
     }
 
     /**
-     * Updates an existing Letra model.
+     * Updates an existing Idioma model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,7 +85,7 @@ class LetrasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -99,7 +94,7 @@ class LetrasController extends Controller
     }
 
     /**
-     * Deletes an existing Letra model.
+     * Deletes an existing Idioma model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -112,15 +107,15 @@ class LetrasController extends Controller
     }
 
     /**
-     * Finds the Letra model based on its primary key value.
+     * Finds the Idioma model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Letra the loaded model
+     * @return Idioma the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Letra::findOne($id)) !== null) {
+        if (($model = Idioma::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

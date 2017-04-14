@@ -4,19 +4,18 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Letra */
+/* @var $model app\models\AlbumGenero */
 
-$this->title = 'Create Letra';
-$this->params['breadcrumbs'][] = ['label' => 'Letras', 'url' => ['index']];
+$this->title = 'Create Album Genero';
+$this->params['breadcrumbs'][] = ['label' => 'Album Generos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="letra-create">
+<div class="album-genero-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-        'idiomas' => $idiomas,
     ]) ?>
 
 </div>

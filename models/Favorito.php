@@ -5,25 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "artistas".
+ * This is the model class for table "favoritos".
  *
  * @property integer $id
  * @property integer $id_usuario
- * @property string $nombre
- * @property string $biografia
+ * @property integer $id_cancion
  * @property string $created_at
  *
- * @property Albumes[] $albumes
+ * @property Canciones $idCancion
  * @property User $idUsuario
  */
-class Artista extends \yii\db\ActiveRecord
+class Favorito extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'artistas';
+        return 'favoritos';
     }
 
     /**
@@ -32,11 +31,9 @@ class Artista extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario'], 'integer'],
-            [['nombre'], 'required'],
-            [['biografia'], 'string'],
+            [['id_usuario', 'id_cancion'], 'integer'],
             [['created_at'], 'safe'],
-            [['nombre'], 'string', 'max' => 255],
+            [['id_cancion'], 'exist', 'skipOnError' => true, 'targetClass' => Cancion::className(), 'targetAttribute' => ['id_cancion' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
     }
@@ -49,8 +46,7 @@ class Artista extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
-            'nombre' => 'Nombre',
-            'biografia' => 'Biografia',
+            'id_cancion' => 'Id Cancion',
             'created_at' => 'Created At',
         ];
     }
@@ -58,9 +54,9 @@ class Artista extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAlbumes()
+    public function getIdCancion()
     {
-        return $this->hasMany(Album::className(), ['id_artista' => 'id'])->inverseOf('idArtista');
+        return $this->hasOne(Cancion::className(), ['id' => 'id_cancion'])->inverseOf('favoritos');
     }
 
     /**
@@ -68,6 +64,6 @@ class Artista extends \yii\db\ActiveRecord
      */
     public function getIdUsuario()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('artistas');
+        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('favoritos');
     }
 }

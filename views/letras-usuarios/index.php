@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\TraduccionSearch */
+/* @var $searchModel app\models\LetraUsuarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Traduccions';
+$this->title = 'Letra Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="traduccion-index">
+<div class="letra-usuario-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Traduccion', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Letra Usuario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_cancion',
-            'id_idioma',
-            'bloqueada:boolean',
-            'letra',
-            // 'created_at',
+            'id_letra',
+            'id_usuario',
+            'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

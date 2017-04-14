@@ -39,7 +39,7 @@ class Album extends \yii\db\ActiveRecord
             [['nombre', 'anio'], 'required'],
             [['anio'], 'number'],
             [['created_at'], 'safe'],
-            [['nombre'], 'string', 'max' => 50],
+            [['nombre'], 'string', 'max' => 255],
             [['id_artista'], 'exist', 'skipOnError' => true, 'targetClass' => Artista::className(), 'targetAttribute' => ['id_artista' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
@@ -81,7 +81,7 @@ class Album extends \yii\db\ActiveRecord
      */
     public function getAlbumesGeneros()
     {
-        return $this->hasMany(AlbumesGeneros::className(), ['id_album' => 'id'])->inverseOf('idAlbum');
+        return $this->hasMany(AlbumGenero::className(), ['id_album' => 'id'])->inverseOf('idAlbum');
     }
 
     /**

@@ -8,8 +8,8 @@ use yii\grid\GridView;
 /* @var $model app\models\Album */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artista/index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idArtista->nombre, 'url' => ['artista/view', 'id' => $model->idArtista->id]];
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/index']];
+$this->params['breadcrumbs'][] = ['label' => $model->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idArtista->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="album-view">

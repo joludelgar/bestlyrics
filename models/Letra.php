@@ -9,11 +9,13 @@ use Yii;
  *
  * @property integer $id
  * @property integer $id_cancion
+ * @property integer $id_idioma
  * @property string $letra
  * @property boolean $bloqueada
  * @property string $created_at
  *
  * @property Canciones $idCancion
+ * @property Idiomas $idIdioma
  * @property LetrasUsuarios[] $letrasUsuarios
  * @property VotosLetras[] $votosLetras
  */
@@ -33,12 +35,14 @@ class Letra extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_cancion'], 'integer'],
-            [['letra'], 'required'],
+            [['id_cancion', 'id_idioma'], 'integer'],
+            [['letra', 'id_idioma'], 'required'],
+            [['letra'], 'string'],
             [['bloqueada'], 'boolean'],
             [['created_at'], 'safe'],
-            [['letra'], 'string', 'max' => 5000],
+            [['id_cancion', 'id_idioma'], 'unique', 'targetAttribute' => ['id_cancion', 'id_idioma'], 'message' => 'The combination of Id Cancion and Id Idioma has already been taken.'],
             [['id_cancion'], 'exist', 'skipOnError' => true, 'targetClass' => Cancion::className(), 'targetAttribute' => ['id_cancion' => 'id']],
+            [['id_idioma'], 'exist', 'skipOnError' => true, 'targetClass' => Idioma::className(), 'targetAttribute' => ['id_idioma' => 'id']],
         ];
     }
 
@@ -50,6 +54,7 @@ class Letra extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_cancion' => 'Id Cancion',
+            'id_idioma' => 'Id Idioma',
             'letra' => 'Letra',
             'bloqueada' => 'Bloqueada',
             'created_at' => 'Created At',
@@ -63,13 +68,20 @@ class Letra extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Cancion::className(), ['id' => 'id_cancion'])->inverseOf('letras');
     }
+   /**
+    * @return \yii\db\ActiveQuery
+    */
+   public function getIdIdioma()
+   {
+       return $this->hasOne(Idioma::className(), ['id' => 'id_idioma'])->inverseOf('letras');
+   }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getLetrasUsuarios()
     {
-        return $this->hasMany(LetrasUsuarios::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
+        return $this->hasMany(LetraUsuario::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
     }
 
     /**
@@ -77,6 +89,6 @@ class Letra extends \yii\db\ActiveRecord
      */
     public function getVotosLetras()
     {
-        return $this->hasMany(VotosLetras::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
+        return $this->hasMany(VotoLetra::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
     }
 }
