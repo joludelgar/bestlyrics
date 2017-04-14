@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
                     </h1>
                 </div>
-                <?= $model->letras == null ? '' : nl2br($model->letras->letra) ?>
+                <?= $model->letras == null ? '' : nl2br($model->letras[0]->letra) ?>
             </div>
           </div>
       </div>
