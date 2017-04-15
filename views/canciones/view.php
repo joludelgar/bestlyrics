@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
 
@@ -12,6 +13,39 @@ $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ind
 $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idAlbum->idArtista->id]];
 $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idAlbum->id]];
 $this->params['breadcrumbs'][] = $this->title;
+
+$url = Url::to(['/letras/bloquear']);
+$js = <<<EOT
+    $('#bloqueo').click(function() {
+        $.ajax({
+            method: 'POST',
+            url: '$url',
+            context: this,
+            data: {
+                id: $(this).val()
+            },
+            success: function (data, status, event) {
+                if (data) {
+                    $(this).html("Desbloquear letra");
+                    $('#modificar').html('Letra bloqueada').attr({
+                        'href': '#',
+                        'disabled': 'disabled',
+                        'class': 'btn btn-default'
+                    });
+                } else {
+                    $(this).html("Bloquear letra");
+                    $('#modificar').html('Modificar letra').attr({
+                        'href': '/letras/update?id='+$(this).val(),
+                        'class': 'btn btn-success',
+                        'id': 'modificar'
+                    });
+                    $('#modificar').removeAttr("disabled");
+                }
+            }
+        });
+    });
+EOT;
+$this->registerJs($js);
 ?>
 <div class="cancion-view">
 
@@ -40,7 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
                       ],
                   ]) ?> -->
                   <?= $model->letras == null ? Html::a('Añadir letra', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success']) :
-                        Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success'])?>
+                        ($model->letras[0]->bloqueada ?
+                            Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
+                            Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
+                            (Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
               </p>
             </div>
             <div class="col-xs-6 col-md-8">

@@ -98,6 +98,20 @@ class LetrasController extends Controller
         }
     }
 
+    public function actionBloquear()
+    {
+        $model = $this->findModel(Yii::$app->request->post('id'));
+
+        if ($model->bloqueada) {
+            $model->bloqueada = false;
+        } else {
+            $model->bloqueada = true;
+        }
+
+        $model->save();
+        return $model->bloqueada;
+    }
+
     /**
      * Deletes an existing Letra model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
