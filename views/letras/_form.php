@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'id_idioma')->dropDownList($idiomas,
+        <?= $model->isNewRecord ? $form->field($model, 'id_idioma')->dropDownList($idiomas,
             ['prompt' => 'Selecciona el idioma...']
-        ); ?>
+        ) : '' ?>
 
         <?= $form->field($model, 'letra')->textarea(['rows' => '25', 'maxlength' => true]) ?>
 
