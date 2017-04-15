@@ -31,6 +31,12 @@ $config = [
                 ],
             ],
         ],
+        'comment' => [
+            'class' => 'yii2mod\comments\Module',
+            'controllerMap' => [
+                'comments' => 'yii2mod\comments\controllers\ManageController',
+            ],
+        ],
     ],
     'components' => [
         'request' => [
@@ -50,6 +56,15 @@ $config = [
                     'clientId'     => getenv('GOOGLE_ID'),
                     'clientSecret' => getenv('GOOGLE_SECRET'),
                 ],
+            ],
+        ],
+        'i18n' => [
+            'translations' => [
+                'yii2mod.comments' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                ],
+                // ...
             ],
         ],
         /*
