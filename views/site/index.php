@@ -4,6 +4,8 @@
 
 use yii\widgets\ListView;
 use yii\helpers\Html;
+
+$this->title = 'Bestlyrics';
 ?>
 <div class="site-index">
 
