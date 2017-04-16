@@ -9,6 +9,7 @@ use app\models\LetraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * LetrasController implements the CRUD actions for Letra model.
@@ -42,6 +43,19 @@ class LetrasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUltimas()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Letra::find()->orderBy('created_at desc'),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
+        return $this->render('ultimas', [
+            'dataProvider' => $dataProvider
         ]);
     }
 

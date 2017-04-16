@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ])  ?> -->
 
-    <h2>Albumes</h2>
+    <h2>Álbumes</h2>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

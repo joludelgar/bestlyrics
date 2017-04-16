@@ -7,7 +7,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\Letra;
 use app\models\ContactForm;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -60,7 +62,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Letra::find()->orderBy('created_at desc')->limit(6),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 
     /**
