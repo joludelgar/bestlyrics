@@ -77,7 +77,7 @@ $this->registerJs($js);
                         ($model->letras[0]->bloqueada ?
                             Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
                             Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
-                            (Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
+                            (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
               </p>
             </div>
             <div class="col-xs-6 col-md-8">

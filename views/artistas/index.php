@@ -35,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
                       },
              ],
             'biografia',
-            'created_at',
+            //'created_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

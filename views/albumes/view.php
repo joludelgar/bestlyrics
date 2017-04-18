@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <p>
                     <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                    <?= Yii::$app->user->identity->isAdmin ? Html::a('Eliminar', ['delete', 'id' => $model->id], [
+                    <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('Eliminar', ['delete', 'id' => $model->id], [
                         'class' => 'btn btn-danger',
                         'data' => [
                             'confirm' => 'Are you sure you want to delete this item?',
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function($data) {
                         return Html::a('Modificar canción', ['/canciones/update', 'id' => $data['id']], ['class' => 'btn-sm btn-primary']) . ' ' .
-                        (Yii::$app->user->identity->isAdmin ? Html::a('Eliminar canción', ['/canciones/delete', 'id' => $data['id']], [
+                        (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('Eliminar canción', ['/canciones/delete', 'id' => $data['id']], [
                             'class' => 'btn-sm btn-danger',
                             'data' => [
                                 'confirm' => 'Are you sure you want to delete this item?',
