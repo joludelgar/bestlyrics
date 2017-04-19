@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Artista */
 
-$this->title = 'Create Artista';
+$this->title = 'Añadir nuevo artista';
 $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

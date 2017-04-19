@@ -33,17 +33,17 @@ class ArtistasController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'create', 'update', 'view'], // el index es provisional
+                        'actions' => ['ultimos', 'create', 'update', 'view'], // el index es provisional
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view'],
+                        'actions' => ['ultimos', 'view'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'ultimos'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -66,6 +66,19 @@ class ArtistasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionUltimos()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Artista::find()->orderBy('created_at desc'),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
+        return $this->render('ultimos', [
+            'dataProvider' => $dataProvider
         ]);
     }
 

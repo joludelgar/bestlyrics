@@ -30,4 +30,12 @@ class User extends BaseUser
         $ruta = "$uploads/{$this->id}.png";
         return file_exists($ruta) ? "/$ruta" : "/$uploads/default.png";
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArtistas()
+    {
+        return $this->hasMany(Artista::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
+    }
 }
