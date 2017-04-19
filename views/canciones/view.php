@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Cancion */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ultimos']];
 $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idAlbum->idArtista->id]];
 $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idAlbum->id]];
 $this->params['breadcrumbs'][] = $this->title;

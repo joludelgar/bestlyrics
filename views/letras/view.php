@@ -6,24 +6,16 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Letra */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Letras', 'url' => ['index']];
+$this->title = 'Letra de ' . $model->idCancion->nombre;;
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ultimos']];
+$this->params['breadcrumbs'][] = ['label' => $model->idCancion->idAlbum->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idCancion->idAlbum->idArtista->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->idCancion->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idCancion->idAlbum->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->idCancion->nombre, 'url' => ['canciones/view', 'id' => $model->idCancion->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="letra-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
 
     <?= DetailView::widget([
         'model' => $model,

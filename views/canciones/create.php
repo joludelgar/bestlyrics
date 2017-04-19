@@ -6,8 +6,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
 
-$this->title = 'Create Cancion';
-$this->params['breadcrumbs'][] = ['label' => 'Cancions', 'url' => ['index']];
+$this->title = 'Añadir canción';
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ultimos']];
+$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idAlbum->idArtista->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => ['albumes/view', 'id' => $model->idAlbum->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cancion-create">

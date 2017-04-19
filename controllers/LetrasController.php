@@ -34,12 +34,12 @@ class LetrasController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'view', 'ultimas'],
+                        'actions' => ['create', 'update', 'ultimas'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'ultimas'],
+                        'actions' => ['ultimas'],
                         'roles' => ['?'],
                     ],
                     [

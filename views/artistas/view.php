@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $model app\models\Artista */
 
 $this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['ultimos']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="artista-view">

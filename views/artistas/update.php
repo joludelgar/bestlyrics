@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Artista */
 
 $this->title = 'Modificar datos de ' . $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['ultimos']];
 $this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Modificar datos';
 ?>
