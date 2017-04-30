@@ -52,7 +52,7 @@ $this->registerJs($js);
     <div class="panel panel-default">
       <div class="panel-body">
           <div class="row">
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body" style='text-align:center;'>
                   <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-success']) :
@@ -80,7 +80,7 @@ $this->registerJs($js);
                             (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
               </p>
             </div>
-            <div class="col-xs-6 col-md-8">
+            <div class="col-xs-12 col-md-8">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?> -
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
