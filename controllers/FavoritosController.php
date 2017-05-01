@@ -84,13 +84,11 @@ class FavoritosController extends Controller
     {
         $model = new Favorito();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        $model->id_cancion = Yii::$app->request->post('id');
+        $model->id_usuario = Yii::$app->user->identity->id;
+
+        $model->save();
+        return true;
     }
 
     /**

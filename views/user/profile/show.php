@@ -10,6 +10,7 @@
  */
 
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
 /**
  * @var \yii\web\View $this
@@ -58,4 +59,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12">
+        <h2>Letras favoritas:</h2>
+       <?= ListView::widget([
+           'dataProvider' => $dataProvider,
+           'itemOptions' => ['class' => 'item'],
+           'itemView' => '@app/views/letras/profile',
+           'layout' => "{items}\n{pager}",
+       ]) ?>
+   </div>
 </div>

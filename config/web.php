@@ -39,6 +39,7 @@ $config = [
                         Yii::$app->end();
                     }
                 ],
+                'profile' => 'app\controllers\user\ProfileController',
                 'settings' => 'app\controllers\user\AvatarController',
             ],
         ],

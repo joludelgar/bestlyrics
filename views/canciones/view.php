@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->idAlbum->nombre, 'url' => [
 $this->params['breadcrumbs'][] = $this->title;
 
 $url = Url::to(['/letras/bloquear']);
+$url2 = Url::to(['/favoritos/create']);
 $js = <<<EOT
     $('#bloqueo').click(function() {
         $.ajax({
@@ -41,6 +42,20 @@ $js = <<<EOT
                     });
                     $('#modificar').removeAttr("disabled");
                 }
+            }
+        });
+    });
+
+    $('#favorito').click(function() {
+        $.ajax({
+            method: 'POST',
+            url: '$url2',
+            context: this,
+            data: {
+                id: $(this).val()
+            },
+            success: function (data, status, event) {
+
             }
         });
     });
@@ -79,6 +94,13 @@ $this->registerJs($js);
                             Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
                             (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
               </p>
+
+              <div style='text-align:center;margin-top:50px;'>
+                  <button type="button" class="btn btn-default" id="favorito" aria-label="Favorito" value=<?=$model->id?>>
+                      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="icono"></span>
+                  </button>
+                  <span id="contador"><?= count($model->favoritos); ?></span> Favoritos
+              </div>
             </div>
             <div class="col-xs-12 col-md-8">
                 <div class="page-header">

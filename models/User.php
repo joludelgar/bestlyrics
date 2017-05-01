@@ -30,4 +30,12 @@ class User extends BaseUser
     {
         return $this->hasMany(Artista::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFavoritos()
+    {
+        return $this->hasMany(Favorito::className(), ['id_usuario' => 'id'])->inverseOf('idUsuario');
+    }
 }
