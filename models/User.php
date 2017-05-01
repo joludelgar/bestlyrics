@@ -7,13 +7,6 @@ use yii\helpers\Html;
 
 class User extends BaseUser
 {
-    /** Devuleve las noticias de un usuario identificado por id
-     * @return \yii\db\ActiveQuery
-     */
-    public function getNoticias()
-    {
-        return $this->hasOne(Noticia::className(), ['id_usuario' => 'id'])->inverseOf('usuarios');
-    }
     /**Devuleve el nombre de  usuario identificado segun id
      * @return \yii\db\ActiveQuery
      */
@@ -28,9 +21,8 @@ class User extends BaseUser
     {
         $uploads = \Yii::getAlias('@uploads');
         $ruta = "$uploads/{$this->id}.png";
-        return file_exists($ruta) ? "/$ruta" : "/$uploads/default.png";
+        return file_exists($ruta) ? "/$ruta" : "/$uploads/example.jpg";
     }
-
     /**
      * @return \yii\db\ActiveQuery
      */

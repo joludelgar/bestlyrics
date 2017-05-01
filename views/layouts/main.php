@@ -40,7 +40,11 @@ AppAsset::register($this);
             ['label' => 'Artistas', 'url' => ['/artistas/ultimos']],
             Yii::$app->user->isGuest ?
             ['label' => 'Iniciar sesión', 'url' => ['/user/security/login']] :
-            ['label' => Yii::$app->user->identity->username, 'url' => ['usuarios/index'], 'items' =>
+            [
+                'label' => Html::img(Yii::$app->user->identity->profile->getImageUrl(), ['class' => 'img-circle']) . ' ' . Yii::$app->user->identity->username,
+                'url' => ['usuarios/index'],
+                'encode' => false,
+                'items' =>
                 [
                     ['label' => 'Ver perfil', 'url' => ['/user/profile/show', 'id' => Yii::$app->user->identity->id]],
                     ['label' => 'Editar perfil', 'url' => ['/user/settings/profile']],

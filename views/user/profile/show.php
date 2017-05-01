@@ -23,12 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="row">
             <div class="col-sm-6 col-md-4">
-                <?= Html::img($profile->getAvatarUrl(230), [
+                <?= Html::img($profile->getImageUrl(), [
                     'class' => 'img-rounded img-responsive',
                     'alt' => $profile->user->username,
                 ]) ?>
             </div>
             <div class="col-sm-6 col-md-8">
+                <h3><?= Html::a($profile->user->username, ['/user/profile/show', 'id' => $profile->user->id],
+                ['class' => 'profile-link']) ?></h3>
                 <h4><?= $this->title ?></h4>
                 <ul style="padding: 0; list-style: none outside none;">
                     <?php if (!empty($profile->location)): ?>

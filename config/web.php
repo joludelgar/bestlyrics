@@ -7,6 +7,9 @@ $config = [
     'name' => 'Bestlyrics',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@uploads' => 'uploads',
+    ],
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
@@ -21,7 +24,14 @@ $config = [
                 'reconfirmationSubject' => 'Petición de cambio de Email',
                 'recoverySubject'       => 'Recuperación de contraseña',
             ],
+            'modelMap' => [
+                'Profile' => 'app\models\Profile',
+                'User' => 'app\models\User',
+            ],
             'controllerMap' => [
+                'admin' => [
+                    'class'  => '\dektrium\user\controllers\AdminController',
+                ],
                 'registration' => [
                     'class' => \dektrium\user\controllers\RegistrationController::className(),
                     'on ' . \dektrium\user\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
@@ -29,6 +39,7 @@ $config = [
                         Yii::$app->end();
                     }
                 ],
+                'settings' => 'app\controllers\user\AvatarController',
             ],
         ],
         'comment' => [
