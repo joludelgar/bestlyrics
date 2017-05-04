@@ -13,24 +13,6 @@ create table artistas (
 create index idx_artistas_nombre on artistas (nombre);
 create index idx_artistas_created_at on artistas (created_at);
 
-drop table if exists albumes cascade;
-
-create table albumes (
-    id            bigserial     constraint pk_albumes primary key,
-    id_usuario    bigint        constraint fk_albumes_usuarios
-                                references public.user (id)
-                                on delete no action on update cascade,
-    id_artista    bigint        constraint fk_albumes_artistas
-                                references artistas (id)
-                                on delete no action on update cascade,
-    nombre        varchar(255)   not null,
-    anio          numeric(4)    not null,
-    created_at    timestamptz   default current_timestamp
-);
-
-create index idx_albumes_nombre on albumes (nombre);
-create index idx_albumes_created_at on albumes (created_at);
-
 drop table if exists generos cascade;
 
 create table generos (
@@ -45,17 +27,26 @@ insert into generos (nombre) values ('Alternativa'), ('Blues'), ('Infantil'),
     ('Ópera'), ('Pop'), ('R&B/Soul'), ('Reggae'), ('Rock'), ('Cantautor'), ('BSO'),
     ('Latina');
 
-drop table if exists albumes_generos cascade;
+drop table if exists albumes cascade;
 
-create table albumes_generos (
-    id          bigserial constraint pk_albumes_generos primary key,
-    id_album    bigint    constraint fk_albumes_generos_albumes
-                          references albumes (id)
-                          on delete no action on update cascade,
-    id_genero   bigint    constraint fk_albumes_generos_generos
-                          references generos (id)
-                          on delete no action on update cascade
+create table albumes (
+    id            bigserial     constraint pk_albumes primary key,
+    id_usuario    bigint        constraint fk_albumes_usuarios
+                                references public.user (id)
+                                on delete no action on update cascade,
+    id_artista    bigint        constraint fk_albumes_artistas
+                                references artistas (id)
+                                on delete no action on update cascade,
+    id_genero   bigint          constraint fk_albumes_generos
+                                references generos (id)
+                                on delete no action on update cascade,
+    nombre        varchar(255)   not null,
+    anio          numeric(4)    not null,
+    created_at    timestamptz   default current_timestamp
 );
+
+create index idx_albumes_nombre on albumes (nombre);
+create index idx_albumes_created_at on albumes (created_at);
 
 drop table if exists canciones cascade;
 
@@ -131,7 +122,8 @@ create table favoritos (
     id_cancion     bigint    constraint fk_favoritos_canciones
                              references canciones (id)
                              on delete no action on update cascade,
-    created_at      timestamptz   default current_timestamp
+    created_at      timestamptz   default current_timestamp,
+    constraint uq_usuario_cancion unique (id_usuario, id_cancion)
 );
 
 create index idx_favoritos_created_at on favoritos (created_at);
@@ -147,6 +139,17 @@ create table votos_letras (
                           references letras (id)
                           on delete no action on update cascade,
     voto      smallint    not null
+);
+
+drop table if exists reportes cascade;
+
+create table reportes (
+    id  bigserial   constraint pk_reportes primary key,
+    id_reportador bigint constraint fk_votos_letras_usuarios
+                          references public.user (id)
+                          on delete no action on update cascade,
+    comentario     text not null,
+    enlace          varchar(255) not null
 );
 
 /*----------WIP----------*/
