@@ -91,8 +91,8 @@ $this->registerJs($js);
                   <?= $model->letras == null ? Html::a('Añadir letra', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success']) :
                         ($model->letras[0]->bloqueada ?
                             Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
-                            Html::a('Modificar letra', ['letras/update', 'id' => $model->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
-                            (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->id]) : '' )?>
+                            Html::a('Modificar letra', ['letras/update', 'id' => $model->letras[0]->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
+                            (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->letras[0]->id]) : '' )?>
               </p>
 
               <div style='text-align:center;margin-top:50px;'>
