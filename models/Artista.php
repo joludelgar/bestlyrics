@@ -51,7 +51,7 @@ class Artista extends \yii\db\ActiveRecord
             'id_usuario' => 'Id Usuario',
             'nombre' => 'Nombre',
             'biografia' => 'Biografia',
-            'created_at' => 'Created At',
+            'created_at' => 'Fecha creación',
         ];
     }
 

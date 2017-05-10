@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Usuario',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idUsuario']->username), ['/user/show', 'id' => $data['idUsuario']->id]);
+                        return Html::a(Html::encode($data['idUsuario']->username), ['/user/profile/show', 'id' => $data['idUsuario']->id]);
                       },
             ],
             [

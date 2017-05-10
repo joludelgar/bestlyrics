@@ -55,8 +55,8 @@ class Album extends \yii\db\ActiveRecord
             'id_usuario' => 'Id Usuario',
             'id_artista' => 'Id Artista',
             'nombre' => 'Nombre',
-            'anio' => 'Anio',
-            'created_at' => 'Created At',
+            'anio' => 'Año',
+            'created_at' => 'Fecha creación',
         ];
     }
 

@@ -57,7 +57,7 @@ class Letra extends \yii\db\ActiveRecord
             'id_idioma' => 'Id Idioma',
             'letra' => 'Letra',
             'bloqueada' => 'Bloqueada',
-            'created_at' => 'Created At',
+            'created_at' => 'Fecha creación',
         ];
     }
 

@@ -47,7 +47,7 @@ class Favorito extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
             'id_cancion' => 'Id Cancion',
-            'created_at' => 'Created At',
+            'created_at' => 'Fecha creación',
         ];
     }
 

@@ -30,6 +30,20 @@ class User extends BaseUser
     {
         return $this->hasMany(Artista::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlbums()
+    {
+        return $this->hasMany(Album::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCanciones()
+    {
+        return $this->hasMany(Cancion::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
+    }
 
     /**
      * @return \yii\db\ActiveQuery

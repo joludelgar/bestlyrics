@@ -25,11 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_usuario',
-            'id_artista',
+            //'id_usuario',
+            //'id_artista',
+            [
+             'label'=>'Usuario',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idUsuario']->username), ['/user/profile/show', 'id' => $data['idUsuario']->id]);
+                      },
+            ],
+            [
+             'label'=>'Artista',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idArtista']->nombre), ['/artistas/view', 'id' => $data['id']]);
+                      },
+            ],
             'nombre',
             'anio',
-            // 'created_at',
+            'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

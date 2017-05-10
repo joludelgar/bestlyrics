@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -25,11 +26,32 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_usuario',
-            'id_album',
-            'nombre',
+            //'id_usuario',
+            //'id_album',
+            [
+             'label'=>'Usuario',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idUsuario']->username), ['/user/profile/show', 'id' => $data['idUsuario']->id]);
+                      },
+            ],
+            [
+             'label'=>'Album',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idAlbum']->nombre), ['/albumes/view', 'id' => $data['id']]);
+                      },
+            ],
+            //'nombre',
+            [
+             'label'=>'Nombre',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data->nombre), ['/canciones/view', 'id' => $data['id']]);
+                      },
+            ],
             'video',
-            // 'created_at',
+            'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

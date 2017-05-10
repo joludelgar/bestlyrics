@@ -25,11 +25,32 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_cancion',
-            'id_idioma',
-            'letra:ntext',
+            //'id_cancion',
+            //'id_idioma',
+            [
+             'label'=>'Canción',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idCancion']->nombre), ['/canciones/view', 'id' => $data['idCancion']->id]);
+                      },
+            ],
+            [
+             'label'=>'Idioma',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idIdioma']->nombre));
+                      },
+            ],
+            //'letra:ntext',
+            [
+             'label'=>'Letra',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::encode(substr($data['letra'], 0, 50) . '...');
+                      },
+            ],
             'bloqueada:boolean',
-            //'created_at',
+            'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

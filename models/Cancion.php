@@ -56,7 +56,7 @@ class Cancion extends \yii\db\ActiveRecord
             'id_album' => 'Id Album',
             'nombre' => 'Nombre',
             'video' => 'URL del video',
-            'created_at' => 'Created At',
+            'created_at' => 'Fecha creación',
         ];
     }
 

@@ -22,3 +22,15 @@
 div.wrap > div.container a:not([class]) {
     color: #ff0050 !important;
 }
+
+.site-admin .jumbotron {
+    border: 5px solid white;
+    border-radius: 15px;
+    height: 200px;
+    background-color:lightgray;
+}
+
+.site-admin .jumbotron:hover {
+    border: 5px solid #ff0050;
+    background-color:white;
+}
