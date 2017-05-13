@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Letra;
+use app\models\Cancion;
 use app\models\ContactForm;
 use yii\data\ActiveDataProvider;
 
@@ -76,8 +77,15 @@ class SiteController extends Controller
             'sort' => false,
         ]);
 
+        $dataProvider2 = new ActiveDataProvider([
+            'query' => Cancion::findBySql('select * from top_mensual')->limit(6),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+            'dataProvider' => $dataProvider,
+            'dataProvider2' => $dataProvider2,
         ]);
     }
 

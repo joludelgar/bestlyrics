@@ -18,6 +18,20 @@ $this->title = 'Bestlyrics';
     </div>
 
     <div class="body-content">
+        <h2>Top Mensual de Canciones:</h2>
+
+        <div class="row">
+            <?= ListView::widget([
+            'dataProvider' => $dataProvider2,
+            'itemOptions' => ['class' => 'item'],
+            'itemView' => '/canciones/viewMain',
+            'layout' => "{items}\n{pager}",
+            ]) ?>
+        </div>
+        <div class="mas" style="text-align:center">
+            <?= Html::a('Ver más', ['/canciones/top'], ['class' => 'btn btn-default']) ?>
+        </div>
+
         <h2>Ultimas letras añadidas:</h2>
 
         <div class="row">

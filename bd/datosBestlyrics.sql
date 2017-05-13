@@ -155,8 +155,10 @@ create table reportes (
     enlace          varchar(255) not null
 );
 
+drop view if exists top_mensual cascade;
+
 create view top_mensual as
-    select count(c.id), c.*
+    select c.*
       from canciones as c join favoritos as f on c.id = f.id_cancion
      WHERE extract(month FROM f.created_at) = extract(month FROM current_date)
       group by c.id

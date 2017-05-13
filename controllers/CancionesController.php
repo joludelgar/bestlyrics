@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 /**
  * CancionesController implements the CRUD actions for Cancion model.
@@ -32,17 +33,17 @@ class CancionesController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'view', 'video'],
+                        'actions' => ['create', 'update', 'view', 'video', 'top'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view'],
+                        'actions' => ['view', 'top'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -64,6 +65,23 @@ class CancionesController extends Controller
 
         return $this->render('index', [
             'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Cancion models.
+     * @return mixed
+     */
+    public function actionTop()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Cancion::findBySql('select * from top_mensual'),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
+        return $this->render('top', [
             'dataProvider' => $dataProvider,
         ]);
     }
