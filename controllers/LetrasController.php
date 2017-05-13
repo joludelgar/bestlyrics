@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Letra;
 use app\models\Idioma;
+use app\models\Cancion;
 use app\models\LetraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -107,6 +108,13 @@ class LetrasController extends Controller
         $model->id_cancion = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $cancion = Cancion::findOne($id);
+
+            if ($cancion->id_letra_original == null) {
+                $cancion->id_letra_original = $model->id;
+                $cancion->save();
+            }
+
             return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
         } else {
             $idiomas = Idioma::find()->select('nombre, id')->indexBy('id')->column();

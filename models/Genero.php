@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $nombre
  *
- * @property AlbumesGeneros[] $albumesGeneros
+ * @property Albumes[] $albumes
  */
 class Genero extends \yii\db\ActiveRecord
 {
@@ -47,8 +47,8 @@ class Genero extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAlbumesGeneros()
+    public function getAlbumes()
     {
-        return $this->hasMany(AlbumGenero::className(), ['id_genero' => 'id'])->inverseOf('idGenero');
+        return $this->hasMany(Album::className(), ['id_genero' => 'id'])->inverseOf('idGenero');
     }
 }

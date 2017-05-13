@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Idioma',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idIdioma']->nombre));
+                        return Html::encode($data['idIdioma']->nombre);
                       },
             ],
             //'letra:ntext',

@@ -37,7 +37,7 @@ create table albumes (
     id_artista    bigint        constraint fk_albumes_artistas
                                 references artistas (id)
                                 on delete no action on update cascade,
-    id_genero   bigint          constraint fk_albumes_generos
+    id_genero   bigint          not null constraint fk_albumes_generos
                                 references generos (id)
                                 on delete no action on update cascade,
     nombre        varchar(255)   not null,

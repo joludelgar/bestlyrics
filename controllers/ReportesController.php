@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\AlbumGenero;
-use app\models\AlbumGeneroSearch;
+use app\models\Reporte;
+use app\models\ReporteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * AlbumesGenerosController implements the CRUD actions for AlbumGenero model.
+ * ReportesController implements the CRUD actions for Reporte model.
  */
-class AlbumesGenerosController extends Controller
+class ReportesController extends Controller
 {
     /**
      * @inheritdoc
@@ -27,34 +26,16 @@ class AlbumesGenerosController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['create', 'update', 'view'],
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->user->identity->isAdmin;
-                        },
-                    ],
-                ],
-            ],
         ];
     }
 
     /**
-     * Lists all AlbumGenero models.
+     * Lists all Reporte models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AlbumGeneroSearch();
+        $searchModel = new ReporteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +45,7 @@ class AlbumesGenerosController extends Controller
     }
 
     /**
-     * Displays a single AlbumGenero model.
+     * Displays a single Reporte model.
      * @param integer $id
      * @return mixed
      */
@@ -76,13 +57,13 @@ class AlbumesGenerosController extends Controller
     }
 
     /**
-     * Creates a new AlbumGenero model.
+     * Creates a new Reporte model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AlbumGenero();
+        $model = new Reporte();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -94,7 +75,7 @@ class AlbumesGenerosController extends Controller
     }
 
     /**
-     * Updates an existing AlbumGenero model.
+     * Updates an existing Reporte model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -113,7 +94,7 @@ class AlbumesGenerosController extends Controller
     }
 
     /**
-     * Deletes an existing AlbumGenero model.
+     * Deletes an existing Reporte model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -126,15 +107,15 @@ class AlbumesGenerosController extends Controller
     }
 
     /**
-     * Finds the AlbumGenero model based on its primary key value.
+     * Finds the Reporte model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return AlbumGenero the loaded model
+     * @return Reporte the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = AlbumGenero::findOne($id)) !== null) {
+        if (($model = Reporte::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

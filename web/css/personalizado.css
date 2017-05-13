@@ -34,3 +34,7 @@ div.wrap > div.container a:not([class]) {
     border: 5px solid #ff0050;
     background-color:white;
 }
+
+.artista-view small span {
+    margin-left: 5px;
+}

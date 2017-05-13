@@ -18,7 +18,7 @@ class AlbumSearch extends Album
     public function rules()
     {
         return [
-            [['id', 'id_usuario', 'id_artista'], 'integer'],
+            [['id', 'id_usuario', 'id_artista', 'id_genero'], 'integer'],
             [['nombre', 'created_at'], 'safe'],
             [['anio'], 'number'],
         ];
@@ -63,6 +63,7 @@ class AlbumSearch extends Album
             'id' => $this->id,
             'id_usuario' => $this->id_usuario,
             'id_artista' => $this->id_artista,
+            'id_genero' => $this->id_genero, 
             'anio' => $this->anio,
             'created_at' => $this->created_at,
         ]);

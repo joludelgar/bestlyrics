@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\AlbumGeneroSearch */
+/* @var $searchModel app\models\ReporteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Album Generos';
+$this->title = 'Reportes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="album-genero-index">
+<div class="reporte-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Album Genero', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Reporte', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,8 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_album',
-            'id_genero',
+            'id_reportador',
+            'comentario:ntext',
+            'enlace',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

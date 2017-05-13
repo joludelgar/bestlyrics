@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Album',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idAlbum']->nombre), ['/albumes/view', 'id' => $data['id']]);
+                        return Html::a(Html::encode($data['idAlbum']->nombre), ['/albumes/view', 'id' => $data['idAlbum']->id]);
                       },
             ],
             //'nombre',
@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::a(Html::encode($data->nombre), ['/canciones/view', 'id' => $data['id']]);
                       },
             ],
+            'id_letra_original',
             'video',
             'created_at',
 

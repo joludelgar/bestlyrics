@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Album;
+use app\models\Genero;
 use app\models\AlbumSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -103,8 +104,10 @@ class AlbumesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $generos = Genero::find()->select('nombre, id')->indexBy('id')->column();
             return $this->render('create', [
                 'model' => $model,
+                'generos' => $generos,
             ]);
         }
     }

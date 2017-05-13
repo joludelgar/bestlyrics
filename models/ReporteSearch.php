@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\AlbumGenero;
+use app\models\Reporte;
 
 /**
- * AlbumGeneroSearch represents the model behind the search form about `app\models\AlbumGenero`.
+ * ReporteSearch represents the model behind the search form about `app\models\Reporte`.
  */
-class AlbumGeneroSearch extends AlbumGenero
+class ReporteSearch extends Reporte
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class AlbumGeneroSearch extends AlbumGenero
     public function rules()
     {
         return [
-            [['id', 'id_album', 'id_genero'], 'integer'],
+            [['id', 'id_reportador'], 'integer'],
+            [['comentario', 'enlace'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class AlbumGeneroSearch extends AlbumGenero
      */
     public function search($params)
     {
-        $query = AlbumGenero::find();
+        $query = Reporte::find();
 
         // add conditions that should always apply here
 
@@ -59,9 +60,11 @@ class AlbumGeneroSearch extends AlbumGenero
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_album' => $this->id_album,
-            'id_genero' => $this->id_genero,
+            'id_reportador' => $this->id_reportador,
         ]);
+
+        $query->andFilterWhere(['like', 'comentario', $this->comentario])
+            ->andFilterWhere(['like', 'enlace', $this->enlace]);
 
         return $dataProvider;
     }

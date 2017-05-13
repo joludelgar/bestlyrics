@@ -38,11 +38,15 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Artista',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idArtista']->nombre), ['/artistas/view', 'id' => $data['id']]);
+                        return Html::a(Html::encode($data['idArtista']->nombre), ['/artistas/view', 'id' => $data['idArtista']->id]);
                       },
             ],
             'nombre',
             'anio',
+            [
+                'label'=>'Género',
+                'value'=>'idGenero.nombre',
+            ],
             'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],

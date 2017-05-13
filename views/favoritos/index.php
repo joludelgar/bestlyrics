@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label'=>'Canción',
              'format' => 'raw',
              'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idCancion']->nombre), ['/canciones/view', 'id' => $data['id']]);
+                        return Html::a(Html::encode($data['idCancion']->nombre), ['/canciones/view', 'id' => $data['idCancion']->id]);
                       },
             ],
             'created_at',

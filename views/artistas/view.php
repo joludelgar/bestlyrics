@@ -24,6 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-xs-6 col-md-9">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?></h1>
+                    <h4>
+                        <small>
+                            <?php foreach($model->albumes as $album) {
+                                ?><span class="label label-default"> <?= $album->idGenero->nombre ?> </span> <?php
+                            } ?>
+                        </small>
+                    </h4>
                 </div>
                 <p><?= Html::encode($model->biografia) ?></p>
             </div>

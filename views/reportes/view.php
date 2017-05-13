@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\AlbumGenero */
+/* @var $model app\models\Reporte */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Album Generos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Reportes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="album-genero-view">
+<div class="reporte-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,8 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_album',
-            'id_genero',
+            'id_reportador',
+            'comentario:ntext',
+            'enlace',
         ],
     ]) ?>
 

@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'anio')->textInput() ?>
 
+    <?= $model->isNewRecord ? $form->field($model, 'id_genero')->dropDownList($generos,
+        ['prompt' => 'Selecciona el género...']
+    ) : '' ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Añadir' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $id_usuario
  * @property integer $id_album
+ * @property integer $id_letra_original
  * @property string $nombre
  * @property string $video
  * @property string $created_at
@@ -17,6 +18,7 @@ use Yii;
  * @property Albumes $idAlbum
  * @property User $idUsuario
  * @property Favoritos[] $favoritos
+ * @property User[] $idUsuarios
  * @property Letras[] $letras
  * @property Idiomas[] $idIdiomas
  */
@@ -36,7 +38,7 @@ class Cancion extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario', 'id_album'], 'integer'],
+            [['id_usuario', 'id_album', 'id_letra_original'], 'integer'],
             [['nombre'], 'required'],
             [['created_at'], 'safe'],
             [['nombre', 'video'], 'string', 'max' => 255],
@@ -54,6 +56,7 @@ class Cancion extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
             'id_album' => 'Id Album',
+            'id_letra_original' => 'Id Letra Original',
             'nombre' => 'Nombre',
             'video' => 'URL del video',
             'created_at' => 'Fecha creación',
@@ -85,11 +88,27 @@ class Cancion extends \yii\db\ActiveRecord
     }
 
     /**
+    * @return \yii\db\ActiveQuery
+    */
+    public function getIdUsuarios()
+    {
+        return $this->hasMany(User::className(), ['id' => 'id_usuario'])->viaTable('favoritos', ['id_cancion' => 'id']);
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getLetras()
     {
         return $this->hasMany(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLetraOriginal()
+    {
+        return $this->hasOne(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
     }
 
     /**

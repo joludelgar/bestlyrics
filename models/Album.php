@@ -10,13 +10,14 @@ use Yii;
  * @property integer $id
  * @property integer $id_usuario
  * @property integer $id_artista
+ * @property integer $id_genero
  * @property string $nombre
  * @property string $anio
  * @property string $created_at
  *
  * @property Artistas $idArtista
+ * @property Generos $idGenero
  * @property User $idUsuario
- * @property AlbumesGeneros[] $albumesGeneros
  * @property Canciones[] $canciones
  */
 class Album extends \yii\db\ActiveRecord
@@ -35,12 +36,13 @@ class Album extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario', 'id_artista'], 'integer'],
-            [['nombre', 'anio'], 'required'],
+            [['id_usuario', 'id_artista', 'id_genero'], 'integer'],
+            [['nombre', 'anio', 'id_genero'], 'required'],
             [['anio'], 'number'],
             [['created_at'], 'safe'],
             [['nombre'], 'string', 'max' => 255],
             [['id_artista'], 'exist', 'skipOnError' => true, 'targetClass' => Artista::className(), 'targetAttribute' => ['id_artista' => 'id']],
+            [['id_genero'], 'exist', 'skipOnError' => true, 'targetClass' => Genero::className(), 'targetAttribute' => ['id_genero' => 'id']],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_usuario' => 'id']],
         ];
     }
@@ -54,6 +56,7 @@ class Album extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
             'id_artista' => 'Id Artista',
+            'id_genero' => 'Id Genero',
             'nombre' => 'Nombre',
             'anio' => 'Año',
             'created_at' => 'Fecha creación',
@@ -69,19 +72,19 @@ class Album extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIdUsuario()
+    * @return \yii\db\ActiveQuery
+    */
+    public function getIdGenero()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('albums');
+        return $this->hasOne(Genero::className(), ['id' => 'id_genero'])->inverseOf('albumes');
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAlbumesGeneros()
+    public function getIdUsuario()
     {
-        return $this->hasMany(AlbumGenero::className(), ['id_album' => 'id'])->inverseOf('idAlbum');
+        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('albums');
     }
 
     /**

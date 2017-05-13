@@ -18,7 +18,7 @@ class CancionSearch extends Cancion
     public function rules()
     {
         return [
-            [['id', 'id_usuario', 'id_album'], 'integer'],
+            [['id', 'id_usuario', 'id_album', 'id_letra_original'], 'integer'],
             [['nombre', 'video', 'created_at'], 'safe'],
         ];
     }
@@ -62,6 +62,7 @@ class CancionSearch extends Cancion
             'id' => $this->id,
             'id_usuario' => $this->id_usuario,
             'id_album' => $this->id_album,
+            'id_letra_original' => $this->id_letra_original, 
             'created_at' => $this->created_at,
         ]);
 
