@@ -44,6 +44,13 @@ class User extends BaseUser
     {
         return $this->hasMany(Cancion::className(), ['id' => 'id_usuario'])->inverseOf('idUsuario');
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReportes()
+    {
+        return $this->hasMany(Reporte::className(), ['id' => 'id_usuario'])->inverseOf('idReportador');
+    }
 
     /**
      * @return \yii\db\ActiveQuery

@@ -8,6 +8,12 @@ $this->title = 'Panel de administración';
 ?>
 <div class="site-admin"style="text-align:center;">
 
+    <a href="<?=Url::to(['/reportes/index'])?>">
+        <div class="jumbotron col-sm-12 col-md-4">
+            <h2>Reportes</h2>
+        </div>
+    </a>
+
     <a href="<?=Url::to(['/user/admin'])?>">
         <div class="jumbotron col-sm-12 col-md-4">
             <h2>Administrar usuarios</h2>

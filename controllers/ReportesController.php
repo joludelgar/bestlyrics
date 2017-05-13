@@ -61,12 +61,15 @@ class ReportesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($url)
     {
         $model = new Reporte();
 
+        $model->id_reportador = Yii::$app->user->identity->id;
+        $model->enlace = $url;
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect($url);
         } else {
             return $this->render('create', [
                 'model' => $model,

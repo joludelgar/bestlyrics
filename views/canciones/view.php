@@ -108,6 +108,7 @@ $this->registerJs($js);
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
                     </h1>
                 </div>
+                <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
                 <?= $model->letras == null ? '' : nl2br($model->letras[0]->letra) ?>
             </div>
           </div>

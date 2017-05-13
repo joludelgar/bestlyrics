@@ -25,9 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_reportador',
+            [
+             'label'=>'Usuario',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idReportador']->username), ['/user/profile/show', 'id' => $data['idReportador']->id]);
+                      },
+            ],
             'comentario:ntext',
-            'enlace',
+            [
+             'label'=>'Enlace',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a('Enlace al contenido', $data['enlace']);
+                      },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
