@@ -155,4 +155,11 @@ create table reportes (
     enlace          varchar(255) not null
 );
 
+create view top_mensual as
+    select count(c.id), c.*
+      from canciones as c join favoritos as f on c.id = f.id_cancion
+     WHERE extract(month FROM f.created_at) = extract(month FROM current_date)
+      group by c.id
+     order by count(c.id) DESC;
+
 /*----------WIP----------*/
