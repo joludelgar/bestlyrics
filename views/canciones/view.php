@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
+use app\models\Favorito;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
@@ -46,7 +47,7 @@ $js = <<<EOT
         });
     });
 
-    $('#favorito').click(function() {
+    $('#favorito').click(function(e) {
         $.ajax({
             method: 'POST',
             url: '$url2',
@@ -55,8 +56,16 @@ $js = <<<EOT
                 id: $(this).val()
             },
             success: function (data, status, event) {
-
-            }
+                $(this).empty();
+                $('#contador').empty();
+                if (data[0]) {
+                    $(this).append('<span class="glyphicon glyphicon-heart" aria-hidden="true" id="iconoLLeno">');
+                } else {
+                    $(this).append('<span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="icono"></span>');
+                }
+                $('#contador').append('<span id="contador">' + data[1] +'</span> Favoritos');
+            },
+            dataType:"json"
         });
     });
 EOT;
@@ -96,11 +105,23 @@ $this->registerJs($js);
               </p>
 
               <div style='text-align:center;margin-top:50px;'>
-                  <button type="button" class="btn btn-default" id="favorito" aria-label="Favorito" value=<?=$model->id?>>
-                      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="icono"></span>
-                  </button>
-                  <span id="contador"><?= count($model->favoritos); ?></span> Favoritos
+                  <div class="row">
+                  <div id="botonFavorito">
+                      <?php if (Yii::$app->user->isGuest || !Favorito::findOne(['id_cancion' => $model->id, 'id_usuario' => Yii::$app->user->identity->id])) { ?>
+                          <button href="javascript:void(0);" type="button" class="btn btn-default" id="favorito" aria-label="Favorito" value=<?=$model->id?>>
+                              <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="icono"></span>
+                          </button>
+                      <?php } else {?>
+                          <button type="button" class="btn btn-default" id="favorito" aria-label="Favorito" value=<?=$model->id?>>
+                              <span class="glyphicon glyphicon-heart" aria-hidden="true" id="iconoLLeno"></span>
+                          </button>
+                      <?php } ?>
+                      <div id="contador">
+                          <span><?= count($model->favoritos); ?></span> Favoritos
+                      </div>
+                  </div>
               </div>
+            </div>
             </div>
             <div class="col-xs-12 col-md-8">
                 <div class="page-header">

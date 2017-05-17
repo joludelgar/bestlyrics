@@ -38,3 +38,7 @@ div.wrap > div.container a:not([class]) {
 .artista-view small span {
     margin-left: 5px;
 }
+
+.glyphicon-heart {
+    color:#ff0050 !important;
+}

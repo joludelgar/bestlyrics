@@ -82,13 +82,23 @@ class FavoritosController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['/site/login']);
+        }
+
         $model = new Favorito();
 
         $model->id_cancion = Yii::$app->request->post('id');
         $model->id_usuario = Yii::$app->user->identity->id;
 
-        $model->save();
-        return true;
+        if (!Favorito::findOne(['id_cancion' => $model->id_cancion, 'id_usuario' => $model->id_usuario])) {
+            $model->save();
+            return json_encode([true, count(Favorito::findAll(['id_cancion' => $model->id_cancion]))]);
+        } else {
+            $model = Favorito::findOne(['id_cancion' => $model->id_cancion, 'id_usuario' => $model->id_usuario]);
+            $model->delete();
+            return json_encode([false, count(Favorito::findAll(['id_cancion' => $model->id_cancion]))]);
+        }
     }
 
     /**
