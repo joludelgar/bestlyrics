@@ -98,10 +98,10 @@ $this->registerJs($js);
                       ],
                   ]) ?> -->
                   <?= $model->letras == null ? Html::a('Añadir letra', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success']) :
-                        ($model->letras[0]->bloqueada ?
+                        ($model->letraOriginal->bloqueada ?
                             Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
-                            Html::a('Modificar letra', ['letras/update', 'id' => $model->letras[0]->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
-                            (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letras[0]->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->letras[0]->id]) : '' )?>
+                            Html::a('Modificar letra', ['letras/update', 'id' => $model->letraOriginal->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
+                            (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letraOriginal->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->letraOriginal->id]) : '' )?>
               </p>
 
               <div style='text-align:center;margin-top:50px;'>
@@ -129,8 +129,41 @@ $this->registerJs($js);
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
                     </h1>
                 </div>
+                <div>
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#original" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a href="#" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Traducciones <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                            <?php if($model->letras != null) {
+                                foreach($model->letras as $letra) {?>
+                            <li class=""><a href="#<?=$letra->idIdioma->nombre?>" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" aria-expanded="false"><?=$letra->idIdioma->nombre?></a></li>
+                            <?php }}; ?>
+                        </ul>
+                    </li>
+                    <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-info']) ?></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="original"></br><?= $model->letras == null ? '' : nl2br($model->letraOriginal->letra) ?></div>
+                    <?php if($model->letras != null) {
+                        foreach($model->letras as $letra) {?>
+                    <div role="tabpanel" class="tab-pane" id="<?=$letra->idIdioma->nombre?>"></br>
+                        <h2><?= $letra->idIdioma->nombre?>
+                            <?=$letra->bloqueada ?
+                                Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
+                                Html::a('Modificar letra', ['letras/update', 'id' => $letra->id], ['class' => 'btn btn-success', 'id' => 'modificar'])?>
+                        </h2>
+                        <br/><?=nl2br($letra->letra)?></br></div>
+                    <?php }}; ?>
+                  </div>
+
+                </div>
                 <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
-                <?= $model->letras == null ? '' : nl2br($model->letras[0]->letra) ?>
+
             </div>
           </div>
       </div>

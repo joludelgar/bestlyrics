@@ -108,7 +108,7 @@ class Cancion extends \yii\db\ActiveRecord
      */
     public function getLetraOriginal()
     {
-        return $this->hasOne(Letra::className(), ['id_cancion' => 'id'])->inverseOf('idCancion');
+        return Letra::findOne(['id' => $this->id_letra_original]);
     }
 
     /**
@@ -117,5 +117,14 @@ class Cancion extends \yii\db\ActiveRecord
     public function getIdIdiomas()
     {
         return $this->hasMany(Idioma::className(), ['id' => 'id_idioma'])->viaTable('letras', ['id_cancion' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTraducciones()
+    {
+        $letras = $this->letras;
+        return array_shift($letras);
     }
 }
