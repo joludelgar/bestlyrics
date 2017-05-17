@@ -88,7 +88,7 @@ class FavoritosController extends Controller
     public function actionCreate()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->redirect(['/site/login']);
+            return $this->redirect(['/user/login']);
         }
 
         $model = new Favorito();
