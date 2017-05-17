@@ -32,6 +32,11 @@ class FavoritosController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
                         'actions' => ['create', 'update', 'view', 'delete'],
                         'roles' => ['@'],
                     ],
