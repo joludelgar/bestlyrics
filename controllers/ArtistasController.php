@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use app\models\UploadArtistaForm;
+use yii\web\UploadedFile;
 
 /**
  * ArtistasController implements the CRUD actions for Artista model.
@@ -89,6 +91,13 @@ class ArtistasController extends Controller
      */
     public function actionView($id)
     {
+        $upload = new UploadArtistaForm;
+
+         if (Yii::$app->request->isPost) {
+             $upload->imageFile = UploadedFile::getInstance($upload, 'imageFile');
+             $upload->upload($id);
+         }
+
         $dataProvider = new ActiveDataProvider([
            'query' => Artista::findOne($id)->getAlbumes(),
            'pagination' => false,
@@ -98,6 +107,7 @@ class ArtistasController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProvider' => $dataProvider,
+            'artistaForm' => $upload,
         ]);
     }
 

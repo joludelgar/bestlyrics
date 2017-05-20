@@ -70,4 +70,21 @@ class Artista extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('artistas');
     }
+
+    /**
+     * Returns avatar url or null if avatar is not set.
+     * @param  int $size
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        $uploads = Yii::getAlias('@artistas');
+        if (file_exists("$uploads/{$this->id}.png")){
+            return "/$uploads/{$this->id}.png";
+        } elseif (file_exists("$uploads/{$this->id}.jpg")){
+            return "/$uploads/{$this->id}.jpg";
+        } else {
+            return "/$uploads/example.jpg";
+        }
+    }
 }

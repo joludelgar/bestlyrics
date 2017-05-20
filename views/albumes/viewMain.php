@@ -7,20 +7,20 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
-$artista = $model->idAlbum->idArtista;
+$artista = $model->idArtista;
 ?>
 
-<div class="cancion-view">
+<div class="album-view">
 
 
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail" style="text-align:center">
-            <a href="<?= Url::to(['/canciones/view', 'id' => $model->id]) ?>">
+            <a href="<?= Url::to(['/albumes/view', 'id' => $model->id]) ?>">
               <img src="..." alt="...">
               <div class="caption">
-                <h3><?= Html::a($model->nombre, ['/canciones/view', 'id' => $model->id]) ?></h3>
+                <h3><?= $model->nombre ?></h3>
                 <p><?= Html::a($artista->nombre, ['/artistas/view', 'id' => $artista->id]) ?></p>
-                <p><?= Html::a('Ver canción', ['/canciones/view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></p>
+                <p><?= Html::a('Ver álbum', ['/albumes/view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></p>
               </div>
             </a>
         </div>

@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@uploads' => 'uploads',
+        '@artistas' => 'artistas',
     ],
     'modules' => [
         'user' => [

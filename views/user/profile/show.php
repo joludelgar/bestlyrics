@@ -18,20 +18,20 @@ use yii\widgets\ListView;
  */
 
 $this->title = empty($profile->name) ? Html::encode($profile->user->username) : Html::encode($profile->name);
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+<div class="row" style="border:1px solid #222;border-radius:10px;">
+    <div class="col-xs-12 col-sm-3 col-md-12 profile-show" style="text-align:center;border-radius:10px 10px 0px 0px;">
         <div class="row">
-            <div class="col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-12" style="display:flex;justify-content:center">
+            <div class="avatar">
                 <?= Html::img($profile->getImageUrl(), [
                     'class' => 'img-rounded img-responsive',
                     'alt' => $profile->user->username,
                 ]) ?>
             </div>
-            <div class="col-sm-6 col-md-8">
-                <h3><?= Html::a($profile->user->username, ['/user/profile/show', 'id' => $profile->user->id],
-                ['class' => 'profile-link']) ?></h3>
+        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:20px;" id="profile-datos">
+                <h3><?= Html::a($profile->user->username, ['/user/profile/show', 'id' => $profile->user->id]) ?></h3>
                 <h4><?= $this->title ?></h4>
                 <ul style="padding: 0; list-style: none outside none;">
                     <?php if (!empty($profile->location)): ?>
@@ -57,9 +57,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p><?= Html::encode($profile->bio) ?></p>
                 <?php endif; ?>
             </div>
+
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12">
+    <div class="col-xs-12 col-sm-9" style="padding-left:80px;">
         <h2>Letras favoritas:</h2>
        <?= ListView::widget([
            'dataProvider' => $dataProvider,
