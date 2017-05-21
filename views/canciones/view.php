@@ -84,7 +84,8 @@ $this->registerJsFile('@web/js/yt.js');
                      data-loop="1"
                      id="youtube-audio">
                   </div>'
-                   . '<br/>' . Html::a('Modificar audio', ['video', 'id' => $model->id], ['class' => 'btn-xs btn-warning'])?>
+                   . '<br/>' . Html::a('Ver video con letra', ['full', 'id' => $model->id], ['class' => 'btn btn-personalizado'])
+                   . '<br/>' . Html::a('Modificar video', ['video', 'id' => $model->id], ['class' => 'btn-xs btn-warning'])?>
                  <!-- <div class="embed-responsive embed-responsive-16by9">
                     <iframe class="embed-responsive-item" src="<?=$model->video?>"></iframe>
                 </div>-->

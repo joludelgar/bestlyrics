@@ -33,17 +33,17 @@ class CancionesController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'view', 'video', 'top'],
+                        'actions' => ['create', 'update', 'view', 'video', 'top', 'full'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'top'],
+                        'actions' => ['view', 'top', 'full'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top', 'full'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -94,6 +94,18 @@ class CancionesController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Displays a single Cancion model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionFull($id)
+    {
+        return $this->render('viewFull', [
             'model' => $this->findModel($id),
         ]);
     }
