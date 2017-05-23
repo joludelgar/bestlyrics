@@ -10,6 +10,7 @@ $config = [
     'aliases' => [
         '@uploads' => 'uploads',
         '@artistas' => 'artistas',
+        '@albumes' => 'albumes',
     ],
     'modules' => [
         'user' => [

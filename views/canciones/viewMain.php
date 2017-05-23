@@ -14,13 +14,11 @@ $artista = $model->idAlbum->idArtista;
 
 
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail" style="text-align:center">
+        <div class="thumbnail cancionesMain" style="text-align:center;background:url('<?= $model->idAlbum->getImageUrl()?>');background-size: cover;background-repeat: no-repeat;background-position: center;">
             <a href="<?= Url::to(['/canciones/view', 'id' => $model->id]) ?>">
-              <img src="..." alt="...">
               <div class="caption">
-                <h3><?= Html::a($model->nombre, ['/canciones/view', 'id' => $model->id]) ?></h3>
-                <p><?= Html::a($artista->nombre, ['/artistas/view', 'id' => $artista->id]) ?></p>
-                <p><?= Html::a('Ver canción', ['/canciones/view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></p>
+                <h3 class="rosa"><?= $model->nombre?></h3>
+                <p class="rosa"><?= $artista->nombre?></p></p>
               </div>
             </a>
         </div>

@@ -94,4 +94,21 @@ class Album extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Cancion::className(), ['id_album' => 'id'])->inverseOf('idAlbum');
     }
+
+    /**
+     * Returns avatar url or null if avatar is not set.
+     * @param  int $size
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        $uploads = Yii::getAlias('@albumes');
+        if (file_exists("$uploads/{$this->id}.png")){
+            return "/$uploads/{$this->id}.png";
+        } elseif (file_exists("$uploads/{$this->id}.jpg")){
+            return "/$uploads/{$this->id}.jpg";
+        } else {
+            return "/$uploads/disco.png";
+        }
+    }
 }

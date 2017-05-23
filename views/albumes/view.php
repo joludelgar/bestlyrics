@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Album */
@@ -12,17 +13,38 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ultimos']];
 $this->params['breadcrumbs'][] = ['label' => $model->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idArtista->id]];
 $this->params['breadcrumbs'][] = $this->title;
+$js = <<<JS
+$('.album').click(function(){
+    $('input[type=file]').click();
+    return false;
+});
+
+$(".uploadAvatar").change(function() {
+    this.form.submit();
+})
+JS;
+$this->registerJs($js);
 ?>
 <div class="album-view">
 
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-body">
+
           <div class="row">
-            <div class="col-xs-6 col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/imagenes/example.jpg" alt="...">
-              </a>
+            <div class="col-xs-6 col-md-3" style="display:flex;justify-content:center">
+                <a href="#" class="<?= $model->getImageUrl() == '/' . Yii::getAlias('@albumes') . '/disco.png' ? 'album' : 'disabled'?>">
+                    <div>
+
+                    </div>
+                </a>
+
+                <div style="display:none;">
+
+                    <?php $form = ActiveForm::begin(); ?>
+
+                    <?= $form->field($albumForm, 'imageFile')->fileInput(['style' => 'visibility: hidden', 'label' => 'none', 'class' => 'uploadAvatar'])->label(false) ?>
+
+                    <?php ActiveForm::end(); ?>
+
+                </div>
             </div>
             <div class="col-xs-6 col-md-9">
                 <div class="page-header">
@@ -42,8 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
                 </p>
             </div>
-          </div>
-      </div>
 
       <!-- Table -->
       <table class="table">
@@ -100,3 +120,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<style type="text/css">
+
+    .album div, .disabled div {
+        background-image: url('<?= $model->getImageUrl()?>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+</style>

@@ -130,9 +130,40 @@ div.wrap > div.container a:not([class]) {
     height: 20%;
 }
 
-#artista div, #disabled div{
+#artista div, #disabled div, .album div, .disabled div{
     background-color: white;
     width: 200px;
     height: 200px;
     border: 2px solid #222;
+}
+
+.thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+
+.caption .rosa{
+    color: #ff0050;
+}
+
+.caption {
+    z-index:2;
+    background:linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9));
+}
+
+.cancionesMain {
+    height: 200px;
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+}
+
+.album-view a:hover {
+    text-decoration: none;
+}
+
+.album-view a:hover * {
+    text-decoration: none;
+    color: #ff0050;
 }

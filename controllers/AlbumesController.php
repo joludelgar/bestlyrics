@@ -6,7 +6,9 @@ use Yii;
 use app\models\Album;
 use app\models\Genero;
 use app\models\AlbumSearch;
+use app\models\UploadAlbumForm;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
@@ -77,6 +79,13 @@ class AlbumesController extends Controller
      */
     public function actionView($id)
     {
+        $upload = new UploadAlbumForm;
+
+         if (Yii::$app->request->isPost) {
+             $upload->imageFile = UploadedFile::getInstance($upload, 'imageFile');
+             $upload->upload($id);
+         }
+
         $dataProvider = new ActiveDataProvider([
            'query' => Album::findOne($id)->getCanciones(),
            'pagination' => false,
@@ -86,6 +95,7 @@ class AlbumesController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProvider' => $dataProvider,
+            'albumForm' => $upload,
         ]);
     }
 

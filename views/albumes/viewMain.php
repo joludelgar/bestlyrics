@@ -16,11 +16,10 @@ $artista = $model->idArtista;
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail" style="text-align:center">
             <a href="<?= Url::to(['/albumes/view', 'id' => $model->id]) ?>">
-              <img src="..." alt="...">
+              <img src="<?=$model->getImageUrl();?>" alt="<?=$model->nombre?>">
               <div class="caption">
                 <h3><?= $model->nombre ?></h3>
-                <p><?= Html::a($artista->nombre, ['/artistas/view', 'id' => $artista->id]) ?></p>
-                <p><?= Html::a('Ver álbum', ['/albumes/view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?></p>
+                <p><?= $model->anio ?></p>
               </div>
             </a>
         </div>
