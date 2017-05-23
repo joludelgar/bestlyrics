@@ -138,7 +138,8 @@ $this->registerJsFile('@web/js/yt.js');
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#original" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
-                    <li role="presentation" class="dropdown">
+                    <?php if ($model->letraOriginal) { ?>
+                        <li role="presentation" class="dropdown">
                         <a href="#" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Traducciones <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
                             <?php if($model->letras != null) {
@@ -148,6 +149,7 @@ $this->registerJsFile('@web/js/yt.js');
                         </ul>
                     </li>
                     <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-info']) ?></li>
+                    <?php } ?>
                   </ul>
 
                   <!-- Tab panes -->
