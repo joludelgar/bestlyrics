@@ -321,7 +321,7 @@ input:focus {
 
 /* Fin de cuadro de busqueda */
 
-li:first-of-type {
+#w4 li:first-of-type {
     margin: 0 20px;
 }
 
