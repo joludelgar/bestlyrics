@@ -206,6 +206,14 @@ div.wrap > div.container a:not([class]) {
     font-weight: bold;
 }
 
+.anadir-letra {
+    text-align: center;
+}
+
+.cancion-search, .artista-search, .album-search {
+    border: 1px solid #f5f5f5;
+}
+
 /* Busqueda del index */
 
 li.search {
@@ -264,9 +272,18 @@ li.search {
     font-weight: normal;
 }
 
-.media div.image-search {
+.media div.image-search{
     width: 50px;
     height: 50px;
+}
+
+.searched .image-search {
+    width: 50px;
+    height: 50px;
+}
+
+.artista-search, .album-search {
+    padding: 5px 20px;
 }
 
 .tt-suggestion.tt-selectable {

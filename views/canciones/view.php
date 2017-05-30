@@ -105,7 +105,7 @@ $this->registerJsFile('@web/js/yt.js');
 
                   <!-- Tab panes -->
                   <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="original"></br><?= $model->letras == null ? '' : nl2br($model->letraOriginal->letra) ?></div>
+                    <div role="tabpanel" class="tab-pane active <?= $model->letras == null ? 'anadir-letra' : '' ?>" id="original"></br><?= $model->letras == null ? Html::a('Se el primero en añadir la letra a esta canción.<br/> Haz click aqui para empezar.', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success btn-anadir-letra']) : nl2br($model->letraOriginal->letra) ?></div>
                     <?php if($model->letras != null) {
                         foreach($model->letras as $letra) {?>
                     <div role="tabpanel" class="tab-pane" id="<?=$letra->idIdioma->nombre?>"></br>
@@ -119,12 +119,14 @@ $this->registerJsFile('@web/js/yt.js');
                   </div>
 
                 </div>
+                <?php if ($model->letras != null) { ?>
                 <div class="creator">
                     Letra creada por:
                     <a href="<?= Url::to(['/user/'.$model->idUsuario->id]) ?>">
                     <?= Html::img($model->idUsuario->profile->getImageUrl(), ['class' => 'img-circle']) . ' ' . $model->idUsuario->username ?>
                     </a>
                 </div>
+                <?php } ?>
                 <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
 
             </div>
@@ -155,7 +157,7 @@ $this->registerJsFile('@web/js/yt.js');
                           'method' => 'post',
                       ],
                   ]) ?> -->
-                  <?= $model->letras == null ? Html::a('Añadir letra', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success']) :
+                  <?= $model->letras == null ? '' :
                         ($model->letraOriginal->bloqueada ?
                             Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
                             Html::a('Modificar letra', ['letras/update', 'id' => $model->letraOriginal->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
