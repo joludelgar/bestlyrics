@@ -142,7 +142,7 @@ div.wrap > div.container a:not([class]) {
     overflow:hidden;
 }
 
-.caption .rosa{
+.rosa{
     color: #ff0050;
 }
 
@@ -166,4 +166,151 @@ div.wrap > div.container a:not([class]) {
 .album-view a:hover * {
     text-decoration: none;
     color: #ff0050;
+}
+
+.tab-pane {
+    font: 13px/1 Arial,sans-serif;
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.creator {
+    margin-top: 100px;
+}
+
+.creator {
+    font-weight: bold;
+}
+
+.creator .img-circle {
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ff0050;
+}
+
+.avatar img {
+    background-color: white;
+}
+
+.nav-pills > li.active > a {
+    background-color: #222;
+}
+
+.nav-pills > li.active > a:hover {
+    background-color: #ccc;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #ff0050;
+    font-weight: bold;
+}
+
+/* Busqueda del index */
+
+li.search {
+    width: 300px;
+
+}
+
+.form-index, .search-form {
+    width: 100%;
+}
+
+.layout-search .twitter-typeahead {
+    width: 100%;
+}
+
+.layout-search a {
+    color: #ff0050;
+}
+
+.layout-search .form-group {
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+
+.search-index .twitter-typeahead {
+    width: 50%;
+}
+
+.search-index .twitter-typeahead input {
+    font-size: 20px;
+    height: 50px;
+}
+
+.search-form .name {
+    color: white;
+    margin: 0 0px 5px 0px;
+    padding: 3px 0;
+    background-color: #222;
+}
+
+.search-form .tt-menu {
+    background-color: #ffffff;
+    width: 100%;
+    border: 1px solid #bababa;
+    box-shadow: 0px 2px 10px #ff0050;
+}
+
+.media {
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    font-weight: bold;
+}
+
+.media small, .media-artist a.artist-data {
+    color: #d31b54;
+    font-weight: normal;
+}
+
+.media div.image-search {
+    width: 50px;
+    height: 50px;
+}
+
+.tt-suggestion.tt-selectable {
+    margin: 10px 0px 10px 0px;
+    padding: 3px;
+    padding-left: 15px;
+    font-size: 15px;
+}
+
+.tt-suggestion.tt-selectable:hover {
+    background-color: #f7f7f7;
+    color: #ffffff;
+}
+
+.tt-dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.user-search-view {
+    font-size: 12px;
+}
+
+.media-body .image-search {
+    margin-right: 10px;
+}
+
+.search-form button {
+    display: none;
+}
+
+input:focus {
+    box-shadow: 0px 0px 10px #ff0050;
+}
+
+/* Fin de cuadro de busqueda */
+
+li:first-of-type {
+    margin: 0 20px;
+}
+
+.crop h3 {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:140px;
 }

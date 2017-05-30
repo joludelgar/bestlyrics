@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
 use app\models\Favorito;
+use app\models\Album;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
@@ -75,6 +77,58 @@ $this->registerJsFile('@web/js/yt.js');
 <div class="cancion-view">
 
           <div class="row">
+
+            <div class="col-xs-12 col-md-8">
+                <div class="page-header">
+                    <h1><?= Html::encode($this->title) ?> -
+                        <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
+                    </h1>
+                </div>
+                <div>
+
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#original" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
+                    <?php if ($model->letraOriginal) { ?>
+                        <li role="presentation" class="dropdown">
+                        <a href="#" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Traducciones <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+                            <?php if($model->letras != null) {
+                                foreach($model->letras as $letra) {?>
+                            <li class=""><a href="#<?=$letra->idIdioma->nombre?>" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" aria-expanded="false"><?=$letra->idIdioma->nombre?></a></li>
+                            <?php }}; ?>
+                        </ul>
+                    </li>
+                    <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-info']) ?></li>
+                    <?php } ?>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="original"></br><?= $model->letras == null ? '' : nl2br($model->letraOriginal->letra) ?></div>
+                    <?php if($model->letras != null) {
+                        foreach($model->letras as $letra) {?>
+                    <div role="tabpanel" class="tab-pane" id="<?=$letra->idIdioma->nombre?>"></br>
+                        <h2><?= $letra->idIdioma->nombre?>
+                            <?=$letra->bloqueada ?
+                                Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
+                                Html::a('Modificar letra', ['letras/update', 'id' => $letra->id], ['class' => 'btn btn-success', 'id' => 'modificar'])?>
+                        </h2>
+                        <br/><?=nl2br($letra->letra)?></br></div>
+                    <?php }}; ?>
+                  </div>
+
+                </div>
+                <div class="creator">
+                    Letra creada por:
+                    <a href="<?= Url::to(['/user/'.$model->idUsuario->id]) ?>">
+                    <?= Html::img($model->idUsuario->profile->getImageUrl(), ['class' => 'img-circle']) . ' ' . $model->idUsuario->username ?>
+                    </a>
+                </div>
+                <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
+
+            </div>
+
             <div class="col-xs-12 col-md-4">
                 <div class="panel panel-default">
                   <div class="panel-body" style='text-align:center;'>
@@ -126,49 +180,21 @@ $this->registerJsFile('@web/js/yt.js');
                   </div>
               </div>
             </div>
+
+            <div style='text-align:center;margin-top:50px;'>
+                <h4>Otras canciones del álbum:</h4>
+
+                <div class="list-group">
+                    <?php foreach (Album::findOne($model->idAlbum->id)->canciones as $cancion){
+                        if ($cancion->id != $model->id) {?>
+                        <a href="<?= Url::to(['/canciones/view', 'id' => $cancion->id]) ?>" class="list-group-item rosa">
+                            <?= $cancion->nombre?>
+                        </a>
+                    <?php }
+                    } ?>
+                </div>
+
             </div>
-            <div class="col-xs-12 col-md-8">
-                <div class="page-header">
-                    <h1><?= Html::encode($this->title) ?> -
-                        <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
-                    </h1>
-                </div>
-                <div>
-
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#original" aria-controls="home" role="tab" data-toggle="tab">Original</a></li>
-                    <?php if ($model->letraOriginal) { ?>
-                        <li role="presentation" class="dropdown">
-                        <a href="#" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Traducciones <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-                            <?php if($model->letras != null) {
-                                foreach($model->letras as $letra) {?>
-                            <li class=""><a href="#<?=$letra->idIdioma->nombre?>" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" aria-expanded="false"><?=$letra->idIdioma->nombre?></a></li>
-                            <?php }}; ?>
-                        </ul>
-                    </li>
-                    <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-info']) ?></li>
-                    <?php } ?>
-                  </ul>
-
-                  <!-- Tab panes -->
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="original"></br><?= $model->letras == null ? '' : nl2br($model->letraOriginal->letra) ?></div>
-                    <?php if($model->letras != null) {
-                        foreach($model->letras as $letra) {?>
-                    <div role="tabpanel" class="tab-pane" id="<?=$letra->idIdioma->nombre?>"></br>
-                        <h2><?= $letra->idIdioma->nombre?>
-                            <?=$letra->bloqueada ?
-                                Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
-                                Html::a('Modificar letra', ['letras/update', 'id' => $letra->id], ['class' => 'btn btn-success', 'id' => 'modificar'])?>
-                        </h2>
-                        <br/><?=nl2br($letra->letra)?></br></div>
-                    <?php }}; ?>
-                  </div>
-
-                </div>
-                <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
 
             </div>
     </div>

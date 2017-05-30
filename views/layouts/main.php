@@ -4,12 +4,34 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use yii\web\View;
 use app\assets\AppAsset;
+use app\assets\ScriptAsset;
+
+ScriptAsset::register($this);
 
 AppAsset::register($this);
+
+$urlCanciones = Url::to(['/site/canciones']) . '?q=%QUERY';
+$urlArtistas = Url::to(['/site/artistas']) . '?q=%QUERY';
+$urlAlbumes = Url::to(['/site/albumes']) . '?q=%QUERY';
+$artistasView = Url::to(['/artistas/view']) . '?id=';
+$cancionesView = Url::to(['/canciones/view']) . '?id=';
+$albumesView = Url::to(['/albumes/view']) . '?id=';
+
+$js = <<<JS
+var urlCanciones = "$urlCanciones";
+var urlArtistas = "$urlArtistas";
+var urlAlbumes = "$urlAlbumes";
+var artistasView = "$artistasView";
+var cancionesView = "$cancionesView";
+var albumesView = "$albumesView";
+JS;
+$this->registerJs($js, View::POS_HEAD);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -36,6 +58,12 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            '<li class="search"><form class="form-index row layout-search" method="GET" action="'.Url::to(['/site/search']).'">
+                <div class="form-group search-form">
+                    <input type="text" name="q" class="form-control typeahead" placeholder="Busca canciones, artistas o álbumes">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </form></li>',
             ['label' => 'Inicio', 'url' => ['/site/index']],
             Yii::$app->user->isGuest ? '' : (Yii::$app->user->identity->isAdmin ? ['label' => 'Panel de administrador', 'url' => ['/site/admin']] : '') ,
             ['label' => 'Artistas', 'url' => ['/artistas/ultimos']],

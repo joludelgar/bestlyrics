@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Cancion;
+use app\models\Album;
 use app\models\CancionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -33,17 +34,17 @@ class CancionesController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'view', 'video', 'top', 'full'],
+                        'actions' => ['create', 'update', 'view', 'video', 'top', 'full', 'datos'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'top', 'full'],
+                        'actions' => ['view', 'top', 'full', 'datos'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top', 'full'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top', 'full', 'datos'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -93,8 +94,17 @@ class CancionesController extends Controller
      */
     public function actionView($id)
     {
+        $cancion = Cancion::findOne($id);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Album::find(['id' => $cancion->idAlbum->id]),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 

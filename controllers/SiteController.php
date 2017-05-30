@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Letra;
 use app\models\Cancion;
+use app\models\Album;
+use app\models\Artista;
 use app\models\ContactForm;
 use yii\data\ActiveDataProvider;
 
@@ -87,6 +89,91 @@ class SiteController extends Controller
             'dataProvider' => $dataProvider,
             'dataProvider2' => $dataProvider2,
         ]);
+    }
+
+
+    public function actionCanciones($q = null)
+    {
+        if ($q !== null && $q !== '') {
+
+            $canciones = Cancion::find()->select('*')->where(['ilike', 'nombre', $q])->all();
+
+            $json = [];
+            foreach ($canciones as $cancion) {
+                $json[] = [
+                    'id' => $cancion->id,
+                    'nombre' => $cancion->nombre,
+                    'artista' => $cancion->idAlbum->idArtista->nombre,
+                    'artistaId' => $cancion->idAlbum->idArtista->id,
+                ];
+            }
+            return json_encode($json);
+        }
+    }
+
+
+    public function actionArtistas($q = null)
+    {
+        if ($q !== null && $q !== '') {
+
+            $artistas = Artista::find()->select('*')->where(['ilike', 'nombre', $q])->all();
+
+            $json = [];
+            foreach ($artistas as $artista) {
+                $json[] = [
+                    'id' => $artista->id,
+                    'nombre' => $artista->nombre,
+                    'cover' => $artista->getImageUrl(),
+                ];
+            }
+            return json_encode($json);
+        }
+    }
+
+
+    public function actionAlbumes($q = null)
+    {
+        if ($q !== null && $q !== '') {
+
+            $albumes = Album::find()->select('*')->where(['ilike', 'nombre', $q])->all();
+
+            $json = [];
+            foreach ($albumes as $album) {
+                $json[] = [
+                    'id' => $album->id,
+                    'nombre' => $album->nombre,
+                    'cover' => $album->getImageUrl(),
+                    'artista' => $album->idArtista->nombre,
+                    'artistaId' => $album->idArtista->id,
+                ];
+            }
+            return json_encode($json);
+        }
+    }
+
+    public function actionSearch($q = null)
+    {
+        if ($q !== null && $q !== '') {
+
+            $cancionesProvider = new ActiveDataProvider([
+                'query' => Cancion::find()->where(['ilike', 'nombre', $q]),
+            ]);
+            $artistasProvider = new ActiveDataProvider([
+                'query' => Artista::find()->where(['ilike', 'nombre', $q]),
+            ]);
+            $albumesProvider = new ActiveDataProvider([
+                'query' => Album::find()->where(['ilike', 'nombre', $q]),
+            ]);
+
+            return $this->render('search', [
+                'q' => $q,
+                'cancionesProvider' => $cancionesProvider,
+                'artistasProvider' => $artistasProvider,
+                'albumesProvider' => $albumesProvider,
+            ]);
+        }
+
+        return $this->refresh();
     }
 
     /**

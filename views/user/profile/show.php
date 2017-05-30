@@ -60,7 +60,7 @@ $this->title = empty($profile->name) ? Html::encode($profile->user->username) : 
 
         </div>
     </div>
-    <div class="col-xs-12 col-sm-9" style="padding-left:80px;">
+    <div class="col-xs-12 col-sm-12" style="padding-left:80px;">
         <h2>Letras favoritas:</h2>
        <?= ListView::widget([
            'dataProvider' => $dataProvider,
