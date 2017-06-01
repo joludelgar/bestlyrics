@@ -130,7 +130,7 @@ $config = [
             ],
         ],
     ],
-    'language' => 'es_ES',
+    'language' => 'es-ES',
     'params' => $params,
 ];
 

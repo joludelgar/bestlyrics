@@ -19,7 +19,7 @@ $('.album').click(function(){
     return false;
 });
 
-$(".uploadAvatar").change(function() {
+$(".upload").change(function() {
     this.form.submit();
 })
 JS;
@@ -40,7 +40,7 @@ $this->registerJs($js);
 
                     <?php $form = ActiveForm::begin(); ?>
 
-                    <?= $form->field($albumForm, 'imageFile')->fileInput(['style' => 'visibility: hidden', 'label' => 'none', 'class' => 'uploadAvatar'])->label(false) ?>
+                    <?= $form->field($albumForm, 'imageFile')->fileInput(['style' => 'visibility: hidden', 'label' => 'none', 'class' => 'upload'])->label(false) ?>
 
                     <?php ActiveForm::end(); ?>
 

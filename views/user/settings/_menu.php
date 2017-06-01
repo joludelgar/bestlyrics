@@ -74,7 +74,7 @@ $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
         <?php ActiveForm::end(); ?>
     </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 $(function(){
     $("#avatar").on('click', function(e){

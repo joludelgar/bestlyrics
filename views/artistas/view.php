@@ -21,7 +21,7 @@ $('#artista').click(function(){
     return false;
 });
 
-$(".uploadAvatar").change(function() {
+$(".upload").change(function() {
     this.form.submit();
 })
 JS;
@@ -46,7 +46,7 @@ $this->registerJs($js);
 
               <?php $form = ActiveForm::begin(); ?>
 
-              <?= $form->field($artistaForm, 'imageFile')->fileInput(['style' => 'visibility: hidden', 'label' => 'none', 'class' => 'uploadAvatar'])->label(false) ?>
+              <?= $form->field($artistaForm, 'imageFile')->fileInput(['style' => 'visibility: hidden', 'label' => 'none', 'class' => 'upload'])->label(false) ?>
 
               <?php ActiveForm::end(); ?>
 

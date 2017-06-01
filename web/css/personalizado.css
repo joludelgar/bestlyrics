@@ -321,10 +321,6 @@ input:focus {
 
 /* Fin de cuadro de busqueda */
 
-#w4 li:first-of-type {
-    margin: 0 20px;
-}
-
 .crop h3 {
     overflow:hidden;
     white-space:nowrap;

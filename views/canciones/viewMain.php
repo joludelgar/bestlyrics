@@ -18,7 +18,7 @@ $artista = $model->idAlbum->idArtista;
             <a href="<?= Url::to(['/canciones/view', 'id' => $model->id]) ?>">
               <div class="caption">
                 <h3 class="rosa"><?= $model->nombre?></h3>
-                <p class="rosa"><?= $artista->nombre?></p></p>
+                <p class="rosa"><?= $artista->nombre?></p>
               </div>
             </a>
         </div>
