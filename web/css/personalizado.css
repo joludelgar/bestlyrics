@@ -98,10 +98,6 @@ div.wrap > div.container a:not([class]) {
   animation-delay: 1s;
 }
 
-.avatar:hover img {
-  content: url('http://s.blixt.org/hypnotoad.jpg');
-}
-
 .avatar:hover::before,
 .avatar:hover::after {
   animation: pulse 1s linear infinite, cycle-colors 6s linear infinite;
