@@ -39,6 +39,7 @@ class Album extends \yii\db\ActiveRecord
             [['id_usuario', 'id_artista', 'id_genero'], 'integer'],
             [['nombre', 'anio', 'id_genero'], 'required'],
             [['anio'], 'number'],
+            ['anio','match', 'pattern' => '/^[12][0-9]{3}$/', 'message' => 'Año comprendido entre 1000 y 2999'],
             [['created_at'], 'safe'],
             [['nombre'], 'string', 'max' => 255],
             [['id_artista'], 'exist', 'skipOnError' => true, 'targetClass' => Artista::className(), 'targetAttribute' => ['id_artista' => 'id']],

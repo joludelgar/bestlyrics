@@ -10,9 +10,9 @@ use yii\widgets\ActiveForm;
 
 <div class="album-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['enableClientValidation' => true,]); ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nombre')->textInput(['maxlength' => 100]) ?>
 
     <?= $form->field($model, 'anio')->textInput() ?>
 
