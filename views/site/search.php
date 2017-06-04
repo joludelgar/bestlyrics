@@ -28,6 +28,10 @@ $this->title = 'Resultados de la busqueda de: "'.$q.'"';
           'layout' => "{items}\n{pager}",
           ]) ?>
       </div>
+
+          <h3 style="text-align:center;">
+              Si no encuentras la canción contribuye añadiendola. Busca el artista y si existe el álbum añade la canción. Si no existen ni el artista ni el álbum, ¡créalos!
+          </h3>
   </div>
   <div role="tabpanel" class="tab-pane" id="artistas"></br>
       <div class="row">
@@ -38,6 +42,13 @@ $this->title = 'Resultados de la busqueda de: "'.$q.'"';
           'layout' => "{items}\n{pager}",
           ]) ?>
       </div>
+
+          <h3 style="text-align:center;">
+              Si no encuentras el artista, añádelo y forma parte de la comunidad de Bestlyrics.
+          </h3>
+          <p style="text-align:center;">
+              <?= Html::a('Añadir artista', ['/artistas/create'], ['class' => 'btn btn-success btn-lg']) ?>
+          </p>
   </div>
   <div role="tabpanel" class="tab-pane" id="albumes"></br>
       <div class="row">
@@ -48,5 +59,9 @@ $this->title = 'Resultados de la busqueda de: "'.$q.'"';
           'layout' => "{items}\n{pager}",
           ]) ?>
       </div>
+
+          <h3 style="text-align:center;">
+              Si no encuentras el álbum busca el artista al que pertenece y añádelo. Si no existe el artista, ¡créalo!
+          </h3>
   </div>
 </div>

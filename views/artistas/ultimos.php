@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ArtistaSearch */
@@ -18,25 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Añadir artista', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <div class="row">
+        <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
-            //'id_usuario',
-            //'nombre',
-            [
-             'label'=>'Nombre',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        return Html::a(Html::encode($data['nombre']), ['/artistas/view', 'id' => $data['id']]);
-                      },
-             ],
-            //'biografia',
-            //'created_at',
-
-            //['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => '/artistas/viewSearch',
+        'layout' => "{items}\n{pager}",
+        ]) ?>
+    </div>
 </div>
