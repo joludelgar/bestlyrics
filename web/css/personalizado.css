@@ -323,3 +323,16 @@ input:focus {
     text-overflow:ellipsis;
     width:140px;
 }
+
+.reporte {
+    color: #ff0050;
+}
+
+.reporte-right {
+    float: right;
+}
+
+.modal-content {
+    text-align: left;
+    color: black;
+}

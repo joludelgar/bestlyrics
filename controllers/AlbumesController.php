@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Album;
 use app\models\Genero;
+use app\models\Reporte;
 use app\models\AlbumSearch;
 use app\models\UploadAlbumForm;
 use yii\web\Controller;
@@ -92,10 +93,26 @@ class AlbumesController extends Controller
            'sort' => false,
        ]);
 
+       $render = null;
+
+       if (!Yii::$app->user->isGuest) {
+           $reporteModel = new Reporte();
+
+           $reporteModel->id_reportador = Yii::$app->user->identity->id;
+           $reporteModel->enlace = Yii::$app->request->absoluteUrl;
+
+           if ($reporteModel->load(Yii::$app->request->post()) && $reporteModel->save()) {
+               return $this->redirect(['view', 'id' => $id]);
+           } else {
+               $render = $this->renderPartial('/reportes/create', ['model' => $reporteModel]);
+           }
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProvider' => $dataProvider,
             'albumForm' => $upload,
+            'render' => $render,
         ]);
     }
 

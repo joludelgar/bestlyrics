@@ -6,6 +6,7 @@ use Yii;
 use app\models\Cancion;
 use app\models\Album;
 use app\models\CancionSearch;
+use app\models\Reporte;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -102,9 +103,25 @@ class CancionesController extends Controller
             'sort' => false,
         ]);
 
+        $render = null;
+
+        if (!Yii::$app->user->isGuest) {
+            $reporteModel = new Reporte();
+
+            $reporteModel->id_reportador = Yii::$app->user->identity->id;
+            $reporteModel->enlace = Yii::$app->request->absoluteUrl;
+
+            if ($reporteModel->load(Yii::$app->request->post()) && $reporteModel->save()) {
+                return $this->redirect(['view', 'id' => $id]);
+            } else {
+                $render = $this->renderPartial('/reportes/create', ['model' => $reporteModel]);
+            }
+         }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProvider' => $dataProvider,
+            'render' => $render,
         ]);
     }
 

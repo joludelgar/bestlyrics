@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 use yii\widgets\ActiveForm;
+use yii\bootstrap\Modal;
+use app\models\Reporte;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Album */
@@ -61,7 +63,26 @@ $this->registerJs($js);
                     ]) : '' ?>
                     <?= Html::a('Añadir canción', ['canciones/create', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
 
-                    <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
+                    <?php
+                     if (!Yii::$app->user->isGuest) {
+                        Modal::begin([
+                            'toggleButton' => [
+                                'label' => 'Reportar contenido',
+                                'class' => 'btn btn-link reporte reporte-right'
+                            ],
+                            'closeButton' => [
+                              'label' => 'Cerrar',
+                              'class' => 'btn btn-danger btn-sm pull-right',
+                            ],
+                            'size' => 'modal-lg',
+                        ]);
+
+                        echo $render;
+
+                        Modal::end();
+                    };
+                    ?>
+
                 </p>
             </div>
 

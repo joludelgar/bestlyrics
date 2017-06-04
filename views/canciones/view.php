@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 use app\models\Favorito;
 use app\models\Album;
 use yii\widgets\ListView;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
@@ -127,7 +128,25 @@ $this->registerJsFile('@web/js/yt.js');
                     </a>
                 </div>
                 <?php } ?>
-                <span style="float:right"><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
+                <?php
+                 if (!Yii::$app->user->isGuest) {
+                    Modal::begin([
+                        'toggleButton' => [
+                            'label' => 'Reportar contenido',
+                            'class' => 'btn btn-link reporte reporte-right'
+                        ],
+                        'closeButton' => [
+                          'label' => 'Cerrar',
+                          'class' => 'btn btn-danger btn-sm pull-right',
+                        ],
+                        'size' => 'modal-lg',
+                    ]);
+
+                    echo $render;
+
+                    Modal::end();
+                };
+                ?>
 
             </div>
 

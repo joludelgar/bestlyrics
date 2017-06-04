@@ -6,6 +6,7 @@ use yii\widgets\DetailView;
 use yii\grid\GridView;
 use yii\widgets\ListView;
 use yii\widgets\ActiveForm;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Artista */
@@ -91,7 +92,25 @@ $this->registerJs($js);
                   </p>
 
                   <p>
-                  <span><a href="<?=Url::to(['/reportes/create', 'url' => Yii::$app->request->absoluteUrl])?>">Reportar contenido</a></span>
+                      <?php
+                       if (!Yii::$app->user->isGuest) {
+                          Modal::begin([
+                              'toggleButton' => [
+                                  'label' => 'Reportar contenido',
+                                  'class' => 'btn btn-link reporte'
+                              ],
+                              'closeButton' => [
+                                'label' => 'Cerrar',
+                                'class' => 'btn btn-danger btn-sm pull-right',
+                              ],
+                              'size' => 'modal-lg',
+                          ]);
+
+                          echo $render;
+
+                          Modal::end();
+                      };
+                      ?>
                   </p>
           </div> <!-- end column1 -->
 
