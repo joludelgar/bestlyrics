@@ -12,9 +12,9 @@ $this->title = 'Resultados de la busqueda de: "'.$q.'"';
 <br>
 
 <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#canciones" aria-controls="canciones" role="tab" data-toggle="tab">Canciones</a></li>
-  <li role="presentation"><a href="#artistas" aria-controls="artistas" role="tab" data-toggle="tab">Artistas</a></li>
-  <li role="presentation"><a href="#albumes" aria-controls="albumes" role="tab" data-toggle="tab">Álbumes</a></li>
+  <li role="presentation" class="active"><a href="#canciones" aria-controls="canciones" role="tab" data-toggle="tab">Canciones (<?= $cancionesProvider->getTotalCount() ?>)</a></li>
+  <li role="presentation"><a href="#artistas" aria-controls="artistas" role="tab" data-toggle="tab">Artistas (<?= $artistasProvider->getTotalCount() ?>)</a></li>
+  <li role="presentation"><a href="#albumes" aria-controls="albumes" role="tab" data-toggle="tab">Álbumes (<?= $albumesProvider->getTotalCount() ?>)</a></li>
 </ul>
 
 <!-- Tab panes -->
