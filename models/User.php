@@ -59,4 +59,12 @@ class User extends BaseUser
     {
         return $this->hasMany(Favorito::className(), ['id_usuario' => 'id'])->inverseOf('idUsuario');
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLetrasUsuarios()
+    {
+        return $this->hasMany(LetraUsuario::className(), ['id_usuario' => 'id'])->inverseOf('idUsuario');
+    }
 }

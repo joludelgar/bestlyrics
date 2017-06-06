@@ -61,4 +61,10 @@ $this->title = 'Panel de administración';
             <h2>Administrar géneros</h2>
         </div>
     </a>
+
+    <a href="<?=Url::to(['/letras-usuarios/index'])?>">
+        <div class="jumbotron col-sm-12 col-md-4">
+            <h2>Administrar letras por usuarios</h2>
+        </div>
+    </a>
 </div>

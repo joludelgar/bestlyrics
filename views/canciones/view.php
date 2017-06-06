@@ -122,7 +122,7 @@ $this->registerJsFile('@web/js/yt.js');
                 </div>
                 <?php if ($model->letras != null) { ?>
                 <div class="creator">
-                    Letra creada por:
+                    Canción creada por:
                     <a href="<?= Url::to(['/user/'.$model->idUsuario->id]) ?>">
                     <?= Html::img($model->idUsuario->profile->getImageUrl(), ['class' => 'img-circle']) . ' ' . $model->idUsuario->username ?>
                     </a>

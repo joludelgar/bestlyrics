@@ -25,8 +25,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_letra',
-            'id_usuario',
+            [
+             'label'=>'Canción',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idLetra']->idCancion->nombre), ['/canciones/view', 'id' => $data['idLetra']->idCancion->id]);
+                      },
+            ],
+            [
+             'label'=>'Idioma',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::encode($data['idLetra']->idIdioma->nombre);
+                      },
+            ],
+            [
+             'label'=>'Letra',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::encode(substr($data['idLetra']->letra, 0, 50) . '...');
+                      },
+            ],
+            [
+             'label'=>'Usuario',
+             'format' => 'raw',
+             'value'=>function ($data) {
+                        return Html::a(Html::encode($data['idUsuario']->username), ['/user/profile/show', 'id' => $data['idUsuario']->id]);
+                      },
+            ],
             'created_at',
 
             ['class' => 'yii\grid\ActionColumn'],

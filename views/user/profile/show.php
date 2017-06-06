@@ -60,13 +60,37 @@ $this->title = empty($profile->name) ? Html::encode($profile->user->username) : 
 
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12" style="padding-left:80px;">
-        <h2>Letras favoritas:</h2>
-       <?= ListView::widget([
-           'dataProvider' => $dataProvider,
-           'itemOptions' => ['class' => 'item'],
-           'itemView' => '@app/views/letras/profile',
-           'layout' => "{items}\n{pager}",
-       ]) ?>
+    <div class="col-xs-12 col-sm-12" style="padding:20px;">
+
+   <br>
+
+   <ul class="nav nav-tabs" role="tablist">
+     <li role="presentation" class="active"><a href="#favoritos" aria-controls="favoritos" role="tab" data-toggle="tab">Favoritos</a></li>
+     <li role="presentation"><a href="#anadidas" aria-controls="anadidas" role="tab" data-toggle="tab">Historial de letras añadidas/modificadas</a></li>
+   </ul>
+
+   <!-- Tab panes -->
+   <div class="tab-content">
+     <div role="tabpanel" class="tab-pane active" id="favoritos"></br>
+         <div class="row">
+             <?= ListView::widget([
+             'dataProvider' => $dataProvider,
+             'itemOptions' => ['class' => 'item'],
+             'itemView' => '@app/views/letras/profile',
+             'layout' => "{items}\n{pager}",
+             ]) ?>
+         </div>
+     </div>
+     <div role="tabpanel" class="tab-pane" id="anadidas"></br>
+         <div class="row">
+             <?= ListView::widget([
+             'dataProvider' => $dataProvider2,
+             'itemOptions' => ['class' => 'item'],
+             'itemView' => '@app/views/letras/profile2',
+             'layout' => "{items}\n{pager}",
+             ]) ?>
+         </div>
+     </div>
+   </div>
    </div>
 </div>

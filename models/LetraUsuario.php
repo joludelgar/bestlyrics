@@ -56,7 +56,7 @@ class LetraUsuario extends \yii\db\ActiveRecord
      */
     public function getIdLetra()
     {
-        return $this->hasOne(Letra::className(), ['id' => 'id_letra'])->inverseOf('letraUsuarios');
+        return $this->hasOne(Letra::className(), ['id' => 'id_letra'])->inverseOf('letrasUsuarios');
     }
 
     /**
@@ -64,6 +64,6 @@ class LetraUsuario extends \yii\db\ActiveRecord
      */
     public function getIdUsuario()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('letraUsuarios');
+        return $this->hasOne(User::className(), ['id' => 'id_usuario'])->inverseOf('letrasUsuarios');
     }
 }

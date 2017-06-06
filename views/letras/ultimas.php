@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\LetraSearch */
@@ -14,33 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= GridView::widget([
+    <div class="row top">
+        <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            [
-             'label'=>'Canción',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        return Html::a(Html::encode($data->idCancion->nombre), ['/canciones/view', 'id' => $data->idCancion->id]);
-                      },
-             ],
-            [
-             'label'=>'Artista',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        $artista = $data->idCancion->idAlbum->idArtista;
-                        return Html::a(Html::encode($artista->nombre), ['/artistas/view', 'id' => $artista->id]);
-                      },
-             ],
-            //'id',
-            //'id_cancion',
-            //'id_idioma',
-            //'letra:ntext',
-            //'bloqueada:boolean',
-            //'created_at',
-
-            //['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => '/canciones/viewUltimas',
+        'layout' => "{items}\n{pager}",
+        ]) ?>
+    </div>
 </div>

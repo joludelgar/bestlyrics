@@ -7,6 +7,7 @@ use app\models\Letra;
 use app\models\Idioma;
 use app\models\Cancion;
 use app\models\LetraSearch;
+use app\models\LetraUsuario;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -115,6 +116,11 @@ class LetrasController extends Controller
                 $cancion->save();
             }
 
+            $modelLetraUsuario = new LetraUsuario();
+            $modelLetraUsuario->id_letra = $model->id;
+            $modelLetraUsuario->id_usuario = Yii::$app->user->identity->id;
+            $modelLetraUsuario->save();
+
             return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
         } else {
             $idiomas = Idioma::find()->select('nombre, id')->indexBy('id')->column();
@@ -136,6 +142,12 @@ class LetrasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $modelLetraUsuario = new LetraUsuario();
+            $modelLetraUsuario->id_letra = $id;
+            $modelLetraUsuario->id_usuario = Yii::$app->user->identity->id;
+            $modelLetraUsuario->save();
+
             return $this->redirect(['canciones/view', 'id' => $model->id_cancion]);
         } else {
             return $this->render('update', [

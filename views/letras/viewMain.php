@@ -15,7 +15,7 @@ $artista = $model->idCancion->idAlbum->idArtista;
       <div class="col-sm-6 col-md-2">
         <div class="thumbnail" style="text-align:center;background:url('<?= $model->idCancion->idAlbum->getImageUrl()?>');background-size: cover;background-repeat: no-repeat;background-position: center;">
             <a href="<?= Url::to(['/canciones/view', 'id' => $model->idCancion->id]) ?>">
-              <div class="caption">
+              <div class="caption" style="height:160px;">
                 <h3 class="rosa"><?= $model->idCancion->nombre ?></h3>
                 <p class="rosa"><?=$artista->nombre?></p>
                 <p><?= substr($model->letra, 0, 50) . '...' ?></p>

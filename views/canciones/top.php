@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CancionSearch */
@@ -16,41 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <div class="row top">
+        <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
-            //'id_usuario',
-            //'id_album',
-            [
-             'label'=>'Nombre',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        return Html::a(Html::encode($data->nombre), ['/canciones/view', 'id' => $data['id']]);
-                      },
-            ],
-            [
-             'label'=>'Album',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idAlbum']->nombre), ['/albumes/view', 'id' => $data['idAlbum']->id]);
-                      },
-            ],
-            [
-             'label'=>'Artista',
-             'format' => 'raw',
-             'value'=>function ($data) {
-                        return Html::a(Html::encode($data['idAlbum']->idArtista->nombre), ['/artistas/view', 'id' => $data['idAlbum']->idArtista->id]);
-                      },
-            ],
-            //'nombre',
-            //'id_letra_original',
-            //'video',
-            //'created_at',
-
-            //['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => '/canciones/viewResumen',
+        'layout' => "{items}\n{pager}",
+        ]) ?>
+    </div>
 </div>

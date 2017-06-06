@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 use yii\widgets\ActiveForm;
+use yii\widgets\ListView;
 use yii\bootstrap\Modal;
 use app\models\Reporte;
 
@@ -90,37 +91,14 @@ $this->registerJs($js);
       <table class="table">
 
 
-      <?= GridView::widget([
-          'dataProvider' => $dataProvider,
-          'columns' => [
-              [
-                'class' => 'yii\grid\SerialColumn',
-                'contentOptions' => ['style' => 'width:100px;'],
-              ],
-              [
-               'label'=>'Canciones',
-               'format' => 'raw',
-               'value'=>function ($data) {
-                   return Html::a(Html::encode($data['nombre']), ['/canciones/view', 'id' => $data['id']]);
-               },
-               ],
-               [
-                'format' => 'raw',
-                'value' => function($data) {
-                        return Html::a('Modificar canción', ['/canciones/update', 'id' => $data['id']], ['class' => 'btn-sm btn-primary']) . ' ' .
-                        (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('Eliminar canción', ['/canciones/delete', 'id' => $data['id']], [
-                            'class' => 'btn-sm btn-danger',
-                            'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
-                                'method' => 'post',
-                            ],
-                        ]) : '');
-                }
-               ],
-          //'created_at',
-          ],
-          'layout' => "{items}\n{pager}",
-        ]) ?>
+          <div class="row top">
+              <?= ListView::widget([
+              'dataProvider' => $dataProvider,
+              'itemOptions' => ['class' => 'item'],
+              'itemView' => '/canciones/viewAlbum',
+              'layout' => "{items}\n{pager}",
+              ]) ?>
+          </div>
     </table>
     </div>
 

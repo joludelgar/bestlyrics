@@ -12,6 +12,11 @@
     height: auto;
 }
 
+.letras-perfil p{
+    color:black;
+    font-size: 14px;
+}
+
 .nav img {
     width:20px;
     height:20px;
@@ -210,6 +215,27 @@ div.wrap > div.container a:not([class]) {
     border: 1px solid #f5f5f5;
 }
 
+.cancion-top {
+    border: 1px solid #f5f5f5;
+}
+.cancion-top span {
+    margin-right: 20px;
+}
+
+.top {
+    margin-top: 50px;
+}
+
+.top-right {
+    float: right;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#icono-top {
+    margin: 0;
+}
+
 /* Busqueda del index */
 
 li.search {
@@ -248,6 +274,10 @@ li.search {
     margin: 0 0px 5px 0px;
     padding: 3px 0;
     background-color: #222;
+}
+
+.search-form h4 {
+    text-align: center;
 }
 
 .search-form .tt-menu {
