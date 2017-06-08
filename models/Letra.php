@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "letras".
+ * Este es el modelo para la tabla "letras".
  *
  * @property integer $id
  * @property integer $id_cancion
@@ -14,10 +14,9 @@ use Yii;
  * @property boolean $bloqueada
  * @property string $created_at
  *
- * @property Canciones $idCancion
- * @property Idiomas $idIdioma
- * @property LetrasUsuarios[] $letrasUsuarios
- * @property VotosLetras[] $votosLetras
+ * @property Cancion $idCancion
+ * @property Idioma $idIdioma
+ * @property LetraUsuario[] $letrasUsuarios
  */
 class Letra extends \yii\db\ActiveRecord
 {
@@ -68,6 +67,7 @@ class Letra extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Cancion::className(), ['id' => 'id_cancion'])->inverseOf('letras');
     }
+    
    /**
     * @return \yii\db\ActiveQuery
     */
@@ -82,13 +82,5 @@ class Letra extends \yii\db\ActiveRecord
     public function getLetrasUsuarios()
     {
         return $this->hasMany(LetraUsuario::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getVotosLetras()
-    {
-        return $this->hasMany(VotoLetra::className(), ['id_letra' => 'id'])->inverseOf('idLetra');
     }
 }

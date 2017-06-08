@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * FavoritosController implements the CRUD actions for Favorito model.
+ * FavoritosController implementa las acciones del modelo Favorito.
  */
 class FavoritosController extends Controller
 {
@@ -54,7 +54,7 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Lists all Favorito models.
+     * Lista todos los modelos de Favorito.
      * @return mixed
      */
     public function actionIndex()
@@ -69,8 +69,8 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Displays a single Favorito model.
-     * @param integer $id
+     * Muestra un modelo de Favorito.
+     * @param integer $id El id de favorito.
      * @return mixed
      */
     public function actionView($id)
@@ -81,9 +81,10 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Creates a new Favorito model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * Crea y elimina un modelo de Favorito a traves de AJAX.
+     * Si la creación o la eliminación es satisfactoria, se enviará un array en formato JSON.
+     * Si el usuario no ha iniciado sesión se redirige a la página de login.
+     * @return string Se devuelve un array en formato JSON con un booleano y el contador de favoritos de la canción.
      */
     public function actionCreate()
     {
@@ -107,9 +108,9 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Updates an existing Favorito model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Favorito existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del favorito.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -126,9 +127,9 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Deletes an existing Favorito model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Favorito existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id del favorito.
      * @return mixed
      */
     public function actionDelete($id)
@@ -139,11 +140,11 @@ class FavoritosController extends Controller
     }
 
     /**
-     * Finds the Favorito model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Favorito the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Favorito basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id del favorito.
+     * @return Favorito El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede ser encontrado.
      */
     protected function findModel($id)
     {

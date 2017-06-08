@@ -96,9 +96,23 @@ $this->registerJs($js, View::POS_HEAD);
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
+<footer class="footer col-sm-12" itemscope itemtype="https://schema.org/LocalBusiness">
+    <div class="container col-sm-offset-1 col-sm-7">
+        <?= Html::img('@web/imagenes/bestlyrics.png', ['alt'=>Yii::$app->name, 'id' => 'logo', 'itemprop' => 'image']) ?>
+        <p><span itemprop="name">Bestlyrics</span> nace con la intención de crear una gran comunidad de
+            usuarios con una pasión en común, la música.</p>
+        <p itemprop="description">Desde <span itemprop="name">Bestlyrics</span> te ofrecemos la oportunidad de compartir tus
+            artistas, álbumes, canciones y letras favoritas para el disfrute
+            de la comunidad y encontrar las letras de las canciones que más
+            te gustan.</p>
+
         <p class="pull-left">&copy; Bestlyrics <?= date('Y') ?></p>
+    </div>
+    <div class="container col-sm-3" style="margin-top:20px">
+        <p itemprop="founder">Jose Luis Delgado García</p>
+        <p itemprop="address">Sanlúcar de Barrameda (Cádiz)</p>
+        <p itemprop="email">Email de contacto: joludelgar@gmail.com</p>
+        <p itemprop="url"><a href="https://www.bestlyrics.herokuapp.com">Bestlyrics</a></p>
     </div>
 </footer>
 

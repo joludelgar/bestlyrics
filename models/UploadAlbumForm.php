@@ -10,6 +10,9 @@ use Yii;
 use yii\imagine\Image;
 use app\models\Album;
 
+/**
+ * Modelo formulario para la subida de imagenes para Álbum.
+ */
 class UploadAlbumForm extends Model
 {
     /**

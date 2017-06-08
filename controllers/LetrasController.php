@@ -15,7 +15,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 
 /**
- * LetrasController implements the CRUD actions for Letra model.
+ * LetrasController implementa todas las acciones para el modelo de Letra.
  */
 class LetrasController extends Controller
 {
@@ -58,7 +58,7 @@ class LetrasController extends Controller
     }
 
     /**
-     * Lists all Letra models.
+     * Lista todos los modelos de Letra.
      * @return mixed
      */
     public function actionIndex()
@@ -72,6 +72,10 @@ class LetrasController extends Controller
         ]);
     }
 
+    /**
+     * Lista las ultimas letras creadas.
+     * @return mixed
+     */
     public function actionUltimas()
     {
         $dataProvider = new ActiveDataProvider([
@@ -86,8 +90,8 @@ class LetrasController extends Controller
     }
 
     /**
-     * Displays a single Letra model.
-     * @param integer $id
+     * Muestra un modelo de Letra.
+     * @param integer $id El id de la letra.
      * @return mixed
      */
     public function actionView($id)
@@ -98,8 +102,11 @@ class LetrasController extends Controller
     }
 
     /**
-     * Creates a new Letra model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Letra.
+     * Si es la primera letra de una canción, se modifica la canción indicando que es la letra original.
+     * Al guardar el modelo se crea un nuevo modelo de LetraUsuario para indicar el usuario que ha creado la letra.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id de la canción asociado a la letra.
      * @return mixed
      */
     public function actionCreate($id)
@@ -132,9 +139,10 @@ class LetrasController extends Controller
     }
 
     /**
-     * Updates an existing Letra model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Letra existente.
+     * Al modificar y guardar el modelo se crea un nuevo modelo de LetraUsuario para indicar el usuario que ha modificado la letra.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id de la letra.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -156,6 +164,10 @@ class LetrasController extends Controller
         }
     }
 
+    /**
+     * Bloquea la modificación de la letra a traves de AJAX.
+     * @return boolean Devuelve true si la letra está bloqueada o false si no lo está.
+     */
     public function actionBloquear()
     {
         $model = $this->findModel(Yii::$app->request->post('id'));
@@ -171,9 +183,9 @@ class LetrasController extends Controller
     }
 
     /**
-     * Deletes an existing Letra model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Letra existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id de la letra.
      * @return mixed
      */
     public function actionDelete($id)
@@ -184,11 +196,11 @@ class LetrasController extends Controller
     }
 
     /**
-     * Finds the Letra model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Letra the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Letra basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id de la letra.
+     * @return Letra El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede encontrarse.
      */
     protected function findModel($id)
     {

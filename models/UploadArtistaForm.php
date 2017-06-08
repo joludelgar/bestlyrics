@@ -10,6 +10,9 @@ use Yii;
 use yii\imagine\Image;
 use app\models\Artista;
 
+/**
+ * Modelo formulario para la subida de imagenes para Artista.
+ */
 class UploadArtistaForm extends Model
 {
     /**

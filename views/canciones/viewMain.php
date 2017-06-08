@@ -16,9 +16,9 @@ $artista = $model->idAlbum->idArtista;
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail cancionesMain" style="text-align:center;background:url('<?= $model->idAlbum->getImageUrl()?>');background-size: cover;background-repeat: no-repeat;background-position: center;">
             <a href="<?= Url::to(['/canciones/view', 'id' => $model->id]) ?>">
-              <div class="caption">
-                <h3 class="rosa"><?= $model->nombre?></h3>
-                <p class="rosa"><?= $artista->nombre?></p>
+              <div class="caption" itemscope itemtype="http://schema.org/MusicRecording">
+                <h3 class="rosa" itemprop="name"><?= $model->nombre?></h3>
+                <p class="rosa" itemprop="byArtist"><?= $artista->nombre?></p>
               </div>
             </a>
         </div>

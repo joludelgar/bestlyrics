@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "canciones".
+ * Este es el modelo para la tabla "canciones".
  *
  * @property integer $id
  * @property integer $id_usuario
@@ -15,12 +15,12 @@ use Yii;
  * @property string $video
  * @property string $created_at
  *
- * @property Albumes $idAlbum
+ * @property Album $idAlbum
  * @property User $idUsuario
- * @property Favoritos[] $favoritos
+ * @property Favorito[] $favoritos
  * @property User[] $idUsuarios
- * @property Letras[] $letras
- * @property Idiomas[] $idIdiomas
+ * @property Letra[] $letras
+ * @property Idioma[] $idIdiomas
  */
 class Cancion extends \yii\db\ActiveRecord
 {

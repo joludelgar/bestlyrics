@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * GenerosController implements the CRUD actions for Genero model.
+ * GenerosController implementa las acciones para el modelo de Genero.
  */
 class GenerosController extends Controller
 {
@@ -54,7 +54,7 @@ class GenerosController extends Controller
     }
 
     /**
-     * Lists all Genero models.
+     * Lista todos los modelos de Genero.
      * @return mixed
      */
     public function actionIndex()
@@ -69,7 +69,7 @@ class GenerosController extends Controller
     }
 
     /**
-     * Displays a single Genero model.
+     * Muestra un modelo de Genero.
      * @param integer $id
      * @return mixed
      */
@@ -81,8 +81,8 @@ class GenerosController extends Controller
     }
 
     /**
-     * Creates a new Genero model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Genero.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
      * @return mixed
      */
     public function actionCreate()
@@ -99,9 +99,9 @@ class GenerosController extends Controller
     }
 
     /**
-     * Updates an existing Genero model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Genero existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del género.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -118,9 +118,9 @@ class GenerosController extends Controller
     }
 
     /**
-     * Deletes an existing Genero model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Genero existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id del género.
      * @return mixed
      */
     public function actionDelete($id)
@@ -131,11 +131,11 @@ class GenerosController extends Controller
     }
 
     /**
-     * Finds the Genero model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Genero the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Genero basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id del género.
+     * @return Genero El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede encontrarse.
      */
     protected function findModel($id)
     {

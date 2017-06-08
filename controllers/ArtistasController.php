@@ -15,7 +15,7 @@ use app\models\UploadArtistaForm;
 use yii\web\UploadedFile;
 
 /**
- * ArtistasController implements the CRUD actions for Artista model.
+ * ArtistasController implementa las acciones para el modelo de Artista.
  */
 class ArtistasController extends Controller
 {
@@ -58,7 +58,7 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Lists all Artista models.
+     * Lista todos los modelos de Artista.
      * @return mixed
      */
     public function actionIndex()
@@ -72,6 +72,10 @@ class ArtistasController extends Controller
         ]);
     }
 
+    /**
+     * Lista los ultimos artistas añadidos.
+     * @return mixed
+     */
     public function actionUltimos()
     {
         $dataProvider = new ActiveDataProvider([
@@ -86,8 +90,9 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Displays a single Artista model.
-     * @param integer $id
+     * Muestra un modelo de Artista. Tambien se muestra los albumes asociados al artista.
+     * Si el usuario activo de la aplicación está registrado se muestra el modelo de Reporte.
+     * @param integer $id El id del artista.
      * @return mixed
      */
     public function actionView($id)
@@ -129,8 +134,8 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Creates a new Artista model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Artista.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
      * @return mixed
      */
     public function actionCreate()
@@ -148,9 +153,9 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Updates an existing Artista model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Artista existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del artista.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -167,9 +172,9 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Deletes an existing Artista model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Artista existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id del artista.
      * @return mixed
      */
     public function actionDelete($id)
@@ -180,11 +185,11 @@ class ArtistasController extends Controller
     }
 
     /**
-     * Finds the Artista model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Artista the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Artista basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id del artista.
+     * @return Artista El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede ser encontrado.
      */
     protected function findModel($id)
     {

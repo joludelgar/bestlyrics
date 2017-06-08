@@ -14,7 +14,7 @@ use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 
 /**
- * CancionesController implements the CRUD actions for Cancion model.
+ * CancionesController implementa las acciones para el modelo de Cancion.
  */
 class CancionesController extends Controller
 {
@@ -35,17 +35,17 @@ class CancionesController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create', 'update', 'view', 'video', 'top', 'full', 'datos'],
+                        'actions' => ['create', 'update', 'view', 'video', 'top', 'full'],
                         'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['view', 'top', 'full', 'datos'],
+                        'actions' => ['view', 'top', 'full'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top', 'full', 'datos'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'video', 'top', 'full'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -57,7 +57,7 @@ class CancionesController extends Controller
     }
 
     /**
-     * Lists all Cancion models.
+     * Lista todos los modelos de Cancion.
      * @return mixed
      */
     public function actionIndex()
@@ -72,7 +72,7 @@ class CancionesController extends Controller
     }
 
     /**
-     * Lists all Cancion models.
+     * Lista los modelos de Cancion que obtienen más favoritos durante el mes actual.
      * @return mixed
      */
     public function actionTop()
@@ -89,8 +89,9 @@ class CancionesController extends Controller
     }
 
     /**
-     * Displays a single Cancion model.
-     * @param integer $id
+     * Muestra un modelo de Cancion.
+     * Si el usuario activo de la aplicación está registrado se muestra el modelo de Reporte.
+     * @param integer $id El id de la canción.
      * @return mixed
      */
     public function actionView($id)
@@ -126,8 +127,8 @@ class CancionesController extends Controller
     }
 
     /**
-     * Displays a single Cancion model.
-     * @param integer $id
+     * Muestra una vista especial con un video de Youtube y la letra original.
+     * @param integer $id El id de la canción.
      * @return mixed
      */
     public function actionFull($id)
@@ -138,8 +139,9 @@ class CancionesController extends Controller
     }
 
     /**
-     * Creates a new Cancion model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Cancion.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del álbum asociado a la canción.
      * @return mixed
      */
     public function actionCreate($id)
@@ -159,9 +161,9 @@ class CancionesController extends Controller
     }
 
     /**
-     * Updates an existing Cancion model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Cancion existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id de la canción.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -177,6 +179,11 @@ class CancionesController extends Controller
         }
     }
 
+    /**
+     * Actualiza el modelo de Cancion añadiendo la URL del video.
+     * @param  integer $id El id de la canción.
+     * @return mixed
+     */
     public function actionVideo($id)
     {
         $model = $this->findModel($id);
@@ -191,9 +198,9 @@ class CancionesController extends Controller
     }
 
     /**
-     * Deletes an existing Cancion model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Cancion existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id de la canción.
      * @return mixed
      */
     public function actionDelete($id)
@@ -204,11 +211,11 @@ class CancionesController extends Controller
     }
 
     /**
-     * Finds the Cancion model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Cancion the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Cancion basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id de la canción.
+     * @return Cancion El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede encontrarse.
      */
     protected function findModel($id)
     {

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "generos".
+ * Este es el modelo para la tabla "generos".
  *
  * @property integer $id
  * @property string $nombre
  *
- * @property Albumes[] $albumes
+ * @property Album[] $albumes
  */
 class Genero extends \yii\db\ActiveRecord
 {

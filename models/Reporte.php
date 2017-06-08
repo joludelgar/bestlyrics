@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "reportes".
+ * Este es el modelo para la tabla "reportes".
  *
  * @property integer $id
  * @property integer $id_reportador

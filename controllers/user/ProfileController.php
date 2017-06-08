@@ -8,6 +8,7 @@ use yii\filters\AccessControl;
 use app\models\User;
 use app\models\LetraUsuario;
 use Yii;
+
 class ProfileController extends BaseProfileController
 {
     /** @inheritdoc */
@@ -24,9 +25,10 @@ class ProfileController extends BaseProfileController
         ];
     }
     /**
-     * Muestra el perfil del usuario con los posts subidos y aprobados
+     * Muestra el perfil del usuario con los canciones favoritas y el historial de canciones modificadas
+     * y añadidas por el usuario
      *
-     * @param string $username
+     * @param integer $id El id del usuario
      *
      * @return \yii\web\Response
      * @throws \yii\web\NotFoundHttpException

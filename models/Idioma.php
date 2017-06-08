@@ -5,13 +5,13 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "idiomas".
+ * Este es el modelo para la tabla "idiomas".
  *
  * @property integer $id
  * @property string $nombre
  *
- * @property Letras[] $letras
- * @property Canciones[] $idCancions
+ * @property Letra[] $letras
+ * @property Cancion[] $idCancions
  */
 class Idioma extends \yii\db\ActiveRecord
 {

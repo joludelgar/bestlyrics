@@ -1,28 +1,17 @@
 <?php
-/*
- * This file is part of the Dektrium project.
- *
- * (c) Dektrium project <http://github.com/dektrium/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
- namespace app\controllers\user;
+
+namespace app\controllers\user;
 use dektrium\user\controllers\SettingsController as BaseSettingController;
 use app\models\AvatarForm;
 use dektrium\user\models\Profile;
 use dektrium\user\models\SettingsForm;
 /**
- * SettingsController manages updating user settings (e.g. profile, email and password).
- *
- * @property \dektrium\user\Module $module
- *
- * @author Dmitry Erofeev <dmeroff@gmail.com>
+ * AvatarController controla las actualizaciones de la configuración del usuario (Ej: perfil, avatar, email y contraseña).
  */
 class AvatarController extends BaseSettingController
 {
     /**
-     * Shows profile settings form.
+     * Muestra el formulario de configuración del perfil.
      *
      * @return string|\yii\web\Response
      */
@@ -46,7 +35,7 @@ class AvatarController extends BaseSettingController
         ]);
     }
     /**
-     * Displays page where user can update account settings (username, email or password).
+     * Muestra una página donde el usuario puede actualizar su configuración de la cuenta (nombre de usuario, avatar, email o contraseña).
      *
      * @return string|\yii\web\Response
      */

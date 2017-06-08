@@ -67,7 +67,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Muestra la página principal de la aplicación.
      *
      * @return string
      */
@@ -91,7 +91,11 @@ class SiteController extends Controller
         ]);
     }
 
-
+    /**
+     * Busca las canciones relacionadas con la busqueda del Typeahead.
+     * @param  string $q La búsqueda del usuario.
+     * @return string    Devuelve un array en formato JSON.
+     */
     public function actionCanciones($q = null)
     {
         if ($q !== null && $q !== '') {
@@ -111,7 +115,11 @@ class SiteController extends Controller
         }
     }
 
-
+    /**
+     * Busca los artistas relacionadas con la busqueda del Typeahead.
+     * @param  string $q La búsqueda del usuario.
+     * @return string    Devuelve un array en formato JSON.
+     */
     public function actionArtistas($q = null)
     {
         if ($q !== null && $q !== '') {
@@ -130,7 +138,11 @@ class SiteController extends Controller
         }
     }
 
-
+    /**
+     * Busca los álbumes relacionadas con la busqueda del Typeahead.
+     * @param  string $q La búsqueda del usuario.
+     * @return string    Devuelve un array en formato JSON.
+     */
     public function actionAlbumes($q = null)
     {
         if ($q !== null && $q !== '') {
@@ -151,6 +163,11 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Muestra una página con los resultados de la busqueda.
+     * @param  string $q La búsqueda del usuario.
+     * @return string
+     */
     public function actionSearch($q = null)
     {
         if ($q !== null && $q !== '') {
@@ -177,7 +194,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Muestra el panel de administración para el administrador.
      *
      * @return string
      */
@@ -187,7 +204,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Inicio de sesión.
      *
      * @return string
      */
@@ -207,7 +224,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Logout action.
+     * Cierre de sesión.
      *
      * @return string
      */
@@ -219,7 +236,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Muestra una página de contacto.
      *
      * @return string
      */
@@ -237,7 +254,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Muestra una página 'Sobre nosotros'.
      *
      * @return string
      */

@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ReportesController implements the CRUD actions for Reporte model.
+ * ReportesController implementa todas las acciones para el modelo de Reporte.
  */
 class ReportesController extends Controller
 {
@@ -26,11 +26,29 @@ class ReportesController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin;
+                        },
+                    ],
+                ],
+            ],
         ];
     }
 
     /**
-     * Lists all Reporte models.
+     * Lista todos los modelos de Reporte.
      * @return mixed
      */
     public function actionIndex()
@@ -45,8 +63,8 @@ class ReportesController extends Controller
     }
 
     /**
-     * Displays a single Reporte model.
-     * @param integer $id
+     * Muestra un modelo de Reporte.
+     * @param integer $id El id del reporte.
      * @return mixed
      */
     public function actionView($id)
@@ -57,8 +75,9 @@ class ReportesController extends Controller
     }
 
     /**
-     * Creates a new Reporte model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Reporte.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param $url El enlace del contenido que se reporta.
      * @return mixed
      */
     public function actionCreate($url)
@@ -78,9 +97,9 @@ class ReportesController extends Controller
     }
 
     /**
-     * Updates an existing Reporte model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Reporte existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del reporte.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -97,9 +116,9 @@ class ReportesController extends Controller
     }
 
     /**
-     * Deletes an existing Reporte model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Reporte existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id del reporte.
      * @return mixed
      */
     public function actionDelete($id)
@@ -110,11 +129,11 @@ class ReportesController extends Controller
     }
 
     /**
-     * Finds the Reporte model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Reporte the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Reporte basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id del reporte.
+     * @return Reporte El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede encontrarse.
      */
     protected function findModel($id)
     {

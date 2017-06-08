@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * IdiomasController implements the CRUD actions for Idioma model.
+ * IdiomasController implementa todas las acciones para el modelo de Idioma.
  */
 class IdiomasController extends Controller
 {
@@ -44,7 +44,7 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Lists all Idioma models.
+     * Lista todos los modelos de Idioma.
      * @return mixed
      */
     public function actionIndex()
@@ -59,7 +59,7 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Displays a single Idioma model.
+     * Muestra un modelo de Idioma.
      * @param integer $id
      * @return mixed
      */
@@ -71,8 +71,8 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Creates a new Idioma model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Crea un nuevo modelo de Idioma.
+     * Si la creación es satisfactoria, el usuario será redirigido a la vista del modelo.
      * @return mixed
      */
     public function actionCreate()
@@ -89,9 +89,9 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Updates an existing Idioma model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Modifica un modelo de Idioma existente.
+     * Si la actualización es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del idioma.
      * @return mixed
      */
     public function actionUpdate($id)
@@ -108,9 +108,9 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Deletes an existing Idioma model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * Elimina un modelo de Idioma existente.
+     * Si la eliminación es satisfactoria, el usuario será redirigido al 'index'.
+     * @param integer $id El id del idioma.
      * @return mixed
      */
     public function actionDelete($id)
@@ -121,11 +121,11 @@ class IdiomasController extends Controller
     }
 
     /**
-     * Finds the Idioma model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Idioma the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * Busca el modelo de Idioma basado en el valor de la clave primaria.
+     * Si no se encuentra el modelo, se lanzara una excepción HTTP 404.
+     * @param integer $id El id del idioma.
+     * @return Idioma El modelo cargado.
+     * @throws NotFoundHttpException Si el modelo no puede encontrarse.
      */
     protected function findModel($id)
     {

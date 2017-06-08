@@ -5,14 +5,14 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "favoritos".
+ * Este es el modelo para la tabla "favoritos".
  *
  * @property integer $id
  * @property integer $id_usuario
  * @property integer $id_cancion
  * @property string $created_at
  *
- * @property Canciones $idCancion
+ * @property Cancion $idCancion
  * @property User $idUsuario
  */
 class Favorito extends \yii\db\ActiveRecord

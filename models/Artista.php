@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "artistas".
+ * Este es el modelo para la tabla "artistas".
  *
  * @property integer $id
  * @property integer $id_usuario
@@ -13,7 +13,7 @@ use Yii;
  * @property string $biografia
  * @property string $created_at
  *
- * @property Albumes[] $albumes
+ * @property Album[] $albumes
  * @property User $idUsuario
  */
 class Artista extends \yii\db\ActiveRecord
@@ -72,9 +72,8 @@ class Artista extends \yii\db\ActiveRecord
     }
 
     /**
-     * Returns avatar url or null if avatar is not set.
-     * @param  int $size
-     * @return string|null
+     * Devuelve la URl de la imagen o la URL de la imagen por defecto.
+     * @return string
      */
     public function getImageUrl()
     {

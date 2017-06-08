@@ -5,14 +5,14 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "letras_usuarios".
+ * Este es el modelo para la tabla "letras_usuarios".
  *
  * @property integer $id
  * @property integer $id_letra
  * @property integer $id_usuario
  * @property string $created_at
  *
- * @property Letras $idLetra
+ * @property Letra $idLetra
  * @property User $idUsuario
  */
 class LetraUsuario extends \yii\db\ActiveRecord
