@@ -1,0 +1,584 @@
+Array
+(
+    [0] => Array
+        (
+            [line] => 26
+            [file] => controllers/AlbumesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\AlbumesController.
+        )
+
+    [1] => Array
+        (
+            [line] => 25
+            [file] => controllers/ArtistasController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ArtistasController.
+        )
+
+    [2] => Array
+        (
+            [line] => 24
+            [file] => controllers/CancionesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\CancionesController.
+        )
+
+    [3] => Array
+        (
+            [line] => 21
+            [file] => controllers/FavoritosController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\FavoritosController.
+        )
+
+    [4] => Array
+        (
+            [line] => 21
+            [file] => controllers/GenerosController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\GenerosController.
+        )
+
+    [5] => Array
+        (
+            [line] => 21
+            [file] => controllers/IdiomasController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\IdiomasController.
+        )
+
+    [6] => Array
+        (
+            [line] => 25
+            [file] => controllers/LetrasController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\LetrasController.
+        )
+
+    [7] => Array
+        (
+            [line] => 21
+            [file] => controllers/LetrasUsuariosController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\LetrasUsuariosController.
+        )
+
+    [8] => Array
+        (
+            [line] => 20
+            [file] => controllers/ReportesController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\ReportesController.
+        )
+
+    [9] => Array
+        (
+            [line] => 22
+            [file] => controllers/SiteController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [10] => Array
+        (
+            [line] => 56
+            [file] => controllers/SiteController.php
+            [message] => Method actions has no parent to inherit from in app\controllers\SiteController.
+        )
+
+    [11] => Array
+        (
+            [line] => 15
+            [file] => controllers/user/ProfileController.php
+            [message] => Method behaviors has no parent to inherit from in app\controllers\user\ProfileController.
+        )
+
+    [12] => Array
+        (
+            [line] => 28
+            [file] => models/Album.php
+            [message] => Method tableName has no parent to inherit from in app\models\Album.
+        )
+
+    [13] => Array
+        (
+            [line] => 36
+            [file] => models/Album.php
+            [message] => Method rules has no parent to inherit from in app\models\Album.
+        )
+
+    [14] => Array
+        (
+            [line] => 54
+            [file] => models/Album.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Album.
+        )
+
+    [15] => Array
+        (
+            [line] => 28
+            [file] => models/Album.php
+            [message] => Method tableName has no parent to inherit from in app\models\Album.
+        )
+
+    [16] => Array
+        (
+            [line] => 36
+            [file] => models/Album.php
+            [message] => Method rules has no parent to inherit from in app\models\Album.
+        )
+
+    [17] => Array
+        (
+            [line] => 54
+            [file] => models/Album.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Album.
+        )
+
+    [18] => Array
+        (
+            [line] => 30
+            [file] => models/AlbumSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\AlbumSearch.
+        )
+
+    [19] => Array
+        (
+            [line] => 24
+            [file] => models/Artista.php
+            [message] => Method tableName has no parent to inherit from in app\models\Artista.
+        )
+
+    [20] => Array
+        (
+            [line] => 32
+            [file] => models/Artista.php
+            [message] => Method rules has no parent to inherit from in app\models\Artista.
+        )
+
+    [21] => Array
+        (
+            [line] => 47
+            [file] => models/Artista.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Artista.
+        )
+
+    [22] => Array
+        (
+            [line] => 24
+            [file] => models/Artista.php
+            [message] => Method tableName has no parent to inherit from in app\models\Artista.
+        )
+
+    [23] => Array
+        (
+            [line] => 32
+            [file] => models/Artista.php
+            [message] => Method rules has no parent to inherit from in app\models\Artista.
+        )
+
+    [24] => Array
+        (
+            [line] => 47
+            [file] => models/Artista.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Artista.
+        )
+
+    [25] => Array
+        (
+            [line] => 29
+            [file] => models/ArtistaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\ArtistaSearch.
+        )
+
+    [26] => Array
+        (
+            [line] => 30
+            [file] => models/Cancion.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cancion.
+        )
+
+    [27] => Array
+        (
+            [line] => 38
+            [file] => models/Cancion.php
+            [message] => Method rules has no parent to inherit from in app\models\Cancion.
+        )
+
+    [28] => Array
+        (
+            [line] => 53
+            [file] => models/Cancion.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cancion.
+        )
+
+    [29] => Array
+        (
+            [line] => 30
+            [file] => models/Cancion.php
+            [message] => Method tableName has no parent to inherit from in app\models\Cancion.
+        )
+
+    [30] => Array
+        (
+            [line] => 38
+            [file] => models/Cancion.php
+            [message] => Method rules has no parent to inherit from in app\models\Cancion.
+        )
+
+    [31] => Array
+        (
+            [line] => 53
+            [file] => models/Cancion.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Cancion.
+        )
+
+    [32] => Array
+        (
+            [line] => 29
+            [file] => models/CancionSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\CancionSearch.
+        )
+
+    [33] => Array
+        (
+            [line] => 23
+            [file] => models/Favorito.php
+            [message] => Method tableName has no parent to inherit from in app\models\Favorito.
+        )
+
+    [34] => Array
+        (
+            [line] => 31
+            [file] => models/Favorito.php
+            [message] => Method rules has no parent to inherit from in app\models\Favorito.
+        )
+
+    [35] => Array
+        (
+            [line] => 44
+            [file] => models/Favorito.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Favorito.
+        )
+
+    [36] => Array
+        (
+            [line] => 23
+            [file] => models/Favorito.php
+            [message] => Method tableName has no parent to inherit from in app\models\Favorito.
+        )
+
+    [37] => Array
+        (
+            [line] => 31
+            [file] => models/Favorito.php
+            [message] => Method rules has no parent to inherit from in app\models\Favorito.
+        )
+
+    [38] => Array
+        (
+            [line] => 44
+            [file] => models/Favorito.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Favorito.
+        )
+
+    [39] => Array
+        (
+            [line] => 29
+            [file] => models/FavoritoSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\FavoritoSearch.
+        )
+
+    [40] => Array
+        (
+            [line] => 20
+            [file] => models/Genero.php
+            [message] => Method tableName has no parent to inherit from in app\models\Genero.
+        )
+
+    [41] => Array
+        (
+            [line] => 28
+            [file] => models/Genero.php
+            [message] => Method rules has no parent to inherit from in app\models\Genero.
+        )
+
+    [42] => Array
+        (
+            [line] => 39
+            [file] => models/Genero.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Genero.
+        )
+
+    [43] => Array
+        (
+            [line] => 20
+            [file] => models/Genero.php
+            [message] => Method tableName has no parent to inherit from in app\models\Genero.
+        )
+
+    [44] => Array
+        (
+            [line] => 28
+            [file] => models/Genero.php
+            [message] => Method rules has no parent to inherit from in app\models\Genero.
+        )
+
+    [45] => Array
+        (
+            [line] => 39
+            [file] => models/Genero.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Genero.
+        )
+
+    [46] => Array
+        (
+            [line] => 29
+            [file] => models/GeneroSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\GeneroSearch.
+        )
+
+    [47] => Array
+        (
+            [line] => 21
+            [file] => models/Idioma.php
+            [message] => Method tableName has no parent to inherit from in app\models\Idioma.
+        )
+
+    [48] => Array
+        (
+            [line] => 29
+            [file] => models/Idioma.php
+            [message] => Method rules has no parent to inherit from in app\models\Idioma.
+        )
+
+    [49] => Array
+        (
+            [line] => 40
+            [file] => models/Idioma.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Idioma.
+        )
+
+    [50] => Array
+        (
+            [line] => 21
+            [file] => models/Idioma.php
+            [message] => Method tableName has no parent to inherit from in app\models\Idioma.
+        )
+
+    [51] => Array
+        (
+            [line] => 29
+            [file] => models/Idioma.php
+            [message] => Method rules has no parent to inherit from in app\models\Idioma.
+        )
+
+    [52] => Array
+        (
+            [line] => 40
+            [file] => models/Idioma.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Idioma.
+        )
+
+    [53] => Array
+        (
+            [line] => 29
+            [file] => models/IdiomaSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\IdiomaSearch.
+        )
+
+    [54] => Array
+        (
+            [line] => 26
+            [file] => models/Letra.php
+            [message] => Method tableName has no parent to inherit from in app\models\Letra.
+        )
+
+    [55] => Array
+        (
+            [line] => 34
+            [file] => models/Letra.php
+            [message] => Method rules has no parent to inherit from in app\models\Letra.
+        )
+
+    [56] => Array
+        (
+            [line] => 51
+            [file] => models/Letra.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Letra.
+        )
+
+    [57] => Array
+        (
+            [line] => 26
+            [file] => models/Letra.php
+            [message] => Method tableName has no parent to inherit from in app\models\Letra.
+        )
+
+    [58] => Array
+        (
+            [line] => 34
+            [file] => models/Letra.php
+            [message] => Method rules has no parent to inherit from in app\models\Letra.
+        )
+
+    [59] => Array
+        (
+            [line] => 51
+            [file] => models/Letra.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Letra.
+        )
+
+    [60] => Array
+        (
+            [line] => 30
+            [file] => models/LetraSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\LetraSearch.
+        )
+
+    [61] => Array
+        (
+            [line] => 23
+            [file] => models/LetraUsuario.php
+            [message] => Method tableName has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [62] => Array
+        (
+            [line] => 31
+            [file] => models/LetraUsuario.php
+            [message] => Method rules has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [63] => Array
+        (
+            [line] => 44
+            [file] => models/LetraUsuario.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [64] => Array
+        (
+            [line] => 23
+            [file] => models/LetraUsuario.php
+            [message] => Method tableName has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [65] => Array
+        (
+            [line] => 31
+            [file] => models/LetraUsuario.php
+            [message] => Method rules has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [66] => Array
+        (
+            [line] => 44
+            [file] => models/LetraUsuario.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\LetraUsuario.
+        )
+
+    [67] => Array
+        (
+            [line] => 29
+            [file] => models/LetraUsuarioSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\LetraUsuarioSearch.
+        )
+
+    [68] => Array
+        (
+            [line] => 48
+            [file] => models/Profile.php
+            [message] => Undefined parameter documented: $size in getImageUrl().
+        )
+
+    [69] => Array
+        (
+            [line] => 125
+            [file] => models/Profile.php
+            [message] => Undefined parameter documented: $timezone in setTimeZone().
+        )
+
+    [70] => Array
+        (
+            [line] => 134
+            [file] => models/Profile.php
+            [message] => Undefined parameter documented:  in toLocalTime().
+        )
+
+    [71] => Array
+        (
+            [line] => 39
+            [file] => models/Profile.php
+            [message] => Method init has no parent to inherit from in app\models\Profile.
+        )
+
+    [72] => Array
+        (
+            [line] => 64
+            [file] => models/Profile.php
+            [message] => Method rules has no parent to inherit from in app\models\Profile.
+        )
+
+    [73] => Array
+        (
+            [line] => 83
+            [file] => models/Profile.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Profile.
+        )
+
+    [74] => Array
+        (
+            [line] => 144
+            [file] => models/Profile.php
+            [message] => Method beforeSave has no parent to inherit from in app\models\Profile.
+        )
+
+    [75] => Array
+        (
+            [line] => 158
+            [file] => models/Profile.php
+            [message] => Method tableName has no parent to inherit from in app\models\Profile.
+        )
+
+    [76] => Array
+        (
+            [line] => 22
+            [file] => models/Reporte.php
+            [message] => Method tableName has no parent to inherit from in app\models\Reporte.
+        )
+
+    [77] => Array
+        (
+            [line] => 30
+            [file] => models/Reporte.php
+            [message] => Method rules has no parent to inherit from in app\models\Reporte.
+        )
+
+    [78] => Array
+        (
+            [line] => 44
+            [file] => models/Reporte.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Reporte.
+        )
+
+    [79] => Array
+        (
+            [line] => 22
+            [file] => models/Reporte.php
+            [message] => Method tableName has no parent to inherit from in app\models\Reporte.
+        )
+
+    [80] => Array
+        (
+            [line] => 30
+            [file] => models/Reporte.php
+            [message] => Method rules has no parent to inherit from in app\models\Reporte.
+        )
+
+    [81] => Array
+        (
+            [line] => 44
+            [file] => models/Reporte.php
+            [message] => Method attributeLabels has no parent to inherit from in app\models\Reporte.
+        )
+
+    [82] => Array
+        (
+            [line] => 29
+            [file] => models/ReporteSearch.php
+            [message] => Method scenarios has no parent to inherit from in app\models\ReporteSearch.
+        )
+
+)
