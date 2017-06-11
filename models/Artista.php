@@ -78,10 +78,23 @@ class Artista extends \yii\db\ActiveRecord
     public function getImageUrl()
     {
         $uploads = Yii::getAlias('@artistas');
-        if (file_exists("$uploads/{$this->id}.png")){
-            return "/$uploads/{$this->id}.png";
-        } elseif (file_exists("$uploads/{$this->id}.jpg")){
-            return "/$uploads/{$this->id}.jpg";
+        $imagen = glob($uploads . "/$this->id.*");
+        $s3 = Yii::$app->get('s3');
+
+        if (count($imagen) != 0) {
+            $ruta = $imagen[0];
+        } else {
+            $ruta = $uploads . "/$this->id.jpg";
+            if (!$s3->exist($ruta)) {
+                $ruta = $uploads . "/$this->id.png";
+            }
+        }
+
+        if (file_exists($ruta)) {
+            return "/$ruta";
+        } elseif ($s3->exist($ruta)) {
+            $s3->commands()->get($ruta)->saveAs($ruta)->execute();
+            return "/$ruta";
         } else {
             return "/$uploads/example.jpg";
         }

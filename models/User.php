@@ -19,9 +19,27 @@ class User extends BaseUser
      */
     public function getAvatar()
     {
-        $uploads = \Yii::getAlias('@uploads');
-        $ruta = "$uploads/{$this->id}.png";
-        return file_exists($ruta) ? "/$ruta" : "/$uploads/example.jpg";
+        $uploads = Yii::getAlias('@uploads');
+        $avatar = glob($uploads . "/$this->user_id.*");
+        $s3 = Yii::$app->get('s3');
+
+        if (count($avatar) != 0) {
+            $ruta = $avatar[0];
+        } else {
+            $ruta = $uploads . "/$this->user_id.jpg";
+            if (!$s3->exist($ruta)) {
+                $ruta = $uploads . "/$this->user_id.png";
+            }
+        }
+
+        if (file_exists($ruta)) {
+            return "/$ruta";
+        } elseif ($s3->exist($ruta)) {
+            $s3->commands()->get($ruta)->saveAs($ruta)->execute();
+            return "/$ruta";
+        } else {
+            return "/$uploads/example.jpg";
+        }
     }
     /**
      * @return \yii\db\ActiveQuery

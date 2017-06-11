@@ -48,8 +48,26 @@ class Profile extends BaseProfile
     public function getImageUrl()
     {
         $uploads = Yii::getAlias('@uploads');
-        $ruta = "$uploads/{$this->user_id}.png";
-        return file_exists($ruta) ? "/$ruta" : "/$uploads/example.jpg";
+        $avatar = glob($uploads . "/$this->user_id.*");
+        $s3 = Yii::$app->get('s3');
+
+        if (count($avatar) != 0) {
+            $ruta = $avatar[0];
+        } else {
+            $ruta = $uploads . "/$this->user_id.jpg";
+            if (!$s3->exist($ruta)) {
+                $ruta = $uploads . "/$this->user_id.png";
+            }
+        }
+
+        if (file_exists($ruta)) {
+            return "/$ruta";
+        } elseif ($s3->exist($ruta)) {
+            $s3->commands()->get($ruta)->saveAs($ruta)->execute();
+            return "/$ruta";
+        } else {
+            return "/$uploads/example.jpg";
+        }
     }
     /**
      * @return \yii\db\ActiveQueryInterface
@@ -74,7 +92,7 @@ class Profile extends BaseProfile
             'gravatarEmailLength'  => ['gravatar_email', 'string', 'max' => 255],
             'locationLength'       => ['location', 'string', 'max' => 255],
             'websiteLength'        => ['website', 'string', 'max' => 255],
-            [['imageFile'], 'file', 'extensions' => 'png'],
+            [['imageFile'], 'file', 'extensions' => 'png, jpg'],
         ];
     }
     /**
@@ -146,9 +164,20 @@ class Profile extends BaseProfile
         $this->imageFile = UploadedFile::getInstance($this, 'imageFile');
         if ($this->imageFile !== null && $this->validate()) {
             $nombre = Yii::getAlias('@uploads/') . $this->user_id . '.' . $this->imageFile->extension;
+            $avatares = glob(Yii::getAlias('@avatar/') . "$this->user_id.*");
+
+            $s3 = Yii::$app->get('s3');
+            foreach ($avatares as $avatar) {
+                unlink($avatar);
+                if ($s3->exist($avatar)) {
+                    $s3->delete($avatar);
+                }
+            }
+
             $this->imageFile->saveAs($nombre);
             Image::thumbnail($nombre, 500, null)
                     ->save($nombre, ['quality' => 50]);
+            $s3->upload($nombre, $nombre);
         }
         return parent::beforeSave($insert);
     }

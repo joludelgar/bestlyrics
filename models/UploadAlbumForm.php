@@ -39,6 +39,14 @@ class UploadAlbumForm extends Model
                 ->open(Yii::getAlias('@albumes/') . $id . '.' . $extension);
             $imagen->thumbnail(new Box(500, $imagen->getSize()->getHeight()))
                     ->save(Yii::getAlias('@albumes/') . $id . '.' . $extension, ['quality' => 90]);
+
+            $s3 = Yii::$app->get('s3');
+            try {
+                $s3->upload($ruta, $ruta);
+            } catch (\Exception $e) {
+                unlink($ruta);
+                return false;
+            }
             return true;
         } else {
             return false;
