@@ -19,8 +19,9 @@ que el administrador pueda moderar los contenidos que se suben a la aplicación.
 
 [Web de la aplicación](https://www.bestlyrics.herokuapp.com)
 
-[Documentación]()
+[Documentación](https://joludelgar.github.io/bestlyrics/)
+
 [API]()
 
-=====================================
+---
 Proyecto desarrollado por: Jose Luis Delgado García
