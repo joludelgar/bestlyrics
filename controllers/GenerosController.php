@@ -4,11 +4,14 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Genero;
+use app\models\Album;
+use app\models\Artista;
 use app\models\GeneroSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 /**
  * GenerosController implementa las acciones para el modelo de Genero.
@@ -75,8 +78,16 @@ class GenerosController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Artista::find()->where(['in', 'id', Album::find()->select('id_artista')->where(['id_genero' => $id])]),
+            'pagination' => false,
+            'sort' => false,
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider
         ]);
     }
 

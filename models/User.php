@@ -4,6 +4,7 @@ namespace app\models;
 
 use dektrium\user\models\User as BaseUser;
 use yii\helpers\Html;
+use Yii;
 
 class User extends BaseUser
 {
@@ -20,15 +21,15 @@ class User extends BaseUser
     public function getAvatar()
     {
         $uploads = Yii::getAlias('@uploads');
-        $avatar = glob($uploads . "/$this->user_id.*");
+        $avatar = glob($uploads . "/$this->id.*");
         $s3 = Yii::$app->get('s3');
 
         if (count($avatar) != 0) {
             $ruta = $avatar[0];
         } else {
-            $ruta = $uploads . "/$this->user_id.jpg";
+            $ruta = $uploads . "/$this->id.jpg";
             if (!$s3->exist($ruta)) {
-                $ruta = $uploads . "/$this->user_id.png";
+                $ruta = $uploads . "/$this->id.png";
             }
         }
 

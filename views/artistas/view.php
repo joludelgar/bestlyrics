@@ -79,7 +79,7 @@ $this->registerJs($js);
               foreach($model->albumes as $album) {
                   if (!in_array($album->idGenero->id, $generos)) {
                     array_push($generos, $album->idGenero->id);
-                    ?><span class="tag"> <?= $album->idGenero->nombre ?> </span><?php
+                    ?><span class="tag"><?= Html::a( $album->idGenero->nombre , ['/generos/view', 'id' => $album->idGenero->id], ['class' => 'enlace-tag']) ?></span><?php
               } }?>
               </p>
                   <p>

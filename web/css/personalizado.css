@@ -40,6 +40,13 @@ div.wrap > div.container a:not([class]) {
     background-color:white;
 }
 
+.tag a{
+    color:#fff !important;
+}
+.tag a:hover{
+    color:#000 !important;
+}
+
 .glyphicon-heart {
     color:#ff0050 !important;
 }
