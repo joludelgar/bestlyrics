@@ -10,6 +10,8 @@ use yii\widgets\ActiveForm;
 
 <div class="artista-form">
 
+    <hr>
+
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => 100]) ?>
@@ -17,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'biografia')->textarea(['rows' => 6, 'maxlength' => 255]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Añadir' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Añadir' : 'Guardar cambios', ['class' => $model->isNewRecord ? 'btn btn-form' : 'btn btn-form']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

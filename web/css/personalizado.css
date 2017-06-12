@@ -473,4 +473,25 @@ input:focus {
 .color-change {
     margin: 15px;
 }
-.color-change * {float: right;};
+.color-change * {float: right;}
+
+.artista-create, .artista-update, .album-create, .album-update, .cancion-create,
+.cancion-update, .favorito-create, .favorito-update, .genero-create, .genero-update,
+.idioma-create, .idioma-update {
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #ff0050;
+    box-shadow: 0px 0px 20px #333;
+    color: #fff;
+}
+
+.help-block {
+    color:#fff !important;
+}
+
+.btn-form {
+    background-color: #fff;
+    color: #ff0050;
+}
