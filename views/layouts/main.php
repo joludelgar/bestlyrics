@@ -98,7 +98,7 @@ $this->registerJs($js, View::POS_HEAD);
 
 <footer class="footer col-sm-12" itemscope itemtype="https://schema.org/LocalBusiness">
     <div class="container col-sm-offset-1 col-sm-7">
-        <?= Html::img('@web/imagenes/bestlyrics.png', ['alt'=>Yii::$app->name, 'itemprop' => 'image']) ?>
+        <?= Html::img('@web/imagenes/bestlyrics.png', ['alt'=>Yii::$app->name, 'id' => 'logo2', 'itemprop' => 'image']) ?>
         <p><span itemprop="name">Bestlyrics</span> nace con la intención de crear una gran comunidad de
             usuarios con una pasión en común, la música.</p>
         <p itemprop="description">Desde <span itemprop="name">Bestlyrics</span> te ofrecemos la oportunidad de compartir tus
