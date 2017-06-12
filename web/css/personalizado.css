@@ -359,7 +359,6 @@ input:focus {
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
-    width:140px;
 }
 
 .reporte {
@@ -502,4 +501,68 @@ input:focus {
 .btn-form {
     background-color: #fff;
     color: #ff0050;
+}
+
+@media(max-width:1230px) {
+    .panel-letra {
+        position: inherit;
+        margin-left: 0px;
+        margin-top: 20px;
+        z-index: 1;
+        width: 100%;
+        box-shadow: 9px 0px 15px rgba(51, 51, 51, 0.8);
+    }
+
+    .vista-letra {
+        width: 100%
+    }
+
+    .artista-create, .artista-update, .album-create, .album-update, .cancion-create,
+    .cancion-update, .favorito-create, .favorito-update, .genero-create, .genero-update,
+    .idioma-create, .idioma-update {
+        width: 100%;
+    }
+    .top-right {
+        float: none;
+    }
+}
+
+@media(max-width:767px) {
+    .search-index .twitter-typeahead {
+        width: 100%;
+        text-align: center;
+    }
+    .search-form .twitter-typeahead {
+        margin-left: 15px;
+    }
+    .btn-ultimos {
+        float: none !important;
+    }
+    .column2 {
+        clear: both;
+      padding-left: 0px;
+      padding-top: 30px;
+      margin-left: 0px;
+      width: 100%;
+      float: none;
+    }
+    .details {
+        position: relative;
+        padding: 0;
+    }
+    .title1 {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 60px;
+        width: 200px;
+        white-space: pre-line;
+        line-height: normal;
+        font-size-adjust: auto;
+    }
+    .title2 {
+        display: none;
+    }
+    .letras-perfil p span{
+        float: none !important;
+    }
 }

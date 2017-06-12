@@ -94,7 +94,7 @@ $this->registerJsFile('@web/js/yt.js');
 
           <div class="row">
 
-            <div class="col-xs-12 col-md-8 vista-letra">
+            <div class="col-xs-12 col-sm-12 col-md-8 vista-letra">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?> -
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>

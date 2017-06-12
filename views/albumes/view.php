@@ -36,7 +36,7 @@ $this->registerJs($js);
 
 
           <div class="row">
-            <div class="col-xs-6 col-md-3" style="display:flex;flex-direction:column;align-items:center;">
+            <div class="col-xs-12 col-md-3" style="display:flex;flex-direction:column;align-items:center;">
                 <a href="#" class="<?= $model->getImageUrl() == '/' . Yii::getAlias('@albumes') . '/disco.png' ? 'album' : 'disabled'?>">
                     <div>
 
@@ -62,7 +62,7 @@ $this->registerJs($js);
                     ]) : '' ?>
                 </p>
             </div>
-            <div class="col-xs-6 col-md-9">
+            <div class="col-xs-12 col-md-9">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?> <small><?= Html::encode($model->anio) ?></small></h1>
                 </div>

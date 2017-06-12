@@ -40,7 +40,7 @@ JS;
 $this->registerJs($js)
 ?>
 <div class="row" style="border:1px solid #222;border-radius:10px;">
-    <div class="col-xs-12 col-sm-3 col-md-12 profile-show" style="text-align:center;border-radius:10px 10px 0px 0px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 profile-show" style="text-align:center;border-radius:10px 10px 0px 0px;">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12" style="display:flex;justify-content:center">
             <div class="avatar">

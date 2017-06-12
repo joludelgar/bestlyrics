@@ -119,7 +119,7 @@ $this->registerJs($js);
 
           <div class="column2">
 
-              <p style="float:right">
+              <p style="float:right" class="btn-ultimos">
               <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir nuevo álbum', ['albumes/create', 'id' => $model->id], ['class' => 'btn btn-personalizado']) ?>
               </p>
 

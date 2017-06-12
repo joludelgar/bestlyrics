@@ -12,11 +12,11 @@ use yii\widgets\ActiveForm;
 <div class="cancion-view">
 
 
-      <div class="col-sm-12 col-md-12 artista-search">
+      <div class="col-xs-12 col-sm-12 col-md-12 artista-search">
             <a href="<?= Url::to(['/artistas/view', 'id' => $model->id]) ?>">
               <div class="caption searched row">
-                <div class="image-search img-circle col-sm-3 col-md-3" style="background:url(' <?= $model->getImageUrl() ?> ');background-size: cover;background-repeat: no-repeat;background-position:center;"></div>
-                <h3 class="rosa col-sm-9 col-md-9"><?= $model->nombre?></h3>
+                <div class="image-search img-circle col-xs-3 col-sm-3 col-md-3" style="background:url(' <?= $model->getImageUrl() ?> ');background-size: cover;background-repeat: no-repeat;background-position:center;"></div>
+                <h3 class="rosa col-xs-9 col-sm-9 col-md-9"><?= $model->nombre?></h3>
                 </div>
             </a>
         </div>

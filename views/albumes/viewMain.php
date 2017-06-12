@@ -13,7 +13,7 @@ $artista = $model->idArtista;
 <div class="album-view">
 
 
-      <div class="col-sm-6 col-md-4">
+      <div class="col-xs-12 col-md-4">
         <div class="thumbnail" style="text-align:center">
             <a href="<?= Url::to(['/albumes/view', 'id' => $model->id]) ?>">
               <img src="<?=$model->getImageUrl();?>" alt="<?=$model->nombre?>">

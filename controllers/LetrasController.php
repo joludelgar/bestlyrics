@@ -80,7 +80,9 @@ class LetrasController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Letra::find()->orderBy('created_at desc'),
-            'pagination' => false,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
             'sort' => false,
         ]);
 
