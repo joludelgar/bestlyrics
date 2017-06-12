@@ -1,4 +1,4 @@
 Diagrama de clases
 ==================
 
-![Diagrama de clases](imagenes/diagrama-clases.png)
+![Diagrama de clases](images/diagrama-clases.png)

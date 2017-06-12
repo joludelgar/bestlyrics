@@ -1,4 +1,4 @@
 Validación de microdatos
 ========================
 
-![CSS](imagenes/metadatos.png)
+![CSS](images/metadatos.png)

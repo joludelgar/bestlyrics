@@ -1,4 +1,4 @@
-![Bestlyrics](imagenes/bestlyrics.png)
+![Bestlyrics](images/bestlyrics.png)
 ==================================
 Descripción general del proyecto
 ---
