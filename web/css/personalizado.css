@@ -459,3 +459,18 @@ input:focus {
 #contador, .titulo-panel-cancion {
     color: #fff;
 }
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #333;
+    border-color: #333;
+}
+
+.color-change {
+    margin: 15px;
+}
+.color-change * {float: right;};

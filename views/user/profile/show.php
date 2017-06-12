@@ -18,6 +18,26 @@ use yii\widgets\ListView;
  */
 
 $this->title = empty($profile->name) ? Html::encode($profile->user->username) : Html::encode($profile->name);
+$js = <<<JS
+    var color = localStorage.color;
+
+    if (color != null) {
+        $("#color").val(color);
+        $(".profile-show").css('background-color', color);
+    }
+
+    $("#color").on('change', function() {
+        localStorage.clear();
+        var valor = $(this).val();
+        localStorage.color = valor;
+        $(".profile-show").css('background-color', valor);
+    });
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+JS;
+$this->registerJs($js)
 ?>
 <div class="row" style="border:1px solid #222;border-radius:10px;">
     <div class="col-xs-12 col-sm-3 col-md-12 profile-show" style="text-align:center;border-radius:10px 10px 0px 0px;">
@@ -60,10 +80,11 @@ $this->title = empty($profile->name) ? Html::encode($profile->user->username) : 
 
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12" style="padding:20px;">
 
-   <br>
-
+    <div class="col-xs-12 col-sm-12" style="padding: 0px 20px 20px 20px;">
+        <div class="color-change">
+            <input type="color" id="color" name="color" value="#222" data-toggle = "tooltip" data-placement = "left" title = "Cambiar color de la vista de los perfiles">
+        </div>
    <ul class="nav nav-tabs" role="tablist">
      <li role="presentation" class="active"><a href="#favoritos" aria-controls="favoritos" role="tab" data-toggle="tab">Favoritos</a></li>
      <li role="presentation"><a href="#anadidas" aria-controls="anadidas" role="tab" data-toggle="tab">Historial de letras añadidas/modificadas</a></li>
