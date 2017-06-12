@@ -131,19 +131,6 @@ create table favoritos (
 
 create index idx_favoritos_created_at on favoritos (created_at);
 
-drop table if exists votos_letras cascade;
-
-create table votos_letras (
-    id  bigserial   constraint pk_votos_letras primary key,
-    id_usuario bigint constraint fk_votos_letras_usuarios
-                          references public.user (id)
-                          on delete no action on update cascade,
-    id_letra  bigint constraint fk_votos_letras_letras
-                          references letras (id)
-                          on delete no action on update cascade,
-    voto      smallint    not null
-);
-
 drop table if exists reportes cascade;
 
 create table reportes (
@@ -163,5 +150,3 @@ create view top_mensual as
      WHERE extract(month FROM f.created_at) = extract(month FROM current_date)
       group by c.id
      order by count(c.id) DESC;
-
-/*----------WIP----------*/
