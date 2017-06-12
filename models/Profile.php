@@ -164,7 +164,7 @@ class Profile extends BaseProfile
         $this->imageFile = UploadedFile::getInstance($this, 'imageFile');
         if ($this->imageFile !== null && $this->validate()) {
             $nombre = Yii::getAlias('@uploads/') . $this->user_id . '.' . $this->imageFile->extension;
-            $avatares = glob(Yii::getAlias('@avatar/') . "$this->user_id.*");
+            $avatares = glob(Yii::getAlias('@uploads/') . "$this->user_id.*");
 
             $s3 = Yii::$app->get('s3');
             foreach ($avatares as $avatar) {

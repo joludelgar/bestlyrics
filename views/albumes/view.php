@@ -53,7 +53,7 @@ $this->registerJs($js);
 
                 </div>
                 <p>
-                    <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Eliminar imagen', ['deleteImagen', 'id' => $model->id], [
+                    <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Eliminar imagen', ['delete-imagen', 'id' => $model->id], [
                         'class' => 'btn btn-danger btn-xs',
                         'data' => [
                             'confirm' => '¿Estás seguro?',

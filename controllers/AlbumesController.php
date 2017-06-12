@@ -47,7 +47,7 @@ class AlbumesController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'delete-imagen'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -171,6 +171,27 @@ class AlbumesController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Elimina un la imagen del modelo de Album seleccionado.
+     * Si la eliminación es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del álbum.
+     * @return mixed
+     */
+    public function actionDeleteImagen($id)
+    {
+        $imagenes = glob(Yii::getAlias('@albumes/') . "$id.*");
+
+        $s3 = Yii::$app->get('s3');
+        foreach ($imagenes as $imagen) {
+            unlink($imagen);
+            if ($s3->exist($imagen)) {
+                $s3->delete($imagen);
+            }
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**

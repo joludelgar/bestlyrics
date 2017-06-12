@@ -46,7 +46,7 @@ class ArtistasController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'ultimos'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'ultimos', 'delete-imagen'],
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
                             return Yii::$app->user->identity->isAdmin;
@@ -182,6 +182,27 @@ class ArtistasController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Elimina un la imagen del modelo de Artista seleccionado.
+     * Si la eliminación es satisfactoria, el usuario será redirigido a la vista del modelo.
+     * @param integer $id El id del artista.
+     * @return mixed
+     */
+    public function actionDeleteImagen($id)
+    {
+        $imagenes = glob(Yii::getAlias('@artistas/') . "$id.*");
+
+        $s3 = Yii::$app->get('s3');
+        foreach ($imagenes as $imagen) {
+            unlink($imagen);
+            if ($s3->exist($imagen)) {
+                $s3->delete($imagen);
+            }
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**
