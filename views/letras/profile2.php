@@ -16,7 +16,7 @@ $formatter = \Yii::$app->formatter;
 <div class="cancion-view">
 
 
-    <div class="col-sm-12 col-md-12 letras-perfil" style="border:1px solid #f5f5f5">
+    <div class="col-sm-12 col-md-12 letras-perfil">
           <a href="<?= Url::to(['/canciones/view', 'id' => $model->idLetra->idCancion->id]) ?>">
             <div class="caption">
               <h4 class="rosa"><?= $model->idLetra->idCancion->nombre ?> - <small class="rosa"><?=$artista->nombre?></small></h4>
@@ -24,7 +24,7 @@ $formatter = \Yii::$app->formatter;
               $letraUsuario = LetraUsuario::find()->where(['id_letra' => $model->idLetra->id])->orderBy('created_at ASC')->one();
               //var_dump([$letraUsuario, $model]);die();
               $mod = ($model->id == $letraUsuario->id) ? 'Añadida' : 'Modificada';?>
-                  <p><?= $mod ?> el <?=$formatter->asDate($model->created_at, 'long');?> <span style="float:right;"><?= $model->idLetra->idIdioma->nombre ?></span></p>
+                  <p><?= $mod ?> el <?=$formatter->asDate($model->created_at, 'long');?> <span class="float-right"><?= $model->idLetra->idIdioma->nombre ?></span></p>
             </div>
           </a>
     </div>

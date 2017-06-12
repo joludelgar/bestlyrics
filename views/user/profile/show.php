@@ -18,31 +18,12 @@ use yii\widgets\ListView;
  */
 
 $this->title = empty($profile->name) ? Html::encode($profile->user->username) : Html::encode($profile->name);
-$js = <<<JS
-    var color = localStorage.color;
-
-    if (color != null) {
-        $("#color").val(color);
-        $(".profile-show").css('background-color', color);
-    }
-
-    $("#color").on('change', function() {
-        localStorage.clear();
-        var valor = $(this).val();
-        localStorage.color = valor;
-        $(".profile-show").css('background-color', valor);
-    });
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    });
-JS;
-$this->registerJs($js)
+$this->registerJsFile('@web/js/profile.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
-<div class="row" style="border:1px solid #222;border-radius:10px;">
-    <div class="col-xs-12 col-sm-12 col-md-12 profile-show" style="text-align:center;border-radius:10px 10px 0px 0px;">
+<div class="row profile-user-show">
+    <div class="col-xs-12 col-sm-12 col-md-12 profile-show">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12" style="display:flex;justify-content:center">
+            <div class="col-xs-12 col-sm-12 col-md-12 avatar-profile">
             <div class="avatar">
                 <?= Html::img($profile->getImageUrl(), [
                     'class' => 'img-rounded img-responsive',
@@ -50,10 +31,10 @@ $this->registerJs($js)
                 ]) ?>
             </div>
         </div>
-            <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:20px;" id="profile-datos">
+            <div class="col-xs-12 col-sm-12 col-md-12 section-datos" id="profile-datos">
                 <h3><?= Html::a($profile->user->username, ['/user/profile/show', 'id' => $profile->user->id]) ?></h3>
                 <h4><?= $this->title ?></h4>
-                <ul style="padding: 0; list-style: none outside none;">
+                <ul class="lista-datos">
                     <?php if (!empty($profile->location)): ?>
                         <li>
                             <i class="glyphicon glyphicon-map-marker text-muted"></i> <?= Html::encode($profile->location) ?>
@@ -81,7 +62,7 @@ $this->registerJs($js)
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12" style="padding: 0px 20px 20px 20px;">
+    <div class="col-xs-12 col-sm-12 favoritos-user">
         <div class="color-change">
             <input type="color" id="color" name="color" value="#222" data-toggle = "tooltip" data-placement = "left" title = "Cambiar color de la vista de los perfiles">
         </div>

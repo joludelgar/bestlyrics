@@ -23,10 +23,9 @@ JS;
 
 $this->registerJs($js)
 ?>
-<div class="volver" style="position:absolute;z-index:15;">
+<div class="volver">
     <?= Html::a('',['/canciones/view', 'id' => $model->id],[
-            'class' => 'btn btn-lg glyphicon glyphicon-circle-arrow-left',
-            'style' => 'color:#ff0050;font-size:30px;',
+            'class' => 'btn btn-lg glyphicon glyphicon-circle-arrow-left'
         ]
         );?>
 </div>

@@ -8,6 +8,7 @@ use app\models\Favorito;
 use app\models\Album;
 use yii\widgets\ListView;
 use yii\bootstrap\Modal;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cancion */
@@ -21,74 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
 $url = Url::to(['/letras/bloquear']);
 $url2 = Url::to(['/favoritos/create']);
 $js = <<<EOT
-    $('#bloqueo').click(function() {
-        $.ajax({
-            method: 'POST',
-            url: '$url',
-            context: this,
-            data: {
-                id: $(this).val()
-            },
-            success: function (data, status, event) {
-                if (data) {
-                    $(this).html("Desbloquear letra");
-                    $('.modificar').html('Letra bloqueada').attr({
-                        'href': '#',
-                        'disabled': 'disabled',
-                        'class': 'btn btn-default modificar'
-                    });
-                } else {
-                    $(this).html("Bloquear letra");
-                    $('.modificar').html('Modificar letra').attr({
-                        'href': '/letras/update?id='+$(this).val(),
-                        'class': 'btn btn-default modificar'
-                    });
-                    $('.modificar').removeAttr("disabled");
-                }
-            }
-        });
-    });
-
-    $('#favorito').click(function(e) {
-        $.ajax({
-            method: 'POST',
-            url: '$url2',
-            context: this,
-            data: {
-                id: $(this).val()
-            },
-            success: function (data, status, event) {
-                $(this).empty();
-                $('#contador').empty();
-                if (data[0]) {
-                    $(this).append('<span class="glyphicon glyphicon-heart" aria-hidden="true" id="iconoLLeno">');
-                } else {
-                    $(this).append('<span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="icono"></span>');
-                }
-                $('#contador').append('<span id="contador">' + data[1] +'</span> Favoritos');
-            },
-            dataType:"json"
-        });
-    });
-
-    function checkOffset() {
-          var a=$(document).scrollTop()+window.innerHeight;
-          var b=$('.comment-wrapper').offset().top;
-          if (a<b) {
-            $('.panel-letra').css('bottom', '100px');
-          } else {
-            $('.panel-letra').css('bottom', (100+(a-b))+'px');
-          }
-    }
-    $(document).ready(checkOffset);
-    $(document).scroll(checkOffset);
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    });
+    var url = "$url";
+    var url2 = "$url2";
 EOT;
-$this->registerJs($js);
+$this->registerJs($js, View::POS_HEAD);
 $this->registerJsFile('@web/js/yt.js');
+$this->registerJsFile('@web/js/tooltips.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('@web/js/canciones.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 <div class="cancion-view">
 
@@ -173,7 +113,7 @@ $this->registerJsFile('@web/js/yt.js');
 
             <div class="col-xs-12 col-md-4 panel-letra">
                   <?php if ($model->letraOriginal) { ?>
-                  <div class="panel" style='text-align:center;'>
+                  <div class="panel text-center">
                   <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-panel']) :
                   '<div data-video="'. substr($model->video, strpos($model->video, '=')+1, 11) .'"
                      data-autoplay="0"
@@ -185,7 +125,7 @@ $this->registerJsFile('@web/js/yt.js');
                   </div>
                   <?php } ?>
 
-              <p style='text-align:center;'>
+              <p class='text-center'>
                   <?= Html::a('<span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>', ['video', 'id' => $model->id], ['class' => 'btn btn-default', 'data-toggle'=>"tooltip", 'data-placement'=>"left", 'title'=>"Modificar video"])?>
                   <?= $model->letras == null ? '' :
                         ($model->letraOriginal->bloqueada ?
@@ -194,7 +134,7 @@ $this->registerJsFile('@web/js/yt.js');
                             (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letraOriginal->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->letraOriginal->id]) : '' )?>
               </p>
 
-              <div style='text-align:center;margin-top:50px;'>
+              <div class="text-center fav">
                   <div class="row">
                   <div id="botonFavorito">
                       <?php if (Yii::$app->user->isGuest || !Favorito::findOne(['id_cancion' => $model->id, 'id_usuario' => Yii::$app->user->identity->id])) { ?>
@@ -213,7 +153,7 @@ $this->registerJsFile('@web/js/yt.js');
               </div>
             </div>
 
-            <div style='text-align:center;margin-top:50px;'>
+            <div class='text-center fav'>
                 <h4 class="titulo-panel-cancion">Otras canciones del álbum:</h4>
 
                 <div class="list-group">
@@ -237,18 +177,6 @@ $this->registerJsFile('@web/js/yt.js');
 
             </div>
     </div>
-
-    <!--<?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'id_usuario',
-            'id_album',
-            'nombre',
-            'video',
-            'created_at',
-        ],
-    ]) ?>-->
 
     <?php echo \yii2mod\comments\widgets\Comment::widget([
       'model' => $model,

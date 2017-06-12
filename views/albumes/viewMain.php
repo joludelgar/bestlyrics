@@ -14,7 +14,7 @@ $artista = $model->idArtista;
 
 
       <div class="col-xs-12 col-md-4">
-        <div class="thumbnail" style="text-align:center">
+        <div class="thumbnail text-center">
             <a href="<?= Url::to(['/albumes/view', 'id' => $model->id]) ?>">
               <img src="<?=$model->getImageUrl();?>" alt="<?=$model->nombre?>">
               <div class="caption albumMain">

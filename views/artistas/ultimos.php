@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p class="btn-ultimos" style="float:right">
+    <p class="btn-ultimos float-right">
         <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true" id="icono"></span> Añadir nuevo artista', ['create'], ['class' => 'btn btn-personalizado']) ?>
     </p>
 

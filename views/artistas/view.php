@@ -15,18 +15,7 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['ultimos']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile('@web/css/album.css');
-
-$js = <<<JS
-$('#artista').click(function(){
-    $('input[type=file]').click();
-    return false;
-});
-
-$(".upload").change(function() {
-    this.form.submit();
-})
-JS;
-$this->registerJs($js);
+$this->registerJsFile('@web/js/artista.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 
     <div class="card">

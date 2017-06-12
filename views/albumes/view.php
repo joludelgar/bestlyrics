@@ -16,27 +16,14 @@ $this->title = $model->nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Artistas', 'url' => ['artistas/ultimos']];
 $this->params['breadcrumbs'][] = ['label' => $model->idArtista->nombre, 'url' => ['artistas/view', 'id' => $model->idArtista->id]];
 $this->params['breadcrumbs'][] = $this->title;
-$js = <<<JS
-$('.album').click(function(){
-    $('input[type=file]').click();
-    return false;
-});
-
-$(".upload").change(function() {
-    this.form.submit();
-});
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-});
-JS;
-$this->registerJs($js);
+$this->registerJsFile('@web/js/album.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('@web/js/tooltips.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 <div class="album-view">
 
 
           <div class="row">
-            <div class="col-xs-12 col-md-3" style="display:flex;flex-direction:column;align-items:center;">
+            <div class="col-xs-12 col-md-3 album-view-1">
                 <a href="#" class="<?= $model->getImageUrl() == '/' . Yii::getAlias('@albumes') . '/disco.png' ? 'album' : 'disabled'?>">
                     <div>
 

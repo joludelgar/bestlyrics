@@ -16,13 +16,8 @@ use yii\widgets\ActiveForm;
 $user = Yii::$app->user->identity;
 $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
 
-$js = <<<JS
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    });
-JS;
-$this->registerJs($js)
+$this->registerJsFile('@web/js/tooltips.js', ['depends' => [yii\web\JqueryAsset::className()]]);
+$this->registerJsFile('@web/js/avatar.js', ['depends' => [yii\web\JqueryAsset::className()]]);
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -49,7 +44,7 @@ $this->registerJs($js)
     </div>
 
     <div class="panel-heading">
-        <h3 class="panel-title">Avatar<span style="float:right" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle = "tooltip" data-placement = "left" title = "Haz click en la imagen, escoge una y haz click en Guardar"></span></h3>
+        <h3 class="panel-title">Avatar<span class="glyphicon glyphicon-info-sign float-right" aria-hidden="true" data-toggle = "tooltip" data-placement = "left" title = "Haz click en la imagen, escoge una y haz click en Guardar"></span></h3>
     </div>
     <div class="panel-body">
         <?php $form = ActiveForm::begin([
@@ -82,12 +77,3 @@ $this->registerJs($js)
         <?php ActiveForm::end(); ?>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $("#avatar").on('click', function(e){
-        e.preventDefault();
-        $("#profile-imagefile").trigger('click');
-    });
-});
-</script>

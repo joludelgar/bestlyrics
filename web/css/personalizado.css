@@ -65,6 +65,8 @@ div.wrap > div.container a:not([class]) {
     border-color: #ff0050;
 }
 
+/* Avatar en perfil */
+
 .avatar {
   height: 200px;
   position: relative;
@@ -132,11 +134,15 @@ div.wrap > div.container a:not([class]) {
   justify-content: center;
   margin: 0;
   padding: 50px;
+  text-align:center;
+  border-radius:10px 10px 0px 0px;
 }
 
 .avatar {
     padding: 0px;
 }
+
+/* Fin de avatar del perfil */
 
 #youtube-icon {
     width: 20%;
@@ -414,7 +420,7 @@ input:focus {
     position: static;
 }
 
-@-webkit-keyframes floatText{
+@keyframes floatText{
   from {
     right: -20%;
   }
@@ -565,4 +571,59 @@ input:focus {
     .letras-perfil p span{
         float: none !important;
     }
+}
+
+.album-view-1 {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.volver {
+    position:absolute;
+    z-index:15;
+}
+
+.volver a {
+    color:#ff0050;
+    font-size:30px;
+}
+
+.cancion-view-main {
+    height:160px;
+}
+.cancion-view-profile {
+    height:130px;
+}
+
+.letras-perfil {
+    border:1px solid #f5f5f5;
+}
+
+.text-center {text-align:center;}
+.float-right {float: right;}
+.fav {margin-top:50px;}
+.negro{color: black;}
+
+.profile-user-show {
+    border:1px solid #222;
+    border-radius:10px;
+}
+
+.avatar-profile {
+    display:flex;
+    justify-content:center;
+}
+
+.section-datos {
+    margin-top:20px;
+}
+
+.lista-datos {
+    padding: 0;
+    list-style: none outside none;
+}
+
+.favoritos-user {
+    padding: 0px 20px 20px 20px;
 }
