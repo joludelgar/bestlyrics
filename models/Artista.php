@@ -60,7 +60,7 @@ class Artista extends \yii\db\ActiveRecord
      */
     public function getAlbumes()
     {
-        return $this->hasMany(Album::className(), ['id_artista' => 'id'])->inverseOf('idArtista');
+        return $this->hasMany(Album::className(), ['id_artista' => 'id'])->inverseOf('idArtista')->orderBy('anio DESC');
     }
 
     /**

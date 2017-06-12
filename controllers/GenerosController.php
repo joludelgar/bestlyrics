@@ -81,7 +81,9 @@ class GenerosController extends Controller
         $model = $this->findModel($id);
         $dataProvider = new ActiveDataProvider([
             'query' => Artista::find()->where(['in', 'id', Album::find()->select('id_artista')->where(['id_genero' => $id])]),
-            'pagination' => false,
+            'pagination' => [
+        	    'pagesize' => 10,
+            ],
             'sort' => false,
         ]);
 

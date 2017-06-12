@@ -79,7 +79,9 @@ class CancionesController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Cancion::findBySql('select * from top_mensual'),
-            'pagination' => false,
+            'pagination' => [
+        	    'pagesize' => 10,
+            ],
             'sort' => false,
         ]);
 

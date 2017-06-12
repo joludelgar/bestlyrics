@@ -80,7 +80,9 @@ class ArtistasController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Artista::find()->orderBy('created_at desc'),
-            'pagination' => false,
+            'pagination' => [
+        	    'pagesize' => 10,
+            ],
             'sort' => false,
         ]);
 
@@ -106,7 +108,9 @@ class ArtistasController extends Controller
 
         $dataProvider = new ActiveDataProvider([
            'query' => Artista::findOne($id)->getAlbumes(),
-           'pagination' => false,
+           'pagination' => [
+        	    'pagesize' => 6,
+            ],
            'sort' => false,
        ]);
 
