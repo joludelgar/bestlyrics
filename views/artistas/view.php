@@ -36,10 +36,6 @@ $this->registerJs($js);
                   <div class="cover">
 
                   </div>
-                  <!--<?= Html::img($model->getImageUrl(), [
-                      'alt' => 'cover',
-                      'class' => 'cover',
-                  ]) ?>-->
               </a>
 
               <div style="display:none;">
@@ -68,7 +64,15 @@ $this->registerJs($js);
         <div class="description">
 
           <div class="column1">
-
+              <p>
+                  <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('<span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Eliminar imagen', ['deleteImagen', 'id' => $model->id], [
+                      'class' => 'btn btn-xs btn-danger',
+                      'data' => [
+                          'confirm' => '¿Estás seguro?',
+                          'method' => 'post',
+                      ],
+                  ]) : '' ?>
+              </p>
               <hr>
               <p class="row">
               <?php $generos = [];
@@ -79,13 +83,12 @@ $this->registerJs($js);
               } }?>
               </p>
                   <p>
-                  <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                  </p>
-                  <p>
-                  <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('Eliminar', ['delete', 'id' => $model->id], [
-                      'class' => 'btn btn-danger',
+                  <?= Html::a('<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-oculto']) ?>
+
+                  <?= Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::a('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar', ['delete', 'id' => $model->id], [
+                      'class' => 'btn btn-danger btn-oculto',
                       'data' => [
-                          'confirm' => 'Are you sure you want to delete this item?',
+                          'confirm' => '¿Estás seguro?',
                           'method' => 'post',
                       ],
                   ]) : '' ?>
@@ -117,7 +120,7 @@ $this->registerJs($js);
           <div class="column2">
 
               <p style="float:right">
-              <?= Html::a('Añadir nuevo álbum', ['albumes/create', 'id' => $model->id], ['class' => 'btn btn-personalizado']) ?>
+              <?= Html::a('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir nuevo álbum', ['albumes/create', 'id' => $model->id], ['class' => 'btn btn-personalizado']) ?>
               </p>
 
               <h3 id="albumes-title">Álbumes</h3>

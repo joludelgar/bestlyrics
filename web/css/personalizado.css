@@ -52,6 +52,11 @@ div.wrap > div.container a:not([class]) {
     background-color: #ff0050;
     color: white;
 }
+.btn-personalizado:hover {
+    background-color: #f5f5f5;
+    color: #ff0050;
+    border-color: #ff0050;
+}
 
 .avatar {
   height: 200px;
@@ -162,11 +167,6 @@ div.wrap > div.container a:not([class]) {
 
 .album-view a:hover {
     text-decoration: none;
-}
-
-.album-view a:hover * {
-    text-decoration: none;
-    color: #ff0050;
 }
 
 .tab-pane {
@@ -365,4 +365,97 @@ input:focus {
 .modal-content {
     text-align: left;
     color: black;
+}
+
+@keyframes fadeIn {
+    from { font-size: 0;}
+      to { font-size: 14px;}
+}
+.btn-oculto {
+    font-size: 0;
+    background-color: #fff;
+    color: #ccc;
+}
+.btn-oculto span { font-size: 14px;}
+.btn-oculto:hover {
+    font-size: 14px;
+    animation: fadeIn 1s;
+}
+
+.btn-vertical-align {
+    margin-left: 30px;
+}
+
+.btn-imagen {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.albumMain h3, .searched h3, .breadcrumb *{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.thumbnail:hover .albumMain h3{
+    position: relative;
+    white-space: pre;
+    overflow: inherit;
+    text-overflow: inherit;
+    animation: floatText 5s infinite alternate ease-in-out;
+}
+.thumbnail:hover .albumMain p{
+    position: static;
+}
+
+@-webkit-keyframes floatText{
+  from {
+    right: -20%;
+  }
+
+  to {
+    /* right: auto; */
+    right: 80%;
+  }
+}
+.botones-canciones {
+    text-align: center;
+    margin-top: 10px;
+}
+.botones-canciones, .botones-canciones span {
+    margin-right: 0px !important;
+}
+
+.vista-letra {
+    box-shadow: 0 9px 0px 0px white, 0 -9px 0px 0px white, 12px 0 15px -4px rgba(51, 51, 51, 0.8), -12px 0 15px -4px rgba(51, 51, 51, 0.8);
+}
+
+.panel-letra {
+    position: fixed;
+    margin-left: 780px;
+    margin-top: 20px;
+    z-index: 30;
+    width: 400px;
+    box-shadow: 9px 0px 15px rgba(51, 51, 51, 0.8);
+}
+
+.panel-letra, .panel-letra .panel {
+    background-color: #ff0050;
+}
+
+.btn-panel {
+    background-color: #fff;
+    color: #ff0050;
+}
+
+.btn-traduccion {
+    float: right;
+}
+
+.btn-panel-traduccion {
+    background-color: #333;
+    color: #fff;
+}
+
+#contador, .titulo-panel-cancion {
+    color: #fff;
 }

@@ -32,19 +32,18 @@ $js = <<<EOT
             success: function (data, status, event) {
                 if (data) {
                     $(this).html("Desbloquear letra");
-                    $('#modificar').html('Letra bloqueada').attr({
+                    $('.modificar').html('Letra bloqueada').attr({
                         'href': '#',
                         'disabled': 'disabled',
-                        'class': 'btn btn-default'
+                        'class': 'btn btn-default modificar'
                     });
                 } else {
                     $(this).html("Bloquear letra");
-                    $('#modificar').html('Modificar letra').attr({
+                    $('.modificar').html('Modificar letra').attr({
                         'href': '/letras/update?id='+$(this).val(),
-                        'class': 'btn btn-success',
-                        'id': 'modificar'
+                        'class': 'btn btn-default modificar'
                     });
-                    $('#modificar').removeAttr("disabled");
+                    $('.modificar').removeAttr("disabled");
                 }
             }
         });
@@ -71,6 +70,22 @@ $js = <<<EOT
             dataType:"json"
         });
     });
+
+    function checkOffset() {
+          var a=$(document).scrollTop()+window.innerHeight;
+          var b=$('.comment-wrapper').offset().top;
+          if (a<b) {
+            $('.panel-letra').css('bottom', '100px');
+          } else {
+            $('.panel-letra').css('bottom', (100+(a-b))+'px');
+          }
+    }
+    $(document).ready(checkOffset);
+    $(document).scroll(checkOffset);
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
 EOT;
 $this->registerJs($js);
 $this->registerJsFile('@web/js/yt.js');
@@ -79,7 +94,7 @@ $this->registerJsFile('@web/js/yt.js');
 
           <div class="row">
 
-            <div class="col-xs-12 col-md-8">
+            <div class="col-xs-12 col-md-8 vista-letra">
                 <div class="page-header">
                     <h1><?= Html::encode($this->title) ?> -
                         <small><?= Html::a($model->idAlbum->idArtista->nombre, ['artistas/view', 'id' => $model->idAlbum->id_artista]) ?></small>
@@ -95,25 +110,31 @@ $this->registerJsFile('@web/js/yt.js');
                         <a href="#" id="myTabDrop1" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Traducciones <span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
                             <?php if($model->letras != null) {
-                                foreach($model->letras as $letra) {?>
+                                foreach($model->letras as $letra) {
+                                    if ($letra->id != $model->letraOriginal->id) {?>
                             <li class=""><a href="#<?=$letra->idIdioma->nombre?>" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1" aria-expanded="false"><?=$letra->idIdioma->nombre?></a></li>
-                            <?php }}; ?>
+                            <?php   }
+                                }
+                            }
+                            if (count($model->letras) == 1) {?>
+                                    <li class="">Sin resultados</li>
+                                <?php } ?>
                         </ul>
                     </li>
-                    <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-info']) ?></li>
+                    <li><?= Html::a('Añadir traducción', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-panel-traduccion']) ?></li>
                     <?php } ?>
                   </ul>
 
                   <!-- Tab panes -->
                   <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active <?= $model->letras == null ? 'anadir-letra' : '' ?>" id="original"></br><?= $model->letras == null ? Html::a('Se el primero en añadir la letra a esta canción.<br/> Haz click aqui para empezar.', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-success btn-anadir-letra']) : nl2br($model->letraOriginal->letra) ?></div>
+                    <div role="tabpanel" class="tab-pane active <?= $model->letras == null ? 'anadir-letra' : '' ?>" id="original"></br><?= $model->letras == null ? Html::a('Se el primero en añadir la letra a esta canción.<br/> Haz click aqui para empezar.', ['letras/create', 'id' => $model->id], ['class' => 'btn btn-default btn-anadir-letra']) : nl2br($model->letraOriginal->letra) ?></div>
                     <?php if($model->letras != null) {
                         foreach($model->letras as $letra) {?>
                     <div role="tabpanel" class="tab-pane" id="<?=$letra->idIdioma->nombre?>"></br>
                         <h2><?= $letra->idIdioma->nombre?>
                             <?=$letra->bloqueada ?
-                                Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
-                                Html::a('Modificar letra', ['letras/update', 'id' => $letra->id], ['class' => 'btn btn-success', 'id' => 'modificar'])?>
+                                Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled modificar']) :
+                                Html::a('<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>', ['letras/update', 'id' => $letra->id], ['class' => 'btn btn-primary btn-traduccion', 'id' => 'modificar', 'data-toggle'=>"tooltip", 'data-placement'=>"left", 'title'=>"Modificar traducción"])?>
                         </h2>
                         <br/><?=nl2br($letra->letra)?></br></div>
                     <?php }}; ?>
@@ -150,36 +171,26 @@ $this->registerJsFile('@web/js/yt.js');
 
             </div>
 
-            <div class="col-xs-12 col-md-4">
-                <div class="panel panel-default">
-                  <div class="panel-body" style='text-align:center;'>
-                  <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-success']) :
+            <div class="col-xs-12 col-md-4 panel-letra">
+                  <?php if ($model->letraOriginal) { ?>
+                  <div class="panel" style='text-align:center;'>
+                  <?= $model->video == null ? Html::a('Añadir video', ['video', 'id' => $model->id], ['class' => 'btn btn-panel']) :
                   '<div data-video="'. substr($model->video, strpos($model->video, '=')+1, 11) .'"
                      data-autoplay="0"
                      data-loop="1"
                      id="youtube-audio">
                   </div>'
                    . '<br/>' . Html::a('Ver video con letra', ['full', 'id' => $model->id], ['class' => 'btn btn-personalizado'])
-                   . '<br/>' . Html::a('Modificar video', ['video', 'id' => $model->id], ['class' => 'btn-xs btn-warning'])?>
-                 <!-- <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="<?=$model->video?>"></iframe>
-                </div>-->
+                   . '<br/>'?>
                   </div>
-                </div>
+                  <?php } ?>
 
               <p style='text-align:center;'>
-                  <!--<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                  <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-                      'class' => 'btn btn-danger',
-                      'data' => [
-                          'confirm' => 'Are you sure you want to delete this item?',
-                          'method' => 'post',
-                      ],
-                  ]) ?> -->
+                  <?= Html::a('<span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>', ['video', 'id' => $model->id], ['class' => 'btn btn-default', 'data-toggle'=>"tooltip", 'data-placement'=>"left", 'title'=>"Modificar video"])?>
                   <?= $model->letras == null ? '' :
                         ($model->letraOriginal->bloqueada ?
-                            Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled', 'id' => 'modificar']) :
-                            Html::a('Modificar letra', ['letras/update', 'id' => $model->letraOriginal->id], ['class' => 'btn btn-success', 'id' => 'modificar'])) . ' ' .
+                            Html::a('Letra bloqueada',[''], ['class' => 'btn btn-default disabled modificar']) :
+                            Html::a('Modificar letra', ['letras/update', 'id' => $model->letraOriginal->id], ['class' => 'btn btn-default modificar'])) . ' ' .
                             (Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->isAdmin ? Html::button(($model->letraOriginal->bloqueada ? 'Desbloquear letra' : 'Bloquear letra') , ['class' => 'btn btn-warning', 'id' => 'bloqueo', 'value' => $model->letraOriginal->id]) : '' )?>
               </p>
 
@@ -203,16 +214,23 @@ $this->registerJsFile('@web/js/yt.js');
             </div>
 
             <div style='text-align:center;margin-top:50px;'>
-                <h4>Otras canciones del álbum:</h4>
+                <h4 class="titulo-panel-cancion">Otras canciones del álbum:</h4>
 
                 <div class="list-group">
-                    <?php foreach (Album::findOne($model->idAlbum->id)->canciones as $cancion){
-                        if ($cancion->id != $model->id) {?>
+                    <?php
+                    $contador=0;
+                    foreach (Album::findOne($model->idAlbum->id)->canciones as $cancion){
+                        if ($cancion->id != $model->id && $contador < 2) {?>
                         <a href="<?= Url::to(['/canciones/view', 'id' => $cancion->id]) ?>" class="list-group-item rosa">
                             <?= $cancion->nombre?>
                         </a>
-                    <?php }
+                    <?php $contador += 1; }
                     } ?>
+                    <?php if (count(Album::findOne($model->idAlbum->id)->canciones) > 1 || !$model->letraOriginal) { ?>
+                        <a href="<?= Url::to(['/albumes/view', 'id' => $model->idAlbum->id]) ?>" class="list-group-item rosa">
+                            Ver más
+                        </a>
+                    <?php } ?>
                 </div>
 
             </div>
