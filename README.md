@@ -21,7 +21,5 @@ que el administrador pueda moderar los contenidos que se suben a la aplicación.
 
 [Documentación](https://joludelgar.github.io/bestlyrics/)
 
-[API]()
-
 ---
 Proyecto desarrollado por: Jose Luis Delgado García
