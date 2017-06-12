@@ -48,7 +48,7 @@ class Artista extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_usuario' => 'Id Usuario',
+            'id_usuario' => 'Usuario',
             'nombre' => 'Nombre',
             'biografia' => 'Biografia',
             'created_at' => 'Fecha creación',

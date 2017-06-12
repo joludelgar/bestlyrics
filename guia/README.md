@@ -44,8 +44,7 @@ Conclusiones
 
 Anexos
 ---
-*   [Anexo I: Prueba del seis](prueba-seis.md)
-*   [Anexo II: Validación CSS](validacion-css.md)
-*   [Anexo III: Validación HTML](validacion-html.md)
-*   [Anexo IV: Validación de accesibilidad](validacion-accesibilidad.md)
-*   [Anexo V: Validación de microdatos](validacion-microdatos.md)
+*   [Anexo 1: Prueba del seis](prueba-seis.md)
+*   [Anexo 2: Validación HTML y CSS](validacion.md)
+*   [Anexo 4: Validación de accesibilidad](validacion-accesibilidad.md)
+*   [Anexo 5: Validación de microdatos](validacion-microdatos.md)

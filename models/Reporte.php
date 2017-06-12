@@ -45,7 +45,7 @@ class Reporte extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_reportador' => 'Id Reportador',
+            'id_reportador' => 'Reportador',
             'comentario' => 'Comentario',
             'enlace' => 'Enlace',
         ];

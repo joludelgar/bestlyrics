@@ -54,9 +54,9 @@ class Cancion extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_usuario' => 'Id Usuario',
-            'id_album' => 'Id Album',
-            'id_letra_original' => 'Id Letra Original',
+            'id_usuario' => 'Usuario',
+            'id_album' => 'Album',
+            'id_letra_original' => 'Letra Original',
             'nombre' => 'Nombre',
             'video' => 'URL del video',
             'created_at' => 'Fecha creación',

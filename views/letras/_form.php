@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="row">
-  <div class="col-xs-6 col-md-8">
+  <div class="col-xs-12 col-md-8">
     <div class="letra-form">
 
         <?php $form = ActiveForm::begin(); ?>
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     </div>
   </div>
-  <div class="col-xs-6 col-md-4">
+  <div class="col-xs-12 col-md-4">
       <h2>Reglas de escritura</h2>
       <hr>
       <ol>

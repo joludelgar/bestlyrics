@@ -89,7 +89,7 @@ class AlbumesController extends Controller
          }
 
         $dataProvider = new ActiveDataProvider([
-           'query' => Album::findOne($id)->getCanciones(),
+           'query' => Album::findOne($id)->getCanciones()->orderBy('created_at'),
            'pagination' => false,
            'sort' => false,
        ]);

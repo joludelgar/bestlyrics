@@ -52,8 +52,8 @@ class Letra extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_cancion' => 'Id Cancion',
-            'id_idioma' => 'Id Idioma',
+            'id_cancion' => 'Cancion',
+            'id_idioma' => 'Idioma',
             'letra' => 'Letra',
             'bloqueada' => 'Bloqueada',
             'created_at' => 'Fecha creación',
@@ -67,7 +67,7 @@ class Letra extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Cancion::className(), ['id' => 'id_cancion'])->inverseOf('letras');
     }
-    
+
    /**
     * @return \yii\db\ActiveQuery
     */

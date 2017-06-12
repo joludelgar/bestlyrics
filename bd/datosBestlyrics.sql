@@ -36,7 +36,7 @@ create table albumes (
                                 on delete no action on update cascade,
     id_artista    bigint        constraint fk_albumes_artistas
                                 references artistas (id)
-                                on delete no action on update cascade,
+                                on delete cascade on update cascade,
     id_genero   bigint          not null constraint fk_albumes_generos
                                 references generos (id)
                                 on delete no action on update cascade,
@@ -57,7 +57,7 @@ create table canciones (
                                 on delete no action on update cascade,
     id_album      bigint        constraint fk_canciones_albumes
                                 references albumes (id)
-                                on delete no action on update cascade,
+                                on delete cascade on update cascade,
     id_letra_original      bigint        constraint fk_canciones_letra_original
                                 references letras (id)
                                 on delete no action on update cascade,
@@ -88,7 +88,7 @@ create table letras (
     id            bigserial     constraint pk_letras primary key,
     id_cancion    bigint        constraint fk_letras_canciones
                                 references canciones (id)
-                                on delete no action on update cascade,
+                                on delete cascade on update cascade,
     id_idioma     bigint        not null constraint fk_letras_idiomas
                                 references idiomas (id)
                                 on delete no action on update cascade,
@@ -106,7 +106,7 @@ create table letras_usuarios (
     id          bigserial constraint pk_letras_usuarios primary key,
     id_letra    bigint    constraint fk_letras_usuarios_letras
                           references letras (id)
-                          on delete no action on update cascade,
+                          on delete cascade on update cascade,
     id_usuario  bigint    constraint fk_letras_usuarios_usuarios
                           references public.user (id)
                           on delete no action on update cascade,
