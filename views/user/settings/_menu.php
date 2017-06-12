@@ -15,6 +15,14 @@ use yii\widgets\ActiveForm;
  */
 $user = Yii::$app->user->identity;
 $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
+
+$js = <<<JS
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+JS;
+$this->registerJs($js)
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -41,7 +49,7 @@ $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
     </div>
 
     <div class="panel-heading">
-        <h3 class="panel-title">Avatar</h3>
+        <h3 class="panel-title">Avatar<span style="float:right" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle = "tooltip" data-placement = "left" title = "Haz click en la imagen, escoge una y haz click en Guardar"></span></h3>
     </div>
     <div class="panel-body">
         <?php $form = ActiveForm::begin([
@@ -67,7 +75,7 @@ $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
 
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-9">
-                <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+                <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-personalizado']) ?><br>
             </div>
         </div>
 

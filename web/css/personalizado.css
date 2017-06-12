@@ -202,7 +202,8 @@ div.wrap > div.container a:not([class]) {
 }
 
 .nav-pills > li.active > a {
-    background-color: #222;
+    background-color: #f5f5f5;
+    border: 1px solid #222;
 }
 
 .nav-pills > li.active > a:hover {
