@@ -289,21 +289,21 @@ Array
 
     [41] => Array
         (
-            [line] => 8
+            [line] => 9
             [file] => models/User.php
             [message] => No docblock for element 'app\models\User'
         )
 
     [42] => Array
         (
-            [line] => 13
+            [line] => 14
             [file] => models/User.php
             [message] => No docblock for element 'getUsername'
         )
 
     [43] => Array
         (
-            [line] => 20
+            [line] => 21
             [file] => models/User.php
             [message] => No docblock for element 'getAvatar'
         )

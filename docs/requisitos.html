@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/a70d6df5/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/de485b4e/solarized_light.css" rel="stylesheet">
+<link href="./assets/92d03449/style.css" rel="stylesheet">
+<script src="./assets/326bc9c5/jquery.js"></script>
+<script src="./assets/a70d6df5/js/bootstrap.js"></script>
+<script src="./assets/5d57c303/jssearch.js"></script>    <title>Definición detallada - Catálogo de requisitos - Guía de Bestlyrics</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w70" class="navbar-inverse navbar-fixed-top navbar" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w70-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Guía de Bestlyrics</a></div><div id="w70-collapse" class="collapse navbar-collapse"><ul id="w71" class="navbar-nav nav"><li><a href="./api/index.html">Class reference</a></li>
+<li><a href="./README.html">Guide</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-2">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-60" data-toggle="collapse" data-parent="#navigation">Descripción general del proyecto <b class="caret"></b></a><div id="navigation-60" class="submenu panel-collapse collapse"><a class="list-group-item" href="./funcionalidad.html">Funcionalidad principal de la aplicación</a>
+<a class="list-group-item" href="./objetivos.html">Objetivos generales</a>
+<a class="list-group-item" href="https://github.com/joludelgar/bestlyrics">Url del repositorio en GitHub</a>
+<a class="list-group-item" href="https://joludelgar.github.io/bestlyrics/">Url de la documentación en GitHub Pages</a></div>
+<a class="list-group-item" href="#navigation-61" data-toggle="collapse" data-parent="#navigation">Instrucciones de instalación y despliegue <b class="caret"></b></a><div id="navigation-61" class="submenu panel-collapse collapse"><a class="list-group-item" href="./local.html">Local</a>
+<a class="list-group-item" href="./nube.html">En la nube</a></div>
+<a class="list-group-item active" href="#navigation-62" data-toggle="collapse" data-parent="#navigation">Catálogo de requisitos <b class="caret"></b></a><div id="navigation-62" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./requisitos.html">Definición detallada</a>
+<a class="list-group-item" href="./resumen-requisitos.html">Cuadro resumen</a></div>
+<a class="list-group-item" href="#navigation-63" data-toggle="collapse" data-parent="#navigation">Manual básico de usuario <b class="caret"></b></a><div id="navigation-63" class="submenu panel-collapse collapse"><a class="list-group-item" href="./manual.html">Manual de usuario</a></div>
+<a class="list-group-item" href="#navigation-64" data-toggle="collapse" data-parent="#navigation">Decisiones adoptadas y su justificación <b class="caret"></b></a><div id="navigation-64" class="submenu panel-collapse collapse"><a class="list-group-item" href="./decisiones.html">Decisiones adoptadas y su justificación</a></div>
+<a class="list-group-item" href="#navigation-65" data-toggle="collapse" data-parent="#navigation">Dificultades encontradas y soluciones aplicadas <b class="caret"></b></a><div id="navigation-65" class="submenu panel-collapse collapse"><a class="list-group-item" href="./dificultades-soluciones.html">Dificultades encontradas y soluciones aplicadas</a></div>
+<a class="list-group-item" href="#navigation-66" data-toggle="collapse" data-parent="#navigation">Diagramas <b class="caret"></b></a><div id="navigation-66" class="submenu panel-collapse collapse"><a class="list-group-item" href="./diagrama-clases.html">De clases</a>
+<a class="list-group-item" href="./diagrama-datos.html">De estructura lógica de datos</a></div>
+<a class="list-group-item" href="#navigation-67" data-toggle="collapse" data-parent="#navigation">Glosario de términos <b class="caret"></b></a><div id="navigation-67" class="submenu panel-collapse collapse"><a class="list-group-item" href="./glosario.html">Glosario de términos</a></div>
+<a class="list-group-item" href="#navigation-68" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-68" class="submenu panel-collapse collapse"><a class="list-group-item" href="./conclusiones.html">Conclusiones</a></div>
+<a class="list-group-item" href="#navigation-69" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-69" class="submenu panel-collapse collapse"><a class="list-group-item" href="./prueba-seis.html">Anexo 1: Prueba del seis</a>
+<a class="list-group-item" href="./validacion.html">Anexo 2: Validación HTML y CSS</a>
+<a class="list-group-item" href="./validacion-accesibilidad.html">Anexo 4: Validación de accesibilidad</a>
+<a class="list-group-item" href="./metadatos.html">Anexo 5: Validación de microdatos</a></div></div>    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <h1>Definición detallada de los requisitos <span id="definicion-detallada-de-los-requisitos"></span><a href="#definicion-detallada-de-los-requisitos" class="hashlink">&para;</a></h1><table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R01:</strong>             </th><th>Registro de usuarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir el registro de usuarios.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación contendrá un formulario de registro, donde el usuario debe indicar un nombre de usuario, un email valido y una contraseña. Si el nombre de usuario ya existe o el email ya existe o es de un formato incorrecto, el registro no se llevara a cabo y se notificara al usuario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/1">1</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R02:</strong>             </th><th>Correo de confirmación</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe enviar un correo de confirmación en el registro de usuarios.</td></tr>
+<tr><td>Descripción larga    </td><td>Una vez el usuario haya completado el formulario de registro y lo haya enviado, se mandara un correo de confirmación al email especificado. Si no se confirma no será posible iniciar sesión en la aplicación.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/2">2</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R03:</strong>             </th><th>Inicio de sesión de usuarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir el inicio de sesión de los usuarios registrados.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación contendrá un formulario de inicio de sesión donde un usuario que ha sido registrado y confirmado podrá iniciar sesión en la aplicación introduciendo su nombre de usuario y su contraseña. Si los datos introducidos fueran incorrectos se informaría al usuario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/3">3</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R04:</strong>             </th><th>Cerrar sesión</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir cerrar sesión a los usuarios que han iniciado sesión.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación, cuando un usuario tenga una sesión abierta, contendrá un botón en el menú que al pulsarlo se cerrará la sesión del usuario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/4">4</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R05:</strong>             </th><th>Recordar sesión de usuario</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe recordar la sesión iniciada de los usuarios.</td></tr>
+<tr><td>Descripción larga    </td><td>En el formulario de inicio de sesión se implantara una casilla de verificación donde el usuario indicara si desea mantener la sesión iniciada una vez este cierre la aplicación.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/5">5</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R06:</strong>             </th><th>Recuperación de contraseña</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir el cambio de contraseña de los usuarios que lo soliciten.</td></tr>
+<tr><td>Descripción larga    </td><td>En el formulario de inicio de sesión se implantara un enlace que redirigirá a un formulario donde el usuario debe indicar el email de la cuenta de la que desea recuperar la contraseña. Cuando introduzca el email se le enviara un correo con un enlace que contendrá un formulario para indicar una nueva contraseña.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/6">6</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R07:</strong>             </th><th>Modificar datos de usuario</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar los datos de los usuarios registrados.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación debe disponer de una sección donde los usuarios podrán modificar varios aspectos de su perfil, tanto datos personales como los datos de la cuenta.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/7">7</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R08:</strong>             </th><th>Mostrar perfil de usuario</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe mostrar un perfil público de los usuarios registrados.</td></tr>
+<tr><td>Descripción larga    </td><td>Cada usuario de la aplicación dispondrá de un perfil público donde se mostraran los datos personales, el avatar y sus letras de canciones favoritas.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/8">8</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R09:</strong>             </th><th>Avatares de usuarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir subir y mostrar un avatar a los usuarios registrados.</td></tr>
+<tr><td>Descripción larga    </td><td>En la sección donde los usuarios pueden modificar sus datos se debe implementar un formulario para la subida de imágenes que se usaran como avatares de los usuarios.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v3</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/9">9</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R10:</strong>             </th><th>Añadir artistas</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir artistas.</td></tr>
+<tr><td>Descripción larga    </td><td>Los usuarios autenticados al buscar un artista en el buscador de la aplicación y al no ser encontrado tendrá la posibilidad de añadir un nuevo artista a través de un formulario donde se comprobara que no exista. Los artistas contaran con un nombre, una biografía y etiquetas indicando el género de música que realiza. También se ofrecerá la posibilidad de añadir un archivo de imagen del artista.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/10">10</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R11:</strong>             </th><th>Modificar artistas</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar artistas.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de un artista ya creado se podrán modificar tanto los datos como la imagen. Si el administrador considera que el artista no requiere más cambios en algún parámetro podrá deshabilitar la modificación.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/11">11</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R12:</strong>             </th><th>Añadir álbumes</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir álbumes.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de un artista podrá añadir álbumes a través de un formulario indicando diferentes datos como el nombre o el año de lanzamiento. También contara con la posibilidad de añadir un archivo de imagen como portada del álbum.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/12">12</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R13:</strong>             </th><th>Modificar álbumes</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar álbumes.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede a un álbum de un artista ya creado se podrá modificar los diferentes datos y la portada del álbum. Si el administrador considera que el artista no requiere más cambios en algún parámetro podrá deshabilitar la modificación.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/13">13</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R14:</strong>             </th><th>Añadir canciones</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de un álbum podrá añadir canciones a través de un formulario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/14">14</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R15:</strong>             </th><th>Modificar canciones</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de un álbum podrá modificar el nombre de las canciones a través de un formulario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/15">15</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R16:</strong>             </th><th>Añadir letras</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir letras a las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá añadir una letra a través de un formulario. Se indicaran al usuario normas básicas para la correcta forma de añadir las letras.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/16">16</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R17:</strong>             </th><th>Modificar letras</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar letras a las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá modificar la letra a través de un formulario. La letra anterior quedara presente para que el usuario no deba escribir toda la letra completa si los cambios son menores. Se indicaran al usuario normas básicas para la correcta forma de modificar las letras.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/17">17</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R18:</strong>             </th><th>Búsqueda de canciones, artistas o álbumes</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir buscar por nombre de canción, nombre de artista o nombre de álbum.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación ofrecerá un buscador a los usuarios. En este buscador se podrán realizar búsquedas tanto de canciones como de artistas o álbumes. El buscador mostrara una vista preliminar de las coincidencias encontradas según el usuario va escribiendo en el cuadro de búsqueda. Si el usuario desea una vista más detallada solo debe enviar el resultado de la búsqueda y se mostrara una lista más detallada con coincidencias de la búsqueda realizada.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v3</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/18">18</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R19:</strong>             </th><th>Añadir letra de canción como favorito</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir una letra de una canción como favorito.</td></tr>
+<tr><td>Descripción larga    </td><td>En el perfil de una letra de canción se mostrara un icono de favorito, donde el usuario podrá interactuar y añadir la letra a sus favoritos.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/19">19</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R20:</strong>             </th><th>Eliminar letra de canción como favorito</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir eliminar una letra de una canción como favorito.</td></tr>
+<tr><td>Descripción larga    </td><td>En el perfil de una letra de canción se mostrara un icono de favorito, donde el usuario podrá interactuar y eliminar la letra a sus favoritos.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/20">20</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R21:</strong>             </th><th>Top de letras</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe mostrar un top de letras de canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación debe mostrar un top de letras que estará basado en función a la cantidad de favoritos que una canción obtiene en un mes.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/21">21</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R22:</strong>             </th><th>Nuevas letras</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe mostrar un listado de nuevas letras de canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación debe mostrar una lista de nuevas letras añadidas en la aplicación. Cada nueva letra añadida actualizara constantemente esta lista.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/22">22</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R23:</strong>             </th><th>Añadir traducción de letra</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir una traducción de la letra a las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá añadir una traducción de una letra a través de un formulario. El usuario podrá indicar el idioma de la traducción. Se indicaran al usuario normas básicas para la correcta forma de añadir las letras.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/23">23</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R24:</strong>             </th><th>Modificar traducción de letra</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar una traducción de la letra a las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá modificar la traducción de una letra a través de un formulario. La letra anterior quedara presente para que el usuario no deba escribir toda la letra completa si los cambios son menores. Se indicaran al usuario normas básicas para la correcta forma de modificar las letras.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v2</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/24">24</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R25:</strong>             </th><th>Redimensionar imágenes</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe redimensionar las imágenes.</td></tr>
+<tr><td>Descripción larga    </td><td>Las imágenes subidas por los usuarios deben ser redimensionadas para la perfecta visualización de estas imágenes. Las imágenes de los avatares tendrán varios tamaños en función del lugar desde el que se visualice. El tamaño de la imagen del perfil será de mayor tamaño en comparación con las imágenes que podrán ser visualizadas del avatar en otros aspectos de la aplicación. Las imágenes subidas de los álbumes y de los artistas también deben ser redimensionadas para la correcta visualización.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Difícil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v3</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/25">25</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R26:</strong>             </th><th>Añadir video</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir videos a las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá añadir un video de la canción relacionada a través de un formulario. El usuario podrá insertar la URL de un video de la plataforma Youtube.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/26">26</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R27:</strong>             </th><th>Modificar video</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar los videos de las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario autenticado accede al perfil de una canción podrá modificar el video de la canción relacionada a través de un formulario. El usuario podrá insertar la URL de un video de la plataforma Youtube.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/27">27</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R28:</strong>             </th><th>Añadir comentario</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir añadir comentarios a las letras de las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Los usuarios autenticados podrán añadir comentarios en las fichas de las canciones. El comentario mostrara el avatar, el nombre de usuario y el tiempo desde que el usuario realizo el comentario.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/28">28</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R29:</strong>             </th><th>Modificar comentarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir modificar comentarios de las letras de las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>El administrador de la aplicación podrá modificar los comentarios de los usuarios. Los usuarios no podrán realizar esta acción.</td></tr>
+<tr><td>Prioridad            </td><td>Opcional</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/29">29</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R30:</strong>             </th><th>Eliminar comentarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir eliminar comentarios de las letras de las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>El administrador de la aplicación podrá eliminar los comentarios de los usuarios. Los usuarios no podrán realizar esta acción.</td></tr>
+<tr><td>Prioridad            </td><td>Opcional</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/30">30</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R31:</strong>             </th><th>Responder comentarios</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir responder comentarios de otros usuarios.</td></tr>
+<tr><td>Descripción larga    </td><td>Los usuarios autenticados podrán responder a los otros comentarios realizados por otros usuarios. La cantidad de respuestas múltiples será establecida mediante un límite.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Fácil</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/31">31</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R32:</strong>             </th><th>Reportar contenido</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir a los usuarios reportar los diferentes elementos editables de la aplicación.</td></tr>
+<tr><td>Descripción larga    </td><td>Todas las páginas de un artista, un álbum, una letra o un perfil de un usuario contendrán un enlace para reportar algún problema. El enlace mostrara un formulario donde el usuario puede informar al administrador del problema.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v3</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/32">32</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R33:</strong>             </th><th>Valorar letra</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir a los usuarios valorar las letras de las canciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Las canciones obtendrán votos positivos y negativos de los usuarios. Si los votos negativos superan el 70% de votos totales se establecerá que la letra de la canción debe ser revisada y modificada.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Dificil</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/33">33</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R34:</strong>             </th><th>Sección de letras modificadas</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación debe permitir a los usuarios consultar una lista de letras que deben ser modificadas.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación debe ofrecer a los usuarios una lista con las canciones donde la letra contiene en su mayoría votos negativos. Una vez que letra se modifica los votos se reinician y la canción deja de aparecer en la lista.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/34">34</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R35:</strong>             </th><th>Nivel de usuario</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>Los usuarios tendrán un nivel de comunidad que le permitirá realizar ciertas funciones.</td></tr>
+<tr><td>Descripción larga    </td><td>Cuando un usuario añade un artista, un álbum, una canción, una letra, una imagen, un video, vota positivamente o negativamente una letra la aplicación le asignara una serie de puntos que le harán subir niveles. Cuando un usuario alcanza un nivel especificado podrá comenzar a modificar letras.</td></tr>
+<tr><td>Prioridad            </td><td>Opcional</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v3</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/35">35</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R36:</strong>             </th><th>Registro de comunidad</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación ofrecerá los últimos cambios realizados en la aplicación.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación ofrecerá una sección donde se podrá consultar todos los cambios realizados por los usuarios. También se mostrara una lista de los usuarios que más aportaciones han realizado en el mes.</td></tr>
+<tr><td>Prioridad            </td><td>Opcional</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v3</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/36">36</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R70:</strong>             </th><th>Almacenamiento de archivos</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación almacenará los archivos subidos por los usuarios.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación usará AWS S3 para la subida y el almacenamiento de archivos en la nube. Las imágenes que suban los usuarios serán almacenadas en la nube, y la aplicación usará esas imágenes.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Difícil</td></tr>
+<tr><td>Entrega planificada  </td><td>v2</td></tr>
+<tr><td>Entrega realizada    </td><td>v3</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/70">70</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R71:</strong>             </th><th>Login por Google</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>Los usuarios podrán registrarse e iniciar sesión a través de Google.</td></tr>
+<tr><td>Descripción larga    </td><td>Los usuarios cuando se sitúen en el formulario de inicio de sesión o en el de registro podrán iniciar sesión o registrarse a través de Google pulsando un botón.</td></tr>
+<tr><td>Prioridad            </td><td>Importante</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v1</td></tr>
+<tr><td>Entrega realizada    </td><td>v1</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/71">71</a></td></tr>
+</tbody>
+</table>
+<hr />
+<table class="table table-bordered table-striped">
+<thead>
+<tr><th><strong>R72:</strong>             </th><th>Popups</th></tr>
+</thead>
+<tbody>
+<tr><td>Descripción corta    </td><td>La aplicación mostrará diferentes popups para la visualización de contenido e imágenes.</td></tr>
+<tr><td>Descripción larga    </td><td>La aplicación usará un plugin de jQuery para mostrar al usuario diferentes popups para visualizar contenido, formularios y contenido multimedia.</td></tr>
+<tr><td>Prioridad            </td><td>Opcional</td></tr>
+<tr><td>Tipo                 </td><td>Funcional</td></tr>
+<tr><td>Complejidad          </td><td>Media</td></tr>
+<tr><td>Entrega planificada  </td><td>v3</td></tr>
+<tr><td>Entrega realizada    </td><td>Sin entrega</td></tr>
+<tr><td>Nº de issue          </td><td><a href="https://github.com/joludelgar/bestlyrics/issues/72">72</a></td></tr>
+</tbody>
+</table>
+        <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
+    </div>
+</div>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Mon, 12 Jun 2017 20:07:45 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
