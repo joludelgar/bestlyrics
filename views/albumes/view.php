@@ -123,7 +123,7 @@ $this->registerJsFile('@web/js/tooltips.js', ['depends' => [yii\web\JqueryAsset:
 
     .album div, .disabled div {
         background-image: url('<?= $model->getImageUrl()?>');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }

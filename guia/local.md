@@ -16,6 +16,7 @@ Instrucciones de instalación y despliegue en Local
 2. Instalar *[composer](https://getcomposer.org/download/)*.
 
 3. Ejecutar los siguientes comandos.
+
 ```
 git clone https://github.com/joludelgar/bestlyrics.git
 cd bestlyrics
@@ -26,13 +27,15 @@ chmod -R 777 uploads
 ```
 
 4. Instalar *PostgreSQL* y ejecutar los siguientes comandos desde la raíz del proyecto.
+
 ```
 cd db
 ./create.sh
 ./migrations.sh
 ./load.sh
 ```
->Se creará una base de datos llamada `bestlyrics` con un usuario `bestlyrics` y contraseña `bestlyrics`.
+
+> Se creará una base de datos llamada `bestlyrics` con un usuario `bestlyrics` y contraseña `bestlyrics`.
 
 5. Cambiar la configuración de la aplicación:
     + Cambiar el nombre del administrador.

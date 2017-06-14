@@ -140,7 +140,7 @@ $this->registerJsFile('@web/js/artista.js', ['depends' => [yii\web\JqueryAsset::
 
     #artista div, #disabled div {
         background-image: url('<?= $model->getImageUrl()?>');
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
     }

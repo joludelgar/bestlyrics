@@ -80,7 +80,7 @@ class SiteController extends Controller
         ]);
 
         $dataProvider2 = new ActiveDataProvider([
-            'query' => Cancion::findBySql('select * from top_mensual')->limit(6),
+            'query' => Cancion::findBySql('select * from top_mensual limit 6'),
             'pagination' => false,
             'sort' => false,
         ]);

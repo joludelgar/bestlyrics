@@ -2,7 +2,7 @@ Validación HTML y CSS
 =====================
 
 - **Validador HTML**
-![HTML](images/html.png)
+![HTML](imagenes/html.png)
 
 - **Validador CSS**
-![CSS](images/css.png)
+![CSS](imagenes/css.png)

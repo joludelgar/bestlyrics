@@ -32,7 +32,7 @@ $this->registerJs($js)
 <div class="cancion-full-view">
 
     <div id="overflowContainer" style="">
-        <iframe id="videoBackground" src="//www.youtube.com/embed/<?=substr($model->video, strpos($model->video, '=')+1, 11)?>?feature=player_embedded&autoplay=1&controls=0&loop=1&modestbranding=1&rel=0&showinfo=0&disablekb=1&enablejsapi=1&iv_load_policy=3&origin=http://codepen.io/AcidWolf/pen/Gibzo/&playlist=pkg7mM5z_xc" frameborder="0" allowfullscreen="false"></iframe>
+        <iframe id="videoBackground" src="//www.youtube.com/embed/<?=substr($model->video, strpos($model->video, '=')+1, 11)?>?feature=player_embedded&autoplay=1&controls=0&loop=1&modestbranding=1&rel=0&showinfo=0&disablekb=1&enablejsapi=1&iv_load_policy=3" frameborder="0" allowfullscreen="false"></iframe>
     </div>
 
     <div class="bodyContent" id="scroll">

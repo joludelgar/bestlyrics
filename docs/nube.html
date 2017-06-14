@@ -49,7 +49,6 @@
 <a class="list-group-item" href="#navigation-164" data-toggle="collapse" data-parent="#navigation">Conclusiones <b class="caret"></b></a><div id="navigation-164" class="submenu panel-collapse collapse"><a class="list-group-item" href="./conclusiones.html">Conclusiones</a></div>
 <a class="list-group-item" href="#navigation-165" data-toggle="collapse" data-parent="#navigation">Anexos <b class="caret"></b></a><div id="navigation-165" class="submenu panel-collapse collapse"><a class="list-group-item" href="./prueba-seis.html">Anexo 1: Prueba del seis</a>
 <a class="list-group-item" href="./validacion.html">Anexo 2: Validación HTML y CSS</a>
-<a class="list-group-item" href="./validacion-accesibilidad.html">Anexo 4: Validación de accesibilidad</a>
 <a class="list-group-item" href="./metadatos.html">Anexo 5: Validación de microdatos</a></div></div>    </div>
     <div class="col-md-9 guide-content" role="main">
         <h1>Instrucciones de instalación y despliegue en la nube <span id="instrucciones-de-instalacion-y-despliegue-en-la-nube"></span><a href="#instrucciones-de-instalacion-y-despliegue-en-la-nube" class="hashlink">&para;</a></h1><p>Para la instalar y desplegar la aplicación en la nube a través de Heroku se realizaran los siguientes pasos:</p>
@@ -60,18 +59,19 @@ hacerlo desde la página web.</p>
 </li>
 <li><p>Se deben crear las variables de entornos que dispongamos en local y añadir la variable de entorno  <code>YII_ENV=prod</code></p>
 </li>
-<li><p>Crear una base de datos en Heroku. Para ello, debemos añadir el addon heroku-postgresql. Tambien es necesario crear un dump de la base de datos local a traves del siguiente comando:
+<li><p>Crear una base de datos en Heroku. Para ello, debemos añadir el addon heroku-postgresql. También es necesario crear un dump de la base de datos local a través del siguiente comando:
 <code> pg_dump -Fc --no-acl --no-owner -h localhost -U bestlyrics bestlyrics &gt; db.dump </code></p>
 <p>Se debe subir el archivo en la nube y obtener el enlace del archivo. A continuación realizar un restore de la base de datos de Heroku:
 <code> heroku pg:backups:restore 'enlace_al_archivo' DATABASE_URL </code></p>
 </li>
-<li><p>Por último, ejecutar los siguientes comandos:
-<code>cd bestlyrics
-heroku login
-heroku git:remote -a nombre_aplicacion_heroku
-git push heroku master</code></p>
+<li><p>Por último, ejecutar los siguientes comandos:</p>
 </li>
 </ol>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> bestlyrics
+heroku login
+heroku git:remote <span class="hljs-operator">-a</span> nombre_aplicacion_heroku
+git push heroku master
+</code></pre>
         <div class="toplink"><a href="#" class="h1" title="go to top"><span class="glyphicon glyphicon-arrow-up"></a></div>
     </div>
 </div>
@@ -80,7 +80,7 @@ git push heroku master</code></p>
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Mon, 12 Jun 2017 20:07:45 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Wed, 14 Jun 2017 09:59:15 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script type="text/javascript">jQuery(document).ready(function () {
