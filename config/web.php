@@ -20,7 +20,7 @@ $config = [
             'cost' => 13,
             'admins' => ['admin'],
             'mailer' => [
-                'sender'                => ['bestlyricsteam@gmail.com' => 'Bestlyrics'], // or ['no-reply@myhost.com' => 'Sender name']
+                'sender'                => ['joludelgar@firemail.cc' => 'Bestlyrics'], // or ['no-reply@myhost.com' => 'Sender name']
                 'welcomeSubject'        => 'Bienvenido a Bestlyrics',
                 'confirmationSubject'   => 'Mensaje de confirmación en Bestlyrics',
                 'reconfirmationSubject' => 'Petición de cambio de Email',
@@ -106,7 +106,7 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
+                'host' => 'mail.cock.li',
                 'username' => $params['smtpUsername'],
                 'password' => getenv('SMTP_PASS'),
                 'port' => '587',

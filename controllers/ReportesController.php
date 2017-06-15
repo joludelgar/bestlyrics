@@ -8,6 +8,7 @@ use app\models\ReporteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ReportesController implementa todas las acciones para el modelo de Reporte.

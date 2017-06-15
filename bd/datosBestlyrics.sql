@@ -124,7 +124,7 @@ create table favoritos (
                              on delete no action on update cascade,
     id_cancion     bigint    constraint fk_favoritos_canciones
                              references canciones (id)
-                             on delete no action on update cascade,
+                             on delete cascade on update cascade,
     created_at      timestamptz   default current_timestamp,
     constraint uq_usuario_cancion unique (id_usuario, id_cancion)
 );
